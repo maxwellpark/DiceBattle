@@ -3,6 +3,7 @@ using UnityEngine;
 public class Grid : MonoBehaviour
 {
     // Cell the player is currently in 
+    [HideInInspector]
     public Cell activeCell;
 
     public Cell topLeftCell;
