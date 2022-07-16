@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private Grid grid;
+    public Grid grid;
 
     [SerializeField]
     private float _yOffset = 1f;
 
-    private void Start()
+    protected virtual void Start()
     {
         MovePlayer(grid.activeCell.transform.position);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         var direction = GetDirection();
         var cell = grid.UpdateGrid(direction);
@@ -22,7 +21,7 @@ public class Player : MonoBehaviour
             MovePlayer(cell.transform.position);
     }
 
-    private Direction GetDirection()
+    protected virtual Direction GetDirection()
     {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             return Direction.Up;

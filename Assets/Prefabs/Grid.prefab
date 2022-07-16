@@ -72,6 +72,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1472340687251215059}
     m_Modifications:
     - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: xCoord
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: yCoord
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
       propertyPath: downNeighbour
       value: 
       objectReference: {fileID: 4167279350731128256}
@@ -157,6 +165,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1472340687251215059}
     m_Modifications:
     - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: xCoord
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
       propertyPath: upNeighbour
       value: 
       objectReference: {fileID: 4167279350731128256}
@@ -241,6 +253,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472340687251215059}
     m_Modifications:
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: yCoord
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
       propertyPath: upNeighbour
       value: 
@@ -331,6 +347,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1472340687251215059}
     m_Modifications:
     - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: xCoord
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: yCoord
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
       propertyPath: upNeighbour
       value: 
       objectReference: {fileID: 1162558081964792505}
@@ -420,6 +444,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1472340687251215059}
     m_Modifications:
     - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: xCoord
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
       propertyPath: upNeighbour
       value: 
       objectReference: {fileID: 3242942543887644933}
@@ -508,6 +536,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472340687251215059}
     m_Modifications:
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: xCoord
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: yCoord
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
       propertyPath: upNeighbour
       value: 
@@ -687,6 +723,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1472340687251215059}
     m_Modifications:
     - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: yCoord
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
       propertyPath: downNeighbour
       value: 
       objectReference: {fileID: 580165548444520957}
@@ -771,6 +811,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472340687251215059}
     m_Modifications:
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: xCoord
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
+      propertyPath: yCoord
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2245354468547105075, guid: 15ede6225fd84f146be210eee2fd26d6, type: 3}
       propertyPath: downNeighbour
       value: 

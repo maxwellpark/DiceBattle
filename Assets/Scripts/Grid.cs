@@ -25,12 +25,12 @@ public class Grid : MonoBehaviour
         activeCell = startingCell;
     }
 
-    public Cell UpdateGrid(Direction direction)
+    public virtual Cell UpdateGrid(Direction direction)
     {
         if (activeCell == null)
             return null;
 
-        var neighbour = activeCell.GetNeighbour(direction);
+        var neighbour = activeCell.GetNeighbourByDirection(direction);
 
         if (neighbour != null)
             activeCell = neighbour;
