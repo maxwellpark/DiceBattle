@@ -4,8 +4,9 @@ public class Grid : MonoBehaviour
 {
     // Cell the player is currently in 
     [HideInInspector]
-    public Cell activeCell;
-
+    public Cell currentCell;
+    [HideInInspector]
+    public Cell previousCell;
     public Cell startingCell;
 
     public Cell topLeftCell;
@@ -22,19 +23,26 @@ public class Grid : MonoBehaviour
 
     private void Awake()
     {
-        activeCell = startingCell;
+        currentCell = startingCell;
+        previousCell = currentCell;
     }
 
+    /// <summary>
+    /// Returns the current cell after updating it on the grid 
+    /// </summary>
+    /// <param name="direction"></param>
     public virtual Cell UpdateGrid(Direction direction)
     {
-        if (activeCell == null)
+        if (currentCell == null)
             return null;
 
-        var neighbour = activeCell.GetNeighbourByDirection(direction);
+        var neighbour = currentCell.GetNeighbourByDirection(direction);
 
-        if (neighbour != null)
-            activeCell = neighbour;
-
-        return activeCell;
+        if (neighbour != null && neighbour != currentCell)
+        {
+            previousCell = currentCell;
+            currentCell = neighbour;
+        }
+        return currentCell;
     }
 }

@@ -112,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   _yOffset: 1
-  _moveDelayInSeconds: 0
+  _moveDelayInSeconds: 0.25

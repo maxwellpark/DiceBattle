@@ -1,24 +1,33 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
     public Grid grid;
+    public event UnityAction onPlayerMove;
 
     [SerializeField]
     private float _yOffset = 1f;
 
     protected virtual void Start()
     {
-        MovePlayer(grid.activeCell.transform.position);
+        MovePlayer(grid.currentCell.transform.position);
     }
 
     protected virtual void Update()
     {
         var direction = GetDirection();
+
+        if (direction == Direction.Neutral)
+            return;
+
         var cell = grid.UpdateGrid(direction);
 
         if (cell != null)
+        {
             MovePlayer(cell.transform.position);
+            onPlayerMove?.Invoke();
+        }
     }
 
     protected virtual Direction GetDirection()
