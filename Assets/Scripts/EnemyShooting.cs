@@ -31,6 +31,12 @@ public class EnemyShooting : PlayerShooting
         base.OnTriggerEnter(other);
     }
 
+    public override void SetupShooting(int magSize)
+    {
+        base.SetupShooting(magSize);
+        _canShoot = true;
+    }
+
     private IEnumerator DelayShooting()
     {
         _canShoot = false;
