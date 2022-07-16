@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Grid : MonoBehaviour
@@ -21,8 +22,11 @@ public class Grid : MonoBehaviour
     public Cell bottomMiddleCell;
     public Cell bottomRightCell;
 
+    public List<Cell> cellCollection;
+
     private void Awake()
     {
+        cellCollection = GetCellCollection();
         currentCell = startingCell;
         previousCell = currentCell;
     }
@@ -44,5 +48,31 @@ public class Grid : MonoBehaviour
             currentCell = neighbour;
         }
         return currentCell;
+    }
+
+    public List<Cell> GetCellCollection()
+    {
+        return new List<Cell>
+        {
+            topLeftCell,
+            topMiddleCell,
+            topRightCell,
+            middleLeftCell,
+            middleMiddleCell,
+            middleRightCell,
+            bottomLeftCell,
+            bottomMiddleCell,
+            bottomRightCell
+        };
+    }
+
+    public Cell GetCellByCoords((int, int) coords)
+    {
+        foreach (var cell in cellCollection)
+        {
+            if (cell.xCoord == coords.Item1 && cell.yCoord == coords.Item2)
+                return cell;
+        }
+        return null;
     }
 }

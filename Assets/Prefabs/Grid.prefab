@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 569988786603875815}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: PlayerGrid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f5764f56faa4046bb80ccdd2138b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeCell: {fileID: 0}
+  currentCell: {fileID: 0}
+  previousCell: {fileID: 0}
   startingCell: {fileID: 753180895474713188}
   topLeftCell: {fileID: 6107531467675424217}
   topMiddleCell: {fileID: 8760911599283784086}
@@ -64,6 +65,7 @@ MonoBehaviour:
   bottomLeftCell: {fileID: 2588781727867835797}
   bottomMiddleCell: {fileID: 4012894888326741123}
   bottomRightCell: {fileID: 753180895474713188}
+  cellCollection: []
 --- !u!1001 &1084001455696989066
 PrefabInstance:
   m_ObjectHideFlags: 0
