@@ -25,34 +25,16 @@ public class Grid : MonoBehaviour
         activeCell = startingCell;
     }
 
-    public Cell UpdateGrid(float x, float y)
+    public Cell UpdateGrid(Direction direction)
     {
         if (activeCell == null)
             return null;
 
-        var direction = GetDirection(x, y);
         var neighbour = activeCell.GetNeighbour(direction);
 
         if (neighbour != null)
             activeCell = neighbour;
 
         return activeCell;
-    }
-
-    private Direction GetDirection(float x, float y)
-    {
-        if (x == 1)
-            return Direction.Right;
-
-        if (x == -1)
-            return Direction.Left;
-
-        if (y == 1)
-            return Direction.Up;
-
-        if (y == -1)
-            return Direction.Down;
-
-        return Direction.Neutral;
     }
 }

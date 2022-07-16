@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,11 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _yOffset = 1f;
 
-    [SerializeField]
-    private float _moveDelay = 0.05f;
-
-    private bool _canMove;
-
     private void Start()
     {
         MovePlayer(grid.activeCell.transform.position);
@@ -21,31 +15,32 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!_canMove)
-            return;
-
-        var xAxis = Input.GetAxisRaw("Horizontal");
-        var yAxis = Input.GetAxisRaw("Vertical");
-
-        if (xAxis == 0 && yAxis == 0)
-            return;
-
-        var cell = grid.UpdateGrid(xAxis, yAxis);
+        var direction = GetDirection();
+        var cell = grid.UpdateGrid(direction);
 
         if (cell != null)
             MovePlayer(cell.transform.position);
     }
 
+    private Direction GetDirection()
+    {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            return Direction.Up;
+
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            return Direction.Down;
+
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+            return Direction.Left;
+
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            return Direction.Right;
+
+        return Direction.Neutral;
+    }
+
     public void MovePlayer(Vector3 destination)
     {
         transform.position = new Vector3(destination.x, destination.y + _yOffset, destination.z);
-        StartCoroutine(DelayMovement());
-    }
-
-    private IEnumerator DelayMovement()
-    {
-        _canMove = false;
-        yield return new WaitForSeconds(_moveDelay);
-        _canMove = true;
     }
 }
