@@ -34,11 +34,11 @@ public class BarrierManager : MonoBehaviour
 
     public void SetupBarriers(int playerBarrierCount, int enemyBarrierCount)
     {
-        SetupBarriers(playerBarrierCount, _zOffset * -1, _playerGrid, ref _playerBarriers);
-        SetupBarriers(enemyBarrierCount, _zOffset, _enemyGrid, ref _enemyBarriers);
+        SetupBarriers(playerBarrierCount, _zOffset * -1, "EnemyBullet", _playerGrid, ref _playerBarriers);
+        SetupBarriers(enemyBarrierCount, _zOffset, "PlayerBullet", _enemyGrid, ref _enemyBarriers);
     }
 
-    public void SetupBarriers(int count, float zOffset, Grid grid, ref List<GameObject> barriers)
+    public void SetupBarriers(int count, float zOffset, string bulletTag, Grid grid, ref List<GameObject> barriers)
     {
         barriers.Clear();
         var possibleCoords = GetPossibleCellCoords();
@@ -54,15 +54,17 @@ public class BarrierManager : MonoBehaviour
                 Debug.LogError("Cell could not be found at " + coords);
                 continue;
             }
-            var barrier = CreateBarrier(cell.transform.position, zOffset);
+            var barrier = CreateBarrier(cell.transform.position, zOffset, bulletTag);
             barriers.Add(barrier);
             possibleCoords.RemoveAt(index);
         }
     }
 
-    private GameObject CreateBarrier(Vector3 cellPos, float zOffset)
+    private GameObject CreateBarrier(Vector3 cellPos, float zOffset, string bulletTag)
     {
         var barrier = Instantiate(_barrierPrefab);
+        var component = barrier.GetComponent<Barrier>();
+        component.colliderTag = bulletTag;
         barrier.transform.position = new Vector3(cellPos.x, cellPos.y + _yOffset, cellPos.z + zOffset);
         return barrier;
     }
