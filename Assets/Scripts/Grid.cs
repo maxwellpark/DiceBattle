@@ -50,6 +50,15 @@ public class Grid : MonoBehaviour
         return currentCell;
     }
 
+    public void UpdateGrid(Cell cell)
+    {
+        if (cell == null || cell == currentCell)
+            return;
+
+        previousCell = currentCell;
+        currentCell = cell;
+    }
+
     public List<Cell> GetCellCollection()
     {
         return new List<Cell>

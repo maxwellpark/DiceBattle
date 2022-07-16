@@ -47,8 +47,22 @@ public class Player : MonoBehaviour
         return Direction.Neutral;
     }
 
-    public void MovePlayer(Vector3 destination)
+    protected void MovePlayer(Vector3 destination)
     {
         transform.position = new Vector3(destination.x, destination.y + _yOffset, destination.z);
+    }
+
+    public virtual void ResetSelf()
+    {
+        gameObject.SetActive(true);
+        GoToRandomCell();
+    }
+
+    public void GoToRandomCell()
+    {
+        var index = Random.Range(0, grid.cellCollection.Count);
+        var cell = grid.cellCollection[index];
+        grid.UpdateGrid(cell);
+        MovePlayer(cell.transform.position);
     }
 }

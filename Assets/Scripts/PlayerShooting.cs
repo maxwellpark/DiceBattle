@@ -19,9 +19,9 @@ public class PlayerShooting : MonoBehaviour
     protected int _shotsRemaining;
 
     public event UnityAction onPlayerShoot;
-    public event UnityAction onDestroy;
+    public event UnityAction onDeath;
 
-    public void SetupShooting(int magSize)
+    public virtual void SetupShooting(int magSize)
     {
         _health = _maxHealth;
         _magSize = magSize;
@@ -69,16 +69,24 @@ public class PlayerShooting : MonoBehaviour
         {
             _health--;
             if (_health <= 0)
-                Destroy();
+                Die();
         }
     }
 
-    protected void Destroy()
+    protected void Die()
     {
         if (gameObject == null)
             return;
 
-        onDestroy?.Invoke();
-        Destroy(gameObject);
+        onDeath?.Invoke();
+    }
+
+    public void ClearBullets()
+    {
+        var bullets = FindObjectsOfType<Bullet>();
+        foreach (var bullet in bullets)
+        {
+            Destroy(bullet.gameObject);
+        }
     }
 }
