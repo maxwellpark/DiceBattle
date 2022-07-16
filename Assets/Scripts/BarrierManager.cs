@@ -6,7 +6,9 @@ public class BarrierManager : MonoBehaviour
     [SerializeField]
     private GameObject _barrierPrefab;
     [SerializeField]
-    private float _zOffset;
+    private float _zOffset; // z offset is flipped depending on side 
+    [SerializeField]
+    private float _yOffset; // y offset is the same for both sides 
 
     private Grid _playerGrid;
     private EnemyGrid _enemyGrid;
@@ -61,7 +63,7 @@ public class BarrierManager : MonoBehaviour
     private GameObject CreateBarrier(Vector3 cellPos, float zOffset)
     {
         var barrier = Instantiate(_barrierPrefab);
-        barrier.transform.position = new Vector3(cellPos.x, cellPos.y, cellPos.z + zOffset);
+        barrier.transform.position = new Vector3(cellPos.x, cellPos.y + _yOffset, cellPos.z + zOffset);
         return barrier;
     }
 

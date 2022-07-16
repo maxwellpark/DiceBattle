@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barrierPrefab: {fileID: 273499214982417570, guid: 35b0530fd5d0526429d044d271147639, type: 3}
-  _xOffset: 0
   _zOffset: 0.4
-  barrierCount: 0
+  _yOffset: 0.5
