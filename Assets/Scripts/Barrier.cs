@@ -11,6 +11,7 @@ public class Barrier : MonoBehaviour
     {
         if (other.CompareTag(colliderTag))
         {
+            Destroy(other.gameObject);
             health--;
             if (health <= 0)
                 Destroy();
