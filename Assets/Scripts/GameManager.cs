@@ -19,34 +19,33 @@ public class GameManager : MonoBehaviour
             throw new System.Exception("Enemy not found");
 
         _enemyShooting = enemyObj.GetComponent<EnemyShooting>();
-
-        var barrierManagerObj = GameObject.FindWithTag("BarrierManager");
-        _barrierManager = barrierManagerObj.GetComponent<BarrierManager>();
+        _barrierManager = GameObject.FindObjectOfType<BarrierManager>();
     }
 
     private void Start()
     {
-        NewGame();
+        // For testing
+        NewGame(Random.Range(1, 7), Random.Range(1, 7));
     }
 
-    public void NewGame()
+    public void NewGame(int player1Roll, int player2Roll)
     {
-        // For testing
-        var playerRoll = Random.Range(1, 7);
-        Debug.Log("Player roll = " + playerRoll);
-        var enemyRoll = Random.Range(1, 7);
-        Debug.Log("Enemy roll = " + enemyRoll);
+        Debug.Log("Setting up new game...");
+        Debug.Log("Player 1 roll = " + player1Roll);
+        Debug.Log("Player 2 roll = " + player2Roll);
 
         // Setup game based on dice roll values
-        _playerShooting.SetupShooting(playerRoll);
-        _enemyShooting.SetupShooting(enemyRoll);
-        _barrierManager.SetupBarriers(6 - playerRoll, 6 - enemyRoll);
+        _playerShooting.SetupShooting(player1Roll);
+        _enemyShooting.SetupShooting(player2Roll);
+
+        // Subtract 6 from roll to get no. of barriers
+        _barrierManager.SetupBarriers(6 - player1Roll, 6 - player2Roll);
     }
 
     private void Update()
     {
         // For testing 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
-            NewGame();
+            NewGame(Random.Range(1, 7), Random.Range(1, 7));
     }
 }
