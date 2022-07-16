@@ -67,6 +67,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (other.CompareTag(_bulletColliderTag))
         {
+            Destroy(other.gameObject);
             _health--;
             if (_health <= 0)
                 Die();
