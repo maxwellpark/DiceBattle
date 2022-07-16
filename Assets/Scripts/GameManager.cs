@@ -28,5 +28,10 @@ public class GameManager : MonoBehaviour
 
         _playerShooting.SetupShooting(playerRoll);
         _enemyShooting.SetupShooting(enemyRoll);
+
+        Debug.Log("Roll"+playerRoll);
+
+
+
     }
 }
