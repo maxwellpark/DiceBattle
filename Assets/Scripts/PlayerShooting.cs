@@ -15,17 +15,21 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField]
     private float _reloadTimeInSeconds;
-    public int magSize;
+    protected int _magSize;
     protected int _shotsRemaining;
 
     public event UnityAction onPlayerShoot;
     public event UnityAction onDestroy;
 
-    protected virtual void Start()
+    public void SetupShooting(int magSize)
     {
         _health = _maxHealth;
-        _shotsRemaining = magSize;
+        _magSize = magSize;
+        _shotsRemaining = _magSize;
+    }
 
+    protected virtual void Start()
+    {
         // Set tag to collide with based on tag
         if (gameObject.tag == "Player")
             _bulletColliderTag = "EnemyBullet";
@@ -56,7 +60,7 @@ public class PlayerShooting : MonoBehaviour
     {
         _shotsRemaining = 0;
         yield return new WaitForSeconds(_reloadTimeInSeconds);
-        _shotsRemaining = magSize;
+        _shotsRemaining = _magSize;
     }
 
     protected virtual void OnTriggerEnter(Collider other)

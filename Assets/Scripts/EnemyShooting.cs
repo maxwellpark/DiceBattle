@@ -18,6 +18,11 @@ public class EnemyShooting : PlayerShooting
         if (!_canShoot)
             return;
 
+        if (_shotsRemaining <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
         Shoot();
     }
 
