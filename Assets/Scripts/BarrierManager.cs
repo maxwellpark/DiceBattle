@@ -6,12 +6,11 @@ public class BarrierManager : MonoBehaviour
     [SerializeField]
     private GameObject _barrierPrefab;
     [SerializeField]
-    private float _xOffset;
-    [SerializeField]
     private float _zOffset;
 
     private Grid _playerGrid;
     private EnemyGrid _enemyGrid;
+
     private List<GameObject> _playerBarriers = new List<GameObject>();
     private List<GameObject> _enemyBarriers = new List<GameObject>();
 
