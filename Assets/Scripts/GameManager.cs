@@ -26,13 +26,27 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        NewGame();
+    }
+
+    public void NewGame()
+    {
         // For testing
         var playerRoll = Random.Range(1, 7);
+        Debug.Log("Player roll = " + playerRoll);
         var enemyRoll = Random.Range(1, 7);
+        Debug.Log("Enemy roll = " + enemyRoll);
 
         // Setup game based on dice roll values
         _playerShooting.SetupShooting(playerRoll);
         _enemyShooting.SetupShooting(enemyRoll);
         _barrierManager.SetupBarriers(6 - playerRoll, 6 - enemyRoll);
+    }
+
+    private void Update()
+    {
+        // For testing 
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
+            NewGame();
     }
 }
