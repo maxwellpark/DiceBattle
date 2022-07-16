@@ -16,7 +16,7 @@ public class BarrierManager : MonoBehaviour
     private List<GameObject> _playerBarriers = new List<GameObject>();
     private List<GameObject> _enemyBarriers = new List<GameObject>();
 
-    private void Start()
+    private void Awake()
     {
         var playerGridObj = GameObject.FindWithTag("PlayerGrid");
         if (playerGridObj == null)
@@ -28,8 +28,6 @@ public class BarrierManager : MonoBehaviour
 
         _playerGrid = playerGridObj.GetComponent<Grid>();
         _enemyGrid = enemyGridObj.GetComponent<EnemyGrid>();
-
-        SetupBarriers(2, 3);
     }
 
     public void SetupBarriers(int playerBarrierCount, int enemyBarrierCount)
