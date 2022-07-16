@@ -6,6 +6,8 @@ public class Grid : MonoBehaviour
     [HideInInspector]
     public Cell activeCell;
 
+    public Cell startingCell;
+
     public Cell topLeftCell;
     public Cell topMiddleCell;
     public Cell topRightCell;
@@ -18,36 +20,37 @@ public class Grid : MonoBehaviour
     public Cell bottomMiddleCell;
     public Cell bottomRightCell;
 
-    private void Update()
+    private void Awake()
+    {
+        activeCell = startingCell;
+    }
+
+    public Cell UpdateGrid(float x, float y)
     {
         if (activeCell == null)
-            return;
+            return null;
 
-        var direction = GetDirection();
+        var direction = GetDirection(x, y);
         var neighbour = activeCell.GetNeighbour(direction);
 
         if (neighbour != null)
             activeCell = neighbour;
+
+        return activeCell;
     }
 
-    private Direction GetDirection()
+    private Direction GetDirection(float x, float y)
     {
-        // Look for right/left 
-        var xAxis = Input.GetAxisRaw("Horizontal");
-
-        if (xAxis == 1)
+        if (x == 1)
             return Direction.Right;
 
-        if (xAxis == -1)
+        if (x == -1)
             return Direction.Left;
 
-        // Look for up/down 
-        var yAxis = Input.GetAxisRaw("Vertical");
-
-        if (yAxis == 1)
+        if (y == 1)
             return Direction.Up;
 
-        if (yAxis == -1)
+        if (y == -1)
             return Direction.Down;
 
         return Direction.Neutral;
