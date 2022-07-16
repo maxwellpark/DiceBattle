@@ -129,6 +129,8 @@ MonoBehaviour:
   _zOffset: -0.4
   _bulletPrefab: {fileID: 8539698259316770877, guid: cbb371facbd5d4c4eaa6aee0f655ffc9, type: 3}
   _maxHealth: 1
+  _reloadTimeInSeconds: 2
+  magSize: 6
 --- !u!54 &6609219154489038534
 Rigidbody:
   m_ObjectHideFlags: 0
