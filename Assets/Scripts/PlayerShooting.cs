@@ -12,6 +12,7 @@ public class PlayerShooting : MonoBehaviour
     private int _health;
     private string _bulletColliderTag;
 
+    public event UnityAction onPlayerShoot;
     public event UnityAction onDestroy;
 
     protected virtual void Start()
@@ -39,6 +40,7 @@ public class PlayerShooting : MonoBehaviour
     {
         var bullet = Instantiate(_bulletPrefab);
         bullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + _zOffset);
+        onPlayerShoot?.Invoke();
     }
 
     protected virtual void OnTriggerEnter(Collider other)

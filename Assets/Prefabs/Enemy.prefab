@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec19e12497275f448f2266263e78f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zOffset: 0
-  _bulletPrefab: {fileID: 0}
-  _maxHealth: 0
+  _zOffset: 0.4
+  _bulletPrefab: {fileID: 8539698259316770877, guid: fe6b9ef542656f344b05e15dcdbfd5c5, type: 3}
+  _maxHealth: 1
+  _shootDelayInSeconds: 0.5
 --- !u!54 &240301917477649741
 Rigidbody:
   m_ObjectHideFlags: 0

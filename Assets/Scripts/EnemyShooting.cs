@@ -1,26 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyShooting : PlayerShooting
 {
+    [SerializeField]
+    private float _shootDelayInSeconds;
+    private bool _canShoot = true;
+
     protected override void Start()
     {
         base.Start();
+        onPlayerShoot += () => StartCoroutine(DelayShooting());
     }
 
     protected override void Update()
     {
-        //base.Update();
-    }
+        if (!_canShoot)
+            return;
 
-    protected override void Shoot()
-    {
-        base.Shoot();
+        Shoot();
     }
 
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+    }
+
+    private IEnumerator DelayShooting()
+    {
+        _canShoot = false;
+        yield return new WaitForSeconds(_shootDelayInSeconds);
+        _canShoot = true;
     }
 }
