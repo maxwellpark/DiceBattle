@@ -94,7 +94,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8717918218477460556}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -127,3 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zOffset: -0.4
   _bulletPrefab: {fileID: 8539698259316770877, guid: cbb371facbd5d4c4eaa6aee0f655ffc9, type: 3}
+  _maxHealth: 1
