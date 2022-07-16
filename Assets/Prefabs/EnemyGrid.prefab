@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4592373334880317667}
   m_Layer: 0
   m_Name: EnemyGrid
-  m_TagString: Untagged
+  m_TagString: EnemyGrid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a31136c65baef4ba9d111b90b2e817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeCell: {fileID: 0}
+  currentCell: {fileID: 0}
+  previousCell: {fileID: 0}
   startingCell: {fileID: 2424760905004965968}
   topLeftCell: {fileID: 9158037648644945901}
   topMiddleCell: {fileID: 5926930160641780642}
@@ -64,6 +65,7 @@ MonoBehaviour:
   bottomLeftCell: {fileID: 592397595354560417}
   bottomMiddleCell: {fileID: 2046049960859852471}
   bottomRightCell: {fileID: 2424760905004965968}
+  cellCollection: []
 --- !u!1001 &237598309975773060
 PrefabInstance:
   m_ObjectHideFlags: 0
