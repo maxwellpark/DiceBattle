@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     private NewRoundsUI _newRoundsUI;
+    private BulletDisplayUI _bulletDisplayUI;
 
     public Player player;
     public PlayerShooting playerShooting;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _newRoundsUI = FindObjectOfType<NewRoundsUI>();
+        _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
 
         var playerObj = GameObject.FindWithTag("Player");
         if (playerObj == null)
@@ -168,6 +170,9 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(active);
         enemy.grid.gameObject.SetActive(active);
         enemy.gameObject.SetActive(active);
+        if (!active)
+            _bulletDisplayUI.ClearTexts();
+        //_bulletDisplayUI.ToggleTexts(active);
     }
 
     private void Update()

@@ -11,7 +11,7 @@ public class BulletDisplayUI : MonoBehaviour
     private EnemyShooting _enemyShooting;
     private GameManager _gameManager;
 
-    private void Start()
+    private void Awake()
     {
         _playerShooting = FindObjectOfType<PlayerShooting>();
         _enemyShooting = FindObjectOfType<EnemyShooting>();
@@ -22,6 +22,18 @@ public class BulletDisplayUI : MonoBehaviour
     private void UpdateText(BulletDisplayText text, PlayerShooting shooting, bool reloading = false)
     {
         text.UpdateText(shooting.magSize, shooting.shotsRemaining, reloading);
+    }
+
+    public void ToggleTexts(bool active)
+    {
+        _player1Text.gameObject.SetActive(active);
+        _player2Text.gameObject.SetActive(active);
+    }
+
+    public void ClearTexts()
+    {
+        _player1Text.ClearText();
+        _player2Text.ClearText();
     }
 
     private void RegisterEvents()

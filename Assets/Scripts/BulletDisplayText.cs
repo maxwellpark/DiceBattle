@@ -26,4 +26,9 @@ public class BulletDisplayText : MonoBehaviour
         }
         _text.text = content;
     }
+
+    public void ClearText()
+    {
+        _text.text = string.Empty;
+    }
 }
