@@ -223,13 +223,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3334855739243106470}
-    m_Position: {x: 200, y: 0, z: 0}
+    m_Position: {x: 180, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2936990003270301400}
-    m_Position: {x: 410, y: 70, z: 0}
+    m_Position: {x: 280, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3893424403801763949}
-    m_Position: {x: 390, y: 140, z: 0}
+    m_Position: {x: 280, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7307202449660597878}
     m_Position: {x: 410, y: 190, z: 0}
@@ -314,7 +314,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: diceNumber
-    m_EventTreshold: 1
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3334855739243106470}
   m_Solo: 0
