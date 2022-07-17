@@ -43,4 +43,9 @@ public class EnemyShooting : PlayerShooting
         yield return new WaitForSeconds(_shootDelayInSeconds);
         _canShoot = true;
     }
+
+    protected override void RegisterEvents()
+    {
+        
+    }
 }

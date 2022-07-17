@@ -99,4 +99,9 @@ public class PlayerShooting : MonoBehaviour
             Destroy(bullet.gameObject);
         }
     }
+
+    protected virtual void RegisterEvents()
+    {
+
+    }
 }

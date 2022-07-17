@@ -10,6 +10,7 @@ public class EnemyPlayer : Player
     private bool _canMove = true;
     private GameObject _playerObj;
     private Player _player;
+    private readonly float _moveDeltaThreshold = 5f;
 
     protected override void Start()
     {
@@ -25,6 +26,7 @@ public class EnemyPlayer : Player
 
     protected override void Update()
     {
+        moveDelta += Time.deltaTime;
         if (!_canMove)
             return;
 
@@ -45,6 +47,12 @@ public class EnemyPlayer : Player
         if (playerCell.yCoord < enemyCell.yCoord)
             return Direction.Down;
 
+        // Vary x axis movement 
+        if (_player.moveDelta >= _moveDeltaThreshold)
+        {
+            var rand = UnityEngine.Random.Range(0, 2);
+            return rand == 0 ? Direction.Left : Direction.Right;
+        }
         return Direction.Neutral;
     }
 
@@ -53,5 +61,13 @@ public class EnemyPlayer : Player
         _canMove = false;
         yield return new WaitForSeconds(_moveDelayInSeconds);
         _canMove = true;
+    }
+
+    protected override void RegisterEvents()
+    {
+        _player.onPlayerMove += () =>
+        {
+
+        };
     }
 }

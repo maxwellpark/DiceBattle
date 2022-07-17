@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _yOffset = 1f;
 
+    public float moveDelta;
+
     protected virtual void Start()
     {
         MovePlayer(grid.currentCell.transform.position);
@@ -16,6 +18,7 @@ public class Player : MonoBehaviour
 
     protected virtual void Update()
     {
+        moveDelta += Time.deltaTime;
         var direction = GetDirection();
 
         if (direction == Direction.Neutral)
@@ -50,6 +53,7 @@ public class Player : MonoBehaviour
     protected void MovePlayer(Vector3 destination)
     {
         transform.position = new Vector3(destination.x, destination.y + _yOffset, destination.z);
+        moveDelta = 0f;
     }
 
     public virtual void ResetSelf()
@@ -64,5 +68,10 @@ public class Player : MonoBehaviour
         var cell = grid.cellCollection[index];
         grid.UpdateGrid(cell);
         MovePlayer(cell.transform.position);
+    }
+
+    protected virtual void RegisterEvents()
+    {
+
     }
 }
