@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9114adce359544a46a53667b2f55314b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _diceAnim: {fileID: 6505416690434966644}
-  _diceValue: 0
+  diceAnim: {fileID: 0}
+  diceValue: 0
+  state: 0
 --- !u!114 &6505416690434966647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +135,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 55aad494b337ec84db05b70fcee1000d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5841ce5ebbf1934e97f0d7fa9894e62, type: 2}
     - target: {fileID: 919132149155446097, guid: 55aad494b337ec84db05b70fcee1000d, type: 3}
       propertyPath: m_Name
       value: MegacyberDiceI

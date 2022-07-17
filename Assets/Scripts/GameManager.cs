@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
 
     private BarrierManager _barrierManager;
 
+    public GameObject diceContainer;
+    public DiceAnimController player1Dice;
+    public DiceAnimController player2Dice;
+
     private int _currentRound;
     private int _playerRoundsWon;
     private int _enemyRoundsWon;
@@ -53,28 +57,20 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        var player1Roll = Random.Range(1, 7);
-        var player2Roll = Random.Range(1, 7);
-        NewGame(player1Roll, player2Roll);
-    }
-
-    public void NewGame(int player1Roll, int player2Roll)
-    {
         Debug.Log("Setting up new game...");
         _currentRound = 0;
         _playerRoundsWon = 0;
         _enemyRoundsWon = 0;
         _newRoundsUI.ShowNewGameUI(false);
         onNewGame?.Invoke();
-        NewRound(player1Roll, player2Roll);
+        NewRound();
     }
 
     public void NewRound()
     {
-        var player1Roll = Random.Range(1, 7);
-        var player2Roll = Random.Range(1, 7);
-
-        StartCoroutine(WaitForDice());
+        var player1Roll = player1Dice.RollDice(out float duration1);
+        var player2Roll = player2Dice.RollDice(out float duration2);
+        StartCoroutine(WaitForDice(duration1));
         NewRound(player1Roll, player2Roll);
     }
 
@@ -175,12 +171,14 @@ public class GameManager : MonoBehaviour
         enemy.gameObject.SetActive(active);
         if (!active)
             _bulletDisplayUI.ClearTexts();
-        //_bulletDisplayUI.ToggleTexts(active);
+        //diceContainer.SetActive(active);
+        player1Dice.gameObject.SetActive(active);
+        player2Dice.gameObject.SetActive(active);
     }
 
-    public IEnumerator WaitForDice()
+    public IEnumerator WaitForDice(float duration)
     {
-        yield return new WaitForSeconds(1); // Todo: Match value from dice rolling anim
+        yield return new WaitForSeconds(duration);
     }
 
     private void Update()

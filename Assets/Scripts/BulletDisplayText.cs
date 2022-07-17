@@ -8,7 +8,7 @@ public class BulletDisplayText : MonoBehaviour
 
     private TMP_Text _text;
 
-    private void Start()
+    private void Awake()
     {
         _text = GetComponent<TMP_Text>();
     }

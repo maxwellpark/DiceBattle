@@ -2,19 +2,24 @@ using UnityEngine;
 
 public class DiceAnimController : MonoBehaviour
 {
-    public Animator _diceAnim;
-    public int _diceValue;
+    public Animator diceAnim;
+    public int diceValue;
+    public int state;
+    public static float animWaitTimeInSeconds = 3f;
+
     // Start is called before the first frame update
     void Awake()
     {
-        _diceAnim = GetComponent<Animator>();
+        diceAnim = GetComponent<Animator>();
     }
 
-    public int RollDice()
+    public int RollDice(out float animDuration)
     {
-        _diceValue = Random.Range(1, 7);
-        SetAnimState();
-        return _diceValue;
+        diceValue = Random.Range(1, 7);
+        SetAnimState(diceValue);
+        var info = diceAnim.GetCurrentAnimatorStateInfo(state);
+        animDuration = info.length;
+        return diceValue;
     }
 
     // Update is called once per frame
@@ -22,36 +27,9 @@ public class DiceAnimController : MonoBehaviour
     {
     }
 
-    void SetAnimState()
+    void SetAnimState(int value)
     {
-        if (_diceValue == 1)
-        {
-            _diceAnim.SetInteger("diceNumber", 1);
-        }
-
-        if (_diceValue == 2)
-        {
-            _diceAnim.SetInteger("diceNumber", 2);
-        }
-
-        if (_diceValue == 3)
-        {
-            _diceAnim.SetInteger("diceNumber", 3);
-        }
-
-        if (_diceValue == 4)
-        {
-            _diceAnim.SetInteger("diceNumber", 4);
-        }
-
-        if (_diceValue == 5)
-        {
-            _diceAnim.SetInteger("diceNumber", 5);
-        }
-
-        if (_diceValue == 6)
-        {
-            _diceAnim.SetInteger("diceNumber", 6);
-        }
+        state = value;
+        diceAnim.SetInteger("diceNumber", state);
     }
 }
