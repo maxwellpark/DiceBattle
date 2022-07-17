@@ -114,7 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   _yOffset: 0.75
-  _moveDelayInSeconds: 0.25
+  moveDelta: 0
+  _moveDelayInSeconds: 0.35
 --- !u!114 &4953635035355557834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +133,7 @@ MonoBehaviour:
   _maxHealth: 1
   _reloadTimeInSeconds: 2
   magSize: 6
+  shotsRemaining: 0
   _shootDelayInSeconds: 0.5
 --- !u!54 &240301917477649741
 Rigidbody:
