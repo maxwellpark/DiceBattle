@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialSceneName: Tutorial Scene
   titleSceneName: TitleScreenA
-  arenaSceneName: 
+  arenaSceneName: Arena
   nextSceneCountdown: 0
   currentScene: 0
