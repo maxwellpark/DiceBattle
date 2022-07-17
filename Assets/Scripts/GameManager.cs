@@ -87,9 +87,10 @@ public class GameManager : MonoBehaviour
         // Subtract 6 from roll to get no. of barriers
         _barrierManager.SetupBarriers(6 - player1Roll, 6 - player2Roll);
 
+        ToggleObjects(true);
+        _newRoundsUI.ShowNewRoundUI(false);
         player.ResetSelf();
         enemy.ResetSelf();
-        _newRoundsUI.ShowNewRoundUI(false);
         onNewRound?.Invoke();
     }
 
@@ -110,7 +111,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // Todo: Show new round UI and rolls 
+            ToggleObjects(false);
             _newRoundsUI.ShowNewRoundUI(true);
         }
     }
@@ -158,12 +159,21 @@ public class GameManager : MonoBehaviour
         _newRoundsUI.newRoundBtn.onClick.RemoveAllListeners();
         _newRoundsUI.newRoundBtn.onClick.AddListener(NewRound);
         _newRoundsUI.ShowNewGameUI(true);
+        ToggleObjects(false);
+    }
+
+    private void ToggleObjects(bool active)
+    {
+        player.grid.gameObject.SetActive(active);
+        player.gameObject.SetActive(active);
+        enemy.grid.gameObject.SetActive(active);
+        enemy.gameObject.SetActive(active);
     }
 
     private void Update()
     {
-        // For testing 
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
-            NewGame(Random.Range(1, 7), Random.Range(1, 7));
+        //// For testing 
+        //if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
+        //    NewGame(Random.Range(1, 7), Random.Range(1, 7));
     }
 }
