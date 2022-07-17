@@ -22,11 +22,24 @@ public class SceneLoader : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyUp(KeyCode.Space))
         {
             LoadBattleAI("Tutorial Scene");
             currentScene = 1;
         }
+
+        DontDestroyOnLoad(this.gameObject); 
+
+
+        
+        if(Input.GetKeyUp(KeyCode.Space)&& currentScene==1)
+        {
+            LoadBattleAI("ReloadingTestScene");
+           
+        }
+
+
+
         
     }
 
