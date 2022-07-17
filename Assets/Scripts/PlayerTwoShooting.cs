@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerShooting : MonoBehaviour
+public class PlayerTwoShooting : MonoBehaviour
 {
     [SerializeField]
     private float _zOffset;
@@ -35,12 +35,10 @@ public class PlayerShooting : MonoBehaviour
     protected virtual void Start()
     {
         // Set tag to collide with based on tag
-        if (gameObject.tag == "Player")
-            _bulletColliderTag = "EnemyBullet";
+        if (gameObject.tag == "Player2")
+            _bulletColliderTag = "PlayerBullet";
         else if (gameObject.tag == "Enemy")
-            _bulletColliderTag = "PlayerBullet";
-             else if (gameObject.tag == "Player2")
-            _bulletColliderTag = "PlayerBullet";
+            _bulletColliderTag = "EnemyBullet";
         else
             throw new System.Exception("Invalid tag");
 
@@ -49,7 +47,7 @@ public class PlayerShooting : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (shotsRemaining > 0 && Input.GetKeyDown(KeyCode.Space))
+        if (shotsRemaining > 0 && Input.GetKeyDown(KeyCode.B))
             Shoot();
 
         if (Input.GetKeyDown(KeyCode.R))
