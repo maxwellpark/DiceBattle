@@ -23,6 +23,7 @@ public class EnemyPlayer : Player
 
         _player = _playerObj.GetComponent<Player>();
         onPlayerMove += () => StartCoroutine(DelayMovement());
+        //_player.onPlayerMove += () => StartCoroutine(DelayMovement());
         base.Start();
     }
 
@@ -95,6 +96,7 @@ public class EnemyPlayer : Player
     {
         base.ResetSelf();
         _barrierPref = false;
+        _canMove = true;
     }
 
     protected override void RegisterEvents()
