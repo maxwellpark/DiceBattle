@@ -18,6 +18,7 @@ public class Cell : MonoBehaviour
 
     public int xCoord;
     public int yCoord;
+    public bool hasBarrier;
 
     private void Start()
     {

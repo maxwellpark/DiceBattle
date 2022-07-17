@@ -18,6 +18,7 @@ public class PlayerShooting : MonoBehaviour
     public int magSize;
     public int shotsRemaining;
 
+    // Events 
     public event UnityAction onShoot;
     public event UnityAction onEmptyMag;
     public event UnityAction onReloadStart;
@@ -79,7 +80,10 @@ public class PlayerShooting : MonoBehaviour
             Destroy(other.gameObject);
             _health--;
             if (_health <= 0)
+            {
                 Die();
+                return;
+            }
         }
     }
 
@@ -98,5 +102,9 @@ public class PlayerShooting : MonoBehaviour
         {
             Destroy(bullet.gameObject);
         }
+    }
+
+    protected virtual void RegisterEvents()
+    {
     }
 }
