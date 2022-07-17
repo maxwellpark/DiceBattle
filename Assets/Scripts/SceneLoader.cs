@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
 
+    public float nextSceneCountdown;
+    public int currentScene;
+
 
 
 
@@ -21,7 +24,8 @@ public class SceneLoader : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            LoadBattleAI("RoundsTestScene");
+            LoadBattleAI("Tutorial Scene");
+            currentScene = 1;
         }
         
     }
