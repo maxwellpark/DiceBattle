@@ -10,7 +10,7 @@ public class EnemyPlayer : Player
     private bool _canMove = true;
     private GameObject _playerObj;
     private Player _player;
-    private readonly float _moveDeltaThreshold = 4f;
+    private readonly float _moveDeltaThreshold = 1f;
     private bool _barrierPref = false;
 
     protected override void Start()
@@ -45,6 +45,12 @@ public class EnemyPlayer : Player
         // Stick to barrier row if one exists and barrier is preferred, rather than following
         if (_barrierPref)
         {
+            if (enemyCell.hasBarrier)
+                return Direction.Neutral;
+
+            if (grid.IsBarrierOnRow(enemyCell.xCoord))
+                return Direction.Right;
+
             if (grid.IsBarrierOnColumn(enemyCell.yCoord))
                 return Direction.Neutral;
 
