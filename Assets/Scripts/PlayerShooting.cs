@@ -15,8 +15,8 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField]
     private float _reloadTimeInSeconds;
-    protected int _magSize;
-    protected int _shotsRemaining;
+    public int _magSize;
+    public int _shotsRemaining;
 
     public event UnityAction onPlayerShoot;
     public event UnityAction onDestroy;

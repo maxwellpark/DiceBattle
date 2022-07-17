@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
     private PlayerShooting _playerShooting;
     private EnemyShooting _enemyShooting;
 
+    public float initialPlayerBullets;
+
     private void Awake()
     {
         var playerObj = GameObject.FindWithTag("Player");
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
         _enemyShooting.SetupShooting(enemyRoll);
 
         Debug.Log("Roll"+playerRoll);
+        initialPlayerBullets=playerRoll;
 
 
 
