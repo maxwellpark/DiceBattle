@@ -19,6 +19,7 @@ public class PlayerShooting : MonoBehaviour
     public int shotsRemaining;
 
     public event UnityAction onShoot;
+    public event UnityAction onEmptyMag;
     public event UnityAction onReloadStart;
     public event UnityAction onReloadEnd;
     public event UnityAction onDeath;
@@ -39,6 +40,8 @@ public class PlayerShooting : MonoBehaviour
             _bulletColliderTag = "PlayerBullet";
         else
             throw new System.Exception("Invalid tag");
+
+        onEmptyMag += () => StartCoroutine(Reload());
     }
 
     protected virtual void Update()
@@ -56,12 +59,14 @@ public class PlayerShooting : MonoBehaviour
         bullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + _zOffset);
         shotsRemaining = Mathf.Max(0, shotsRemaining - 1);
         onShoot?.Invoke();
+        if (shotsRemaining <= 0)
+            onEmptyMag?.Invoke();
     }
 
     protected virtual IEnumerator Reload()
     {
-        onReloadStart?.Invoke();
         shotsRemaining = 0;
+        onReloadStart?.Invoke();
         yield return new WaitForSeconds(_reloadTimeInSeconds);
         shotsRemaining = magSize;
         onReloadEnd?.Invoke();
