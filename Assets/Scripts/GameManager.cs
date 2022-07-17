@@ -128,7 +128,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player 2 wins 3 round game");
         }
         _currentRound = 0;
-        // Todo: Show NewGame UI 
         _newRoundsUI.ShowNewGameUI(true);
         onGameComplete?.Invoke();
     }
@@ -139,7 +138,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Player 1 wins round " + _currentRound);
             _playerRoundsWon++;
-            // For testing
             RoundComplete();
         };
 
@@ -147,7 +145,6 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Player 2 wins round " + _currentRound);
             _enemyRoundsWon++;
-            // For testing
             RoundComplete();
         };
     }
