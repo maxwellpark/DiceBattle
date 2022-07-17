@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -72,6 +73,8 @@ public class GameManager : MonoBehaviour
     {
         var player1Roll = Random.Range(1, 7);
         var player2Roll = Random.Range(1, 7);
+
+        StartCoroutine(WaitForDice());
         NewRound(player1Roll, player2Roll);
     }
 
@@ -173,6 +176,11 @@ public class GameManager : MonoBehaviour
         if (!active)
             _bulletDisplayUI.ClearTexts();
         //_bulletDisplayUI.ToggleTexts(active);
+    }
+
+    public IEnumerator WaitForDice()
+    {
+        yield return new WaitForSeconds(1); // Todo: Match value from dice rolling anim
     }
 
     private void Update()
