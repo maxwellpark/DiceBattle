@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private Player _player;
-    private PlayerShooting _playerShooting;
+    public Player player;
+    public PlayerShooting playerShooting;
 
-    private EnemyPlayer _enemy;
-    private EnemyShooting _enemyShooting;
+    public EnemyPlayer enemy;
+    public EnemyShooting enemyShooting;
 
     private BarrierManager _barrierManager;
 
@@ -20,15 +20,15 @@ public class GameManager : MonoBehaviour
         if (playerObj == null)
             throw new System.Exception("Player not found");
 
-        _player = playerObj.GetComponent<Player>();
-        _playerShooting = playerObj.GetComponent<PlayerShooting>();
+        player = playerObj.GetComponent<Player>();
+        playerShooting = playerObj.GetComponent<PlayerShooting>();
 
         var enemyObj = GameObject.FindWithTag("Enemy");
         if (enemyObj == null)
             throw new System.Exception("Enemy not found");
 
-        _enemy = enemyObj.GetComponent<EnemyPlayer>();
-        _enemyShooting = enemyObj.GetComponent<EnemyShooting>();
+        enemy = enemyObj.GetComponent<EnemyPlayer>();
+        enemyShooting = enemyObj.GetComponent<EnemyShooting>();
         _barrierManager = FindObjectOfType<BarrierManager>();
 
         RegisterEvents();
@@ -57,22 +57,22 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player 2 roll = " + player2Roll);
 
         // Setup round based on dice roll values
-        _playerShooting.SetupShooting(player1Roll);
-        _enemyShooting.SetupShooting(player2Roll);
+        playerShooting.SetupShooting(player1Roll);
+        enemyShooting.SetupShooting(player2Roll);
 
         // Subtract 6 from roll to get no. of barriers
         _barrierManager.SetupBarriers(6 - player1Roll, 6 - player2Roll);
 
-        _player.ResetSelf();
-        _enemy.ResetSelf();
+        player.ResetSelf();
+        enemy.ResetSelf();
     }
 
     public void RoundComplete()
     {
         Debug.Log("Round " + _currentRound + " complete");
-        _playerShooting.ClearBullets();
-        _playerShooting.gameObject.SetActive(false);
-        _enemyShooting.gameObject.SetActive(false);
+        playerShooting.ClearBullets();
+        player.gameObject.SetActive(false);
+        enemy.gameObject.SetActive(false);
 
         if (_playerRoundsWon >= 2)
         {
@@ -103,15 +103,18 @@ public class GameManager : MonoBehaviour
 
     private void RegisterEvents()
     {
-        _playerShooting.onDeath += () =>
+        enemyShooting.onDeath += () =>
         {
-            _enemyRoundsWon++;
+            Debug.Log("Player 1 wins round " + _currentRound);
+            _playerRoundsWon++;
             // For testing
             RoundComplete();
         };
-        _enemyShooting.onDeath += () =>
+
+        playerShooting.onDeath += () =>
         {
-            _playerRoundsWon++;
+            Debug.Log("Player 2 wins round " + _currentRound);
+            _enemyRoundsWon++;
             // For testing
             RoundComplete();
         };

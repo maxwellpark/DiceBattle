@@ -10,7 +10,7 @@ public class EnemyShooting : PlayerShooting
     protected override void Start()
     {
         base.Start();
-        onPlayerShoot += () => StartCoroutine(DelayShooting());
+        onShoot += () => StartCoroutine(DelayShooting());
     }
 
     protected override void Update()
@@ -18,7 +18,7 @@ public class EnemyShooting : PlayerShooting
         if (!_canShoot)
             return;
 
-        if (_shotsRemaining <= 0)
+        if (shotsRemaining <= 0)
         {
             StartCoroutine(Reload());
             return;
