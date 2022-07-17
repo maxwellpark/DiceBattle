@@ -1,23 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DiceAnimController : MonoBehaviour
 {
-
     public Animator _diceAnim;
     public int _diceValue;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _diceAnim = GetComponent<Animator>();
+    }
 
+    public int RollDice()
+    {
+        _diceValue = Random.Range(1, 7);
+        SetAnimState();
+        return _diceValue;
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
 
+    void SetAnimState()
+    {
         if (_diceValue == 1)
         {
             _diceAnim.SetInteger("diceNumber", 1);
@@ -47,7 +53,5 @@ public class DiceAnimController : MonoBehaviour
         {
             _diceAnim.SetInteger("diceNumber", 6);
         }
-
-
     }
 }
