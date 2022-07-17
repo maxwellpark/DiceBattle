@@ -19,7 +19,7 @@ public class SceneLoader : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             LoadBattleAI("RoundsTestScene");
         }
