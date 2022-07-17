@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    private NewRoundsUI _newRoundsUI;
+
     public Player player;
     public PlayerShooting playerShooting;
 
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        _newRoundsUI = FindObjectOfType<NewRoundsUI>();
+
         var playerObj = GameObject.FindWithTag("Player");
         if (playerObj == null)
             throw new System.Exception("Player not found");
@@ -41,8 +45,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // For testing
-        NewGame(Random.Range(1, 7), Random.Range(1, 7));
+        Init();
+    }
+
+    public void NewGame()
+    {
+        var player1Roll = Random.Range(1, 7);
+        var player2Roll = Random.Range(1, 7);
+        NewGame(player1Roll, player2Roll);
     }
 
     public void NewGame(int player1Roll, int player2Roll)
@@ -51,7 +61,15 @@ public class GameManager : MonoBehaviour
         _currentRound = 0;
         _playerRoundsWon = 0;
         _enemyRoundsWon = 0;
+        _newRoundsUI.ShowNewGameUI(false);
         onNewGame?.Invoke();
+        NewRound(player1Roll, player2Roll);
+    }
+
+    public void NewRound()
+    {
+        var player1Roll = Random.Range(1, 7);
+        var player2Roll = Random.Range(1, 7);
         NewRound(player1Roll, player2Roll);
     }
 
@@ -71,6 +89,7 @@ public class GameManager : MonoBehaviour
 
         player.ResetSelf();
         enemy.ResetSelf();
+        _newRoundsUI.ShowNewRoundUI(false);
         onNewRound?.Invoke();
     }
 
@@ -91,8 +110,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // For testing
-            NewRound(Random.Range(1, 7), Random.Range(1, 7));
+            // Todo: Show new round UI and rolls 
+            _newRoundsUI.ShowNewRoundUI(true);
         }
     }
 
@@ -106,6 +125,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Player 2 wins 3 round game");
         }
+        _currentRound = 0;
+        // Todo: Show NewGame UI 
+        _newRoundsUI.ShowNewGameUI(true);
         onGameComplete?.Invoke();
     }
 
@@ -126,6 +148,16 @@ public class GameManager : MonoBehaviour
             // For testing
             RoundComplete();
         };
+    }
+
+    private void Init()
+    {
+        // Setup UI 
+        _newRoundsUI.newGameBtn.onClick.RemoveAllListeners();
+        _newRoundsUI.newGameBtn.onClick.AddListener(NewGame);
+        _newRoundsUI.newRoundBtn.onClick.RemoveAllListeners();
+        _newRoundsUI.newRoundBtn.onClick.AddListener(NewRound);
+        _newRoundsUI.ShowNewGameUI(true);
     }
 
     private void Update()
