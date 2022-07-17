@@ -53,17 +53,20 @@ public class BarrierManager : MonoBehaviour
                 Debug.LogError("Cell could not be found at " + coords);
                 continue;
             }
-            var barrier = CreateBarrier(cell.transform.position, zOffset, bulletTag);
+            var barrier = CreateBarrier(cell, zOffset, bulletTag);
             barriers.Add(barrier);
+            cell.hasBarrier = true;
             possibleCoords.RemoveAt(index);
         }
     }
 
-    private GameObject CreateBarrier(Vector3 cellPos, float zOffset, string bulletTag)
+    private GameObject CreateBarrier(Cell cell, float zOffset, string bulletTag)
     {
         var barrier = Instantiate(_barrierPrefab);
         var component = barrier.GetComponent<Barrier>();
+        component.cell = cell;
         component.colliderTag = bulletTag;
+        var cellPos = cell.transform.position;
         barrier.transform.position = new Vector3(cellPos.x, cellPos.y + _yOffset, cellPos.z + zOffset);
         return barrier;
     }

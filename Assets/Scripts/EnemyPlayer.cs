@@ -10,7 +10,8 @@ public class EnemyPlayer : Player
     private bool _canMove = true;
     private GameObject _playerObj;
     private Player _player;
-    private readonly float _moveDeltaThreshold = 5f;
+    private readonly float _moveDeltaThreshold = 4f;
+    private bool _barrierPref = false;
 
     protected override void Start()
     {
@@ -41,6 +42,19 @@ public class EnemyPlayer : Player
         if (playerCell == null || enemyCell == null)
             return Direction.Neutral;
 
+        // Stick to barrier row if one exists and barrier is preferred, rather than following
+        if (_barrierPref)
+        {
+            if (grid.IsBarrierOnColumn(enemyCell.yCoord))
+                return Direction.Neutral;
+
+            if (grid.IsBarrierOnColumn(enemyCell.yCoord + 1))
+                return Direction.Up;
+
+            if (grid.IsBarrierOnColumn(enemyCell.yCoord - 1))
+                return Direction.Down;
+        }
+
         if (playerCell.yCoord > enemyCell.yCoord)
             return Direction.Up;
 
@@ -50,6 +64,10 @@ public class EnemyPlayer : Player
         // Vary x axis movement 
         if (_player.moveDelta >= _moveDeltaThreshold)
         {
+            // Stick to barrier column if one exists
+            if (grid.IsBarrierOnRow(enemyCell.xCoord))
+                return Direction.Right;
+
             var rand = UnityEngine.Random.Range(0, 2);
             return rand == 0 ? Direction.Left : Direction.Right;
         }
@@ -63,11 +81,15 @@ public class EnemyPlayer : Player
         _canMove = true;
     }
 
+    public override void ResetSelf()
+    {
+        base.ResetSelf();
+        _barrierPref = false;
+    }
+
     protected override void RegisterEvents()
     {
-        _player.onPlayerMove += () =>
-        {
-
-        };
+        // Prefer barriers when health is low 
+        EnemyShooting.onLowHealth += () => _barrierPref = true;
     }
 }

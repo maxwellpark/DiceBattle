@@ -84,4 +84,24 @@ public class Grid : MonoBehaviour
         }
         return null;
     }
+
+    public bool IsBarrierOnColumn(int yCoord)
+    {
+        foreach (var cell in cellCollection)
+        {
+            if (cell.yCoord == yCoord && cell.hasBarrier)
+                return true;
+        }
+        return false;
+    }
+
+    public bool IsBarrierOnRow(int xCoord)
+    {
+        foreach (var cell in cellCollection)
+        {
+            if (cell.yCoord == xCoord && cell.hasBarrier)
+                return true;
+        }
+        return false;
+    }
 }

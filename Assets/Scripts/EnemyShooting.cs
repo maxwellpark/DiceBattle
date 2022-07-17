@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyShooting : PlayerShooting
 {
@@ -9,6 +10,7 @@ public class EnemyShooting : PlayerShooting
     private bool _canShoot = true;
     private Player _player;
     private EnemyPlayer _enemyPlayer;
+    public static event UnityAction onLowHealth;
 
     protected override void Start()
     {
@@ -50,6 +52,7 @@ public class EnemyShooting : PlayerShooting
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+        onLowHealth?.Invoke();
     }
 
     public override void SetupShooting(int magSize)
