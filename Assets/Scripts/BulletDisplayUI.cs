@@ -9,11 +9,13 @@ public class BulletDisplayUI : MonoBehaviour
 
     private PlayerShooting _playerShooting;
     private EnemyShooting _enemyShooting;
+    private GameManager _gameManager;
 
     private void Start()
     {
         _playerShooting = FindObjectOfType<PlayerShooting>();
         _enemyShooting = FindObjectOfType<EnemyShooting>();
+        _gameManager = FindObjectOfType<GameManager>();
         RegisterEvents();
     }
 
@@ -38,6 +40,11 @@ public class BulletDisplayUI : MonoBehaviour
         };
         _enemyShooting.onReload += () =>
         {
+            UpdateText(_player2Text, _enemyShooting);
+        };
+        _gameManager.onNewRound += () =>
+        {
+            UpdateText(_player1Text, _playerShooting);
             UpdateText(_player2Text, _enemyShooting);
         };
     }

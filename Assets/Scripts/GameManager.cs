@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class GameManager : MonoBehaviour
     private int _currentRound;
     private int _playerRoundsWon;
     private int _enemyRoundsWon;
+
+    public event UnityAction onNewGame;
+    public event UnityAction onNewRound;
+    public event UnityAction onGameComplete;
 
     private void Awake()
     {
@@ -46,6 +51,7 @@ public class GameManager : MonoBehaviour
         _currentRound = 0;
         _playerRoundsWon = 0;
         _enemyRoundsWon = 0;
+        onNewGame?.Invoke();
         NewRound(player1Roll, player2Roll);
     }
 
@@ -65,6 +71,7 @@ public class GameManager : MonoBehaviour
 
         player.ResetSelf();
         enemy.ResetSelf();
+        onNewRound?.Invoke();
     }
 
     public void RoundComplete()
@@ -99,6 +106,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Player 2 wins 3 round game");
         }
+        onGameComplete?.Invoke();
     }
 
     private void RegisterEvents()
