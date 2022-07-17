@@ -16,7 +16,7 @@ public class BarrierManager : MonoBehaviour
     private List<GameObject> _playerBarriers = new List<GameObject>();
     private List<GameObject> _enemyBarriers = new List<GameObject>();
 
-    private void Start()
+    private void Awake()
     {
         var playerGridObj = GameObject.FindWithTag("PlayerGrid");
         if (playerGridObj == null)
@@ -28,12 +28,11 @@ public class BarrierManager : MonoBehaviour
 
         _playerGrid = playerGridObj.GetComponent<Grid>();
         _enemyGrid = enemyGridObj.GetComponent<EnemyGrid>();
-
-        SetupBarriers(2, 3);
     }
 
     public void SetupBarriers(int playerBarrierCount, int enemyBarrierCount)
     {
+        ResetBarriers();
         SetupBarriers(playerBarrierCount, _zOffset * -1, "EnemyBullet", _playerGrid, ref _playerBarriers);
         SetupBarriers(enemyBarrierCount, _zOffset, "PlayerBullet", _enemyGrid, ref _enemyBarriers);
     }
@@ -75,5 +74,17 @@ public class BarrierManager : MonoBehaviour
         {
             (0,0), (0,1), (0,2), (1,0), (1,1), (1,2), (2,0), (2,1), (2,2)
         };
+    }
+
+    private void ResetBarriers()
+    {
+        var barriers = new List<GameObject>();
+        barriers.AddRange(_playerBarriers);
+        barriers.AddRange(_enemyBarriers);
+
+        foreach (var barrier in barriers)
+        {
+            Destroy(barrier);
+        }
     }
 }
