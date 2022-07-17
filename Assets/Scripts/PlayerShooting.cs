@@ -15,17 +15,20 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField]
     private float _reloadTimeInSeconds;
-    protected int _magSize;
-    protected int _shotsRemaining;
+    public int magSize;
+    public int shotsRemaining;
 
-    public event UnityAction onPlayerShoot;
+    public event UnityAction onShoot;
+    public event UnityAction onEmptyMag;
+    public event UnityAction onReloadStart;
+    public event UnityAction onReloadEnd;
     public event UnityAction onDeath;
 
     public virtual void SetupShooting(int magSize)
     {
         _health = _maxHealth;
-        _magSize = magSize;
-        _shotsRemaining = _magSize;
+        this.magSize = magSize;
+        shotsRemaining = this.magSize;
     }
 
     protected virtual void Start()
@@ -37,11 +40,13 @@ public class PlayerShooting : MonoBehaviour
             _bulletColliderTag = "PlayerBullet";
         else
             throw new System.Exception("Invalid tag");
+
+        onEmptyMag += () => StartCoroutine(Reload());
     }
 
     protected virtual void Update()
     {
-        if (_shotsRemaining > 0 && Input.GetKeyDown(KeyCode.Space))
+        if (shotsRemaining > 0 && Input.GetKeyDown(KeyCode.Space))
             Shoot();
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -52,15 +57,19 @@ public class PlayerShooting : MonoBehaviour
     {
         var bullet = Instantiate(_bulletPrefab);
         bullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + _zOffset);
-        onPlayerShoot?.Invoke();
-        _shotsRemaining = Mathf.Max(0, _shotsRemaining - 1);
+        shotsRemaining = Mathf.Max(0, shotsRemaining - 1);
+        onShoot?.Invoke();
+        if (shotsRemaining <= 0)
+            onEmptyMag?.Invoke();
     }
 
     protected virtual IEnumerator Reload()
     {
-        _shotsRemaining = 0;
+        shotsRemaining = 0;
+        onReloadStart?.Invoke();
         yield return new WaitForSeconds(_reloadTimeInSeconds);
-        _shotsRemaining = _magSize;
+        shotsRemaining = magSize;
+        onReloadEnd?.Invoke();
     }
 
     protected virtual void OnTriggerEnter(Collider other)
