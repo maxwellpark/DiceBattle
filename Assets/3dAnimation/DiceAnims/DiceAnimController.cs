@@ -5,7 +5,7 @@ public class DiceAnimController : MonoBehaviour
     public Animator diceAnim;
     public int diceValue;
     public int state;
-    public static float animWaitTimeInSeconds = 3f;
+    public static float animWaitTimeInSeconds = 2f;
 
     // Start is called before the first frame update
     void Awake()

@@ -70,8 +70,7 @@ public class GameManager : MonoBehaviour
     {
         var player1Roll = player1Dice.RollDice(out float duration1);
         var player2Roll = player2Dice.RollDice(out float duration2);
-        StartCoroutine(WaitForDice(duration1));
-        NewRound(player1Roll, player2Roll);
+        StartCoroutine(WaitForDiceAndStartRound(DiceAnimController.animWaitTimeInSeconds, player1Roll, player2Roll));
     }
 
     public void NewRound(int player1Roll, int player2Roll)
@@ -173,9 +172,10 @@ public class GameManager : MonoBehaviour
         player2Dice.gameObject.SetActive(active);
     }
 
-    public IEnumerator WaitForDice(float duration)
+    public IEnumerator WaitForDiceAndStartRound(float duration, int p1Roll, int p2Roll)
     {
         yield return new WaitForSeconds(duration);
+        NewRound(p1Roll, p2Roll);
     }
 
     private void Update()
