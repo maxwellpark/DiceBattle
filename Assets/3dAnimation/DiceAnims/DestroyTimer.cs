@@ -17,7 +17,7 @@ public class DestroyTimer : MonoBehaviour
 
         timeToDestroy+=0.1f;
 
-        if(timeToDestroy>135){Destroy(this.gameObject);}
+        if(timeToDestroy>40){Destroy(this.gameObject);}
         
     }
 }

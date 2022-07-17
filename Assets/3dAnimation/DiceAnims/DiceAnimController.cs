@@ -16,7 +16,7 @@ public class DiceAnimController : MonoBehaviour
     public int RollDice(out float animDuration)
     {
         diceValue = Random.Range(1, 7);
-        SetAnimState(diceValue);
+      
         var info = diceAnim.GetCurrentAnimatorStateInfo(state);
         animDuration = info.length;
         return diceValue;
@@ -25,6 +25,7 @@ public class DiceAnimController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+          SetAnimState(diceValue);
     }
 
     void SetAnimState(int value)
