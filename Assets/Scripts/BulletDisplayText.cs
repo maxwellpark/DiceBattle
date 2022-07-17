@@ -13,9 +13,17 @@ public class BulletDisplayText : MonoBehaviour
         _text = GetComponent<TMP_Text>();
     }
 
-    public void UpdateText(int magSize, int shotsRemaining)
+    public void UpdateText(int magSize, int shotsRemaining, bool reloading = false)
     {
-        var content = $"{_playerName} bullets: {shotsRemaining}/{magSize}";
+        string content;
+        if (!reloading)
+        {
+            content = $"{_playerName} bullets: {shotsRemaining}/{magSize}";
+        }
+        else
+        {
+            content = $"{_playerName} reloading...";
+        }
         _text.text = content;
     }
 }

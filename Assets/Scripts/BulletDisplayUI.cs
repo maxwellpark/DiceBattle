@@ -19,9 +19,9 @@ public class BulletDisplayUI : MonoBehaviour
         RegisterEvents();
     }
 
-    private void UpdateText(BulletDisplayText text, PlayerShooting shooting)
+    private void UpdateText(BulletDisplayText text, PlayerShooting shooting, bool reloading = false)
     {
-        text.UpdateText(shooting.magSize, shooting.shotsRemaining);
+        text.UpdateText(shooting.magSize, shooting.shotsRemaining, reloading);
     }
 
     private void RegisterEvents()
@@ -30,7 +30,11 @@ public class BulletDisplayUI : MonoBehaviour
         {
             UpdateText(_player1Text, _playerShooting);
         };
-        _playerShooting.onReload += () =>
+        _playerShooting.onReloadStart += () =>
+        {
+            UpdateText(_player1Text, _playerShooting, true);
+        };
+        _playerShooting.onReloadEnd += () =>
         {
             UpdateText(_player1Text, _playerShooting);
         };
@@ -38,7 +42,11 @@ public class BulletDisplayUI : MonoBehaviour
         {
             UpdateText(_player2Text, _enemyShooting);
         };
-        _enemyShooting.onReload += () =>
+        _enemyShooting.onReloadStart += () =>
+        {
+            UpdateText(_player2Text, _enemyShooting, true);
+        };
+        _enemyShooting.onReloadEnd += () =>
         {
             UpdateText(_player2Text, _enemyShooting);
         };
@@ -49,3 +57,4 @@ public class BulletDisplayUI : MonoBehaviour
         };
     }
 }
+

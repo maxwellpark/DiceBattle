@@ -19,7 +19,8 @@ public class PlayerShooting : MonoBehaviour
     public int shotsRemaining;
 
     public event UnityAction onShoot;
-    public event UnityAction onReload;
+    public event UnityAction onReloadStart;
+    public event UnityAction onReloadEnd;
     public event UnityAction onDeath;
 
     public virtual void SetupShooting(int magSize)
@@ -59,10 +60,11 @@ public class PlayerShooting : MonoBehaviour
 
     protected virtual IEnumerator Reload()
     {
+        onReloadStart?.Invoke();
         shotsRemaining = 0;
         yield return new WaitForSeconds(_reloadTimeInSeconds);
         shotsRemaining = magSize;
-        onReload?.Invoke();
+        onReloadEnd?.Invoke();
     }
 
     protected virtual void OnTriggerEnter(Collider other)
