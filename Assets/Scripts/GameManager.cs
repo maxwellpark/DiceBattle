@@ -167,9 +167,18 @@ public class GameManager : MonoBehaviour
         enemy.gameObject.SetActive(active);
         if (!active)
             _bulletDisplayUI.ClearTexts();
+
         //diceContainer.SetActive(active);
-        player1Dice.gameObject.SetActive(active);
-        player2Dice.gameObject.SetActive(active);
+        // Todo: Respawn dice/don't destroy them altogether
+        if (player1Dice != null)
+        {
+            player1Dice.gameObject.SetActive(active);
+        }
+
+        if (player2Dice != null)
+        {
+            player2Dice.gameObject.SetActive(active);
+        }
     }
 
     public IEnumerator WaitForDiceAndStartRound(float duration, int p1Roll, int p2Roll)
