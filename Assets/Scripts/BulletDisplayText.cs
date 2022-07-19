@@ -8,7 +8,7 @@ public class BulletDisplayText : MonoBehaviour
 
     private TMP_Text _text;
 
-    private void Start()
+    private void Awake()
     {
         _text = GetComponent<TMP_Text>();
     }
@@ -25,5 +25,10 @@ public class BulletDisplayText : MonoBehaviour
             content = $"{_playerName} reloading...";
         }
         _text.text = content;
+    }
+
+    public void ClearText()
+    {
+        _text.text = string.Empty;
     }
 }

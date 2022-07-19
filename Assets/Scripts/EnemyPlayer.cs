@@ -11,7 +11,8 @@ public class EnemyPlayer : Player
     private GameObject _playerObj;
     private Player _player;
     private readonly float _moveDeltaThreshold = 1f;
-    private bool _barrierPref = false;
+    private readonly float _timeout = 2f;
+    private bool _barrierPref;
 
     protected override void Start()
     {
@@ -22,12 +23,16 @@ public class EnemyPlayer : Player
 
         _player = _playerObj.GetComponent<Player>();
         onPlayerMove += () => StartCoroutine(DelayMovement());
+        //_player.onPlayerMove += () => StartCoroutine(DelayMovement());
         base.Start();
     }
 
     protected override void Update()
     {
-        moveDelta += Time.deltaTime;
+        if (moveDelta >= _timeout)
+            Realign();
+
+        moveDelta += Time.deltaTime; // To cover downtime 
         if (!_canMove)
             return;
 
@@ -91,11 +96,31 @@ public class EnemyPlayer : Player
     {
         base.ResetSelf();
         _barrierPref = false;
+        _canMove = true;
     }
 
     protected override void RegisterEvents()
     {
         // Prefer barriers when health is low 
         EnemyShooting.onLowHealth += () => _barrierPref = true;
+    }
+
+    private void Realign()
+    {
+        Cell currentCell = default;
+
+        foreach (var cell in grid.cellCollection)
+        {
+            if (cell.transform.position.z == transform.position.z)
+            {
+                currentCell = cell;
+                break;
+            }
+        }
+
+        if (currentCell == null)
+            return;
+
+        grid.UpdateGrid(currentCell);
     }
 }
