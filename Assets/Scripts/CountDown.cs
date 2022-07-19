@@ -1,27 +1,35 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class CountDown : MonoBehaviour
 {
-    public float myFinalCountdown = 10;
-    public float myTest;
-    public PlayerShooting _playerShooting;
+    public float timeLimit = 10;
+    private float _countDown;
+    public TMP_Text countDownText;
 
-    public Text countDisplay;
+    public static event UnityAction onCountDownEnd;
 
-    public Text countAmunitionPlayer1;
-    public Text countAmunitionPlayer2;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _playerShooting.GetComponent<PlayerShooting>();
+        ResetCountDown();
+        GameManager.onNewRound += ResetCountDown;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ResetCountDown()
     {
-        myFinalCountdown -= 1f * Time.deltaTime;
-        countDisplay.text = "Time" + myFinalCountdown;
-        countAmunitionPlayer1.text = _playerShooting.shotsRemaining.ToString();
+        _countDown = timeLimit;
+    }
+
+    private void Update()
+    {
+        if (!GameManager.inBattle)
+            return;
+
+        _countDown -= Time.deltaTime;
+        countDownText.text = "Time remaining: " + _countDown;
+
+        if (_countDown <= 0f)
+            onCountDownEnd?.Invoke();
     }
 }

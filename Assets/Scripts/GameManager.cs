@@ -22,10 +22,11 @@ public class GameManager : MonoBehaviour
     private int _currentRound;
     private int _playerRoundsWon;
     private int _enemyRoundsWon;
+    public static bool inBattle;
 
-    public event UnityAction onNewGame;
-    public event UnityAction onNewRound;
-    public event UnityAction onGameComplete;
+    public static event UnityAction onNewGame;
+    public static event UnityAction onNewRound;
+    public static event UnityAction onGameComplete;
 
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void NewRound(int player1Roll, int player2Roll)
     {
+        inBattle = true;
         _currentRound++;
         Debug.Log("Setting up new round...");
         Debug.Log("Player 1 roll = " + player1Roll);
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void RoundComplete()
     {
+        inBattle = false;
         Debug.Log("Round " + _currentRound + " complete");
         playerShooting.ClearBullets();
         player.gameObject.SetActive(false);
@@ -144,6 +147,12 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Player 2 wins round " + _currentRound);
             _enemyRoundsWon++;
+            RoundComplete();
+        };
+
+        CountDown.onCountDownEnd += () =>
+        {
+            Debug.Log("Time limit reached");
             RoundComplete();
         };
     }

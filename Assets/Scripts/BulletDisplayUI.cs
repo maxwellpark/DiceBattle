@@ -62,7 +62,7 @@ public class BulletDisplayUI : MonoBehaviour
         {
             UpdateText(_player2Text, _enemyShooting);
         };
-        _gameManager.onNewRound += () =>
+        GameManager.onNewRound += () =>
         {
             UpdateText(_player1Text, _playerShooting);
             UpdateText(_player2Text, _enemyShooting);
