@@ -29,6 +29,9 @@ public class SceneLoader : MonoBehaviour
         {
             var scene = SceneManager.GetActiveScene();
 
+            if (scene.name == arenaSceneName)
+                return;
+
             if (scene.name == tutorialSceneName)
             {
                 LoadScene(titleSceneName);
