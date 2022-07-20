@@ -549,6 +549,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 461620205287431991, guid: cddef8fd64c78c148a53bb8f5ce26870, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461620205644669851, guid: cddef8fd64c78c148a53bb8f5ce26870, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 461620206461255344, guid: cddef8fd64c78c148a53bb8f5ce26870, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -707,6 +715,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5414301169775621757, guid: b9aea46ddcdd08e489865380937ed062, type: 3}
+      propertyPath: arenaSceneName
+      value: DiceRoundsTestScene
+      objectReference: {fileID: 0}
     - target: {fileID: 5414301169775621758, guid: b9aea46ddcdd08e489865380937ed062, type: 3}
       propertyPath: m_RootOrder
       value: 5

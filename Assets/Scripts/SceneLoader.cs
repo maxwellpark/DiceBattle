@@ -31,11 +31,11 @@ public class SceneLoader : MonoBehaviour
 
             if (scene.name == tutorialSceneName)
             {
-                SceneManager.LoadScene(titleSceneName);
+                LoadScene(titleSceneName);
             }
             else if (scene.name == titleSceneName)
             {
-                SceneManager.LoadScene(arenaSceneName);
+                LoadScene(arenaSceneName);
                 _musicManager.PlayMusic(MusicState.Battle);
             }
             else
@@ -45,9 +45,9 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public void LoadScene(string scenename)
+    public void LoadScene(string sceneName)
     {
-        Debug.Log("Scene name to load: " + scenename);
-        SceneManager.LoadScene(scenename);
+        Debug.Log("Scene name to load: " + sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 }

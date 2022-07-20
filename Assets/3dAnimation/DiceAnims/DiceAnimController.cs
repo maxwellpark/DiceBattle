@@ -19,6 +19,9 @@ public class DiceAnimController : MonoBehaviour
     {
         diceValue = Random.Range(1, 7);
 
+        if (diceAnim == null)
+            throw new System.Exception("Dice Animator was null.");
+
         var info = diceAnim.GetCurrentAnimatorStateInfo(state);
         animDuration = info.length;
         return diceValue;
