@@ -6,26 +6,27 @@ public class DiceAnimController : MonoBehaviour
     public int diceValue;
     public int state;
     public static float animWaitTimeInSeconds = 2f;
+    private DestroyTimer _destroyTimer;
 
-    // Start is called before the first frame update
     void Awake()
     {
         diceAnim = GetComponent<Animator>();
+        //_destroyTimer = GetComponent<DestroyTimer>();
+        //_destroyTimer.onDestroy += () => Destroy(gameObject);
     }
 
     public int RollDice(out float animDuration)
     {
         diceValue = Random.Range(1, 7);
-      
+
         var info = diceAnim.GetCurrentAnimatorStateInfo(state);
         animDuration = info.length;
         return diceValue;
     }
 
-    // Update is called once per frame
     void Update()
     {
-          SetAnimState(diceValue);
+        SetAnimState(diceValue);
     }
 
     void SetAnimState(int value)
