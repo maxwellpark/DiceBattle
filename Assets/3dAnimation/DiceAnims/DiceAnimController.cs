@@ -6,10 +6,13 @@ public class DiceAnimController : MonoBehaviour
     public int diceValue;
     public int state;
     public static float animWaitTimeInSeconds = 2f;
+    private DestroyTimer _destroyTimer;
 
     void Awake()
     {
         diceAnim = GetComponent<Animator>();
+        //_destroyTimer = GetComponent<DestroyTimer>();
+        //_destroyTimer.onDestroy += () => Destroy(gameObject);
     }
 
     public int RollDice(out float animDuration)

@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
 
         CountDown.onCountDownEnd += () =>
         {
-            Debug.Log("Time limit reached");
+            Debug.Log("Time limit reached. The round was a draw.");
             RoundComplete();
         };
     }
@@ -192,6 +192,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator WaitForDiceAndStartRound(float duration, int p1Roll, int p2Roll)
     {
+        inBattle = false; // May not be necessary but just in case  
         yield return new WaitForSeconds(duration);
         NewRound(p1Roll, p2Roll);
     }
