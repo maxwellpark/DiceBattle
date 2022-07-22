@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum MusicState
@@ -19,21 +20,33 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic(MusicState state)
     {
-        battleSrc.Stop();
-        menuSrc.Stop();
+        AudioSource src = default;
 
         switch (state)
         {
             case MusicState.Battle:
-                battleSrc.Play();
+                src = battleSrc;
                 break;
             case MusicState.Menu:
-                menuSrc.Play();
+                src = menuSrc;
                 break;
             case MusicState.None:
+                ResetSrcs();
                 break;
             default:
-                break;
+                throw new Exception("Invalid music state");
         }
+
+        if (src.isPlaying)
+            return;
+
+        ResetSrcs();
+        src.Play();
+    }
+
+    private void ResetSrcs()
+    {
+        battleSrc.Stop();
+        menuSrc.Stop();
     }
 }
