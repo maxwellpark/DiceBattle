@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     private NewRoundsUI _newRoundsUI;
+    private ScoreUI _scoreUI;
     private BulletDisplayUI _bulletDisplayUI;
 
     public Player player;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _newRoundsUI = FindObjectOfType<NewRoundsUI>();
+        _scoreUI = FindObjectOfType<ScoreUI>();
         _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
 
         var playerObj = GameObject.FindWithTag("Player");
@@ -82,6 +84,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player 1 roll = " + player1Roll);
         Debug.Log("Player 2 roll = " + player2Roll);
 
+        _scoreUI.UpdateUI(_playerRoundsWon, _enemyRoundsWon, _currentRound);
+
         // Setup round based on dice roll values
         playerShooting.SetupShooting(player1Roll);
         enemyShooting.SetupShooting(player2Roll);
@@ -131,6 +135,7 @@ public class GameManager : MonoBehaviour
         }
         _currentRound = 0;
         _newRoundsUI.ShowNewGameUI(true);
+        _scoreUI.ResetUI();
         onGameComplete?.Invoke();
     }
 
