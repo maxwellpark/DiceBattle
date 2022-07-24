@@ -32,6 +32,11 @@ public class ScoreUI : MonoBehaviour
         _currentRoundText.text = "Round " + roundNum;
     }
 
+    public void UpdateRoundNumberText(string text)
+    {
+        _currentRoundText.text = text;
+    }
+
     public void ResetUI()
     {
         _p1ScoreText.text = string.Empty;

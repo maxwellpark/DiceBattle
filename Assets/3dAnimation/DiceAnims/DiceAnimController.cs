@@ -15,16 +15,17 @@ public class DiceAnimController : MonoBehaviour
         //_destroyTimer.onDestroy += () => Destroy(gameObject);
     }
 
-    public int RollDice(out float animDuration)
+    public float AnimateRollDice()
     {
-        diceValue = Random.Range(1, 7);
-
         if (diceAnim == null)
-            throw new System.Exception("Dice Animator was null.");
+        {
+            // Todo: Stop destroying the Dice Anim or re-create it.
+            //throw new System.Exception("Dice Animator was null.");
+            return -1f;
+        }
 
         var info = diceAnim.GetCurrentAnimatorStateInfo(state);
-        animDuration = info.length;
-        return diceValue;
+        return info.length;
     }
 
     void Update()

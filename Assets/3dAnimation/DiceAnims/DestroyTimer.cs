@@ -21,7 +21,10 @@ public class DestroyTimer : MonoBehaviour
         if (timeToDestroy <= 0f)
         {
             onDestroy?.Invoke();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+
+            // Todo: Destroy then instantiate a new one each Round
+            gameObject.SetActive(false);
         }
     }
 }
