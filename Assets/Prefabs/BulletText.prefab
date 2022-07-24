@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7356619072541577103}
   - component: {fileID: 7356619072541577137}
   - component: {fileID: 7356619072541577136}
-  - component: {fileID: 4933595144686957321}
+  - component: {fileID: 7998789450036218248}
   m_Layer: 5
   m_Name: BulletText
   m_TagString: Untagged
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4933595144686957321
+--- !u!114 &7998789450036218248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7356619072541577102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db6d3402d8bbc2144b0e3ad9595ee3a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 80c88056132aa5942bcb4b92a233c859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerName: 
+  _playerName: P1

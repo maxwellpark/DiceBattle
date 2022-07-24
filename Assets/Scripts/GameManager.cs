@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     private NewRoundsUI _newRoundsUI;
+    private ScoreUI _scoreUI;
     private BulletDisplayUI _bulletDisplayUI;
 
     public Player player;
@@ -26,11 +27,13 @@ public class GameManager : MonoBehaviour
 
     public static event UnityAction onNewGame;
     public static event UnityAction onNewRound;
+    public static event UnityAction onRoundComplete;
     public static event UnityAction onGameComplete;
 
     private void Awake()
     {
         _newRoundsUI = FindObjectOfType<NewRoundsUI>();
+        _scoreUI = FindObjectOfType<ScoreUI>();
         _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
 
         var playerObj = GameObject.FindWithTag("Player");
@@ -69,9 +72,12 @@ public class GameManager : MonoBehaviour
 
     public void NewRound()
     {
-        var player1Roll = player1Dice.RollDice(out float duration1);
-        var player2Roll = player2Dice.RollDice(out float duration2);
-        StartCoroutine(WaitForDiceAndStartRound(DiceAnimController.animWaitTimeInSeconds, player1Roll, player2Roll));
+        var duration1 = player1Dice.AnimateRollDice();
+        var duration2 = player2Dice.AnimateRollDice();
+        var p1Roll = Random.Range(1, 7);
+        var p2Roll = Random.Range(1, 7);
+
+        StartCoroutine(WaitForDiceAndStartRound(DiceAnimController.animWaitTimeInSeconds, p1Roll, p2Roll));
     }
 
     public void NewRound(int player1Roll, int player2Roll)
@@ -82,6 +88,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player 1 roll = " + player1Roll);
         Debug.Log("Player 2 roll = " + player2Roll);
 
+        _scoreUI.UpdateUI(_playerRoundsWon, _enemyRoundsWon, _currentRound);
+
         // Setup round based on dice roll values
         playerShooting.SetupShooting(player1Roll);
         enemyShooting.SetupShooting(player2Roll);
@@ -89,11 +97,11 @@ public class GameManager : MonoBehaviour
         // Subtract 6 from roll to get no. of barriers
         _barrierManager.SetupBarriers(6 - player1Roll, 6 - player2Roll);
 
-        ToggleObjects(true);
         _newRoundsUI.ShowNewRoundUI(false);
         player.ResetSelf();
         enemy.ResetSelf();
         onNewRound?.Invoke();
+        ToggleObjects(true);
     }
 
     public void RoundComplete()
@@ -103,6 +111,7 @@ public class GameManager : MonoBehaviour
         playerShooting.ClearBullets();
         player.gameObject.SetActive(false);
         enemy.gameObject.SetActive(false);
+        _scoreUI.UpdateUI(_playerRoundsWon, _enemyRoundsWon, _currentRound);
 
         if (_playerRoundsWon >= 2)
         {
@@ -121,16 +130,12 @@ public class GameManager : MonoBehaviour
 
     public void GameComplete(bool player1Wins)
     {
-        if (player1Wins)
-        {
-            Debug.Log("Player 1 wins 3 round game");
-        }
-        else
-        {
-            Debug.Log("Player 2 wins 3 round game");
-        }
-        _currentRound = 0;
+        var text = player1Wins ? "Player 1 " : "Player 2 ";
+        text += "wins the 3 round series!";
+        Debug.Log(text);
+        _scoreUI.UpdateRoundText(text);
         _newRoundsUI.ShowNewGameUI(true);
+        _currentRound = 0;
         onGameComplete?.Invoke();
     }
 
@@ -181,12 +186,12 @@ public class GameManager : MonoBehaviour
         // Todo: Respawn dice/don't destroy them altogether
         if (player1Dice != null)
         {
-            player1Dice.gameObject.SetActive(active);
+            //player1Dice.gameObject.SetActive(active);
         }
 
         if (player2Dice != null)
         {
-            player2Dice.gameObject.SetActive(active);
+            //player2Dice.gameObject.SetActive(active);
         }
     }
 
