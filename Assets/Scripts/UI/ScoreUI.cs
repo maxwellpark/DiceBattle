@@ -18,7 +18,7 @@ public class ScoreUI : MonoBehaviour
     public void UpdateUI(int p1Score, int p2Score, int roundNum)
     {
         UpdateScoreTexts(p1Score, p2Score);
-        UpdateRoundNumberText(roundNum);
+        UpdateRoundText(roundNum);
     }
 
     public void UpdateScoreTexts(int p1Score, int p2Score)
@@ -27,12 +27,12 @@ public class ScoreUI : MonoBehaviour
         _p2ScoreText.text = "P2 rounds won: " + p2Score;
     }
 
-    public void UpdateRoundNumberText(int roundNum)
+    public void UpdateRoundText(int roundNum)
     {
         _currentRoundText.text = "Round " + roundNum;
     }
 
-    public void UpdateRoundNumberText(string text)
+    public void UpdateRoundText(string text)
     {
         _currentRoundText.text = text;
     }

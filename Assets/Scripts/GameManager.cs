@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public static event UnityAction onNewGame;
     public static event UnityAction onNewRound;
+    public static event UnityAction onRoundComplete;
     public static event UnityAction onGameComplete;
 
     private void Awake()
@@ -110,6 +111,7 @@ public class GameManager : MonoBehaviour
         playerShooting.ClearBullets();
         player.gameObject.SetActive(false);
         enemy.gameObject.SetActive(false);
+        _scoreUI.UpdateUI(_playerRoundsWon, _enemyRoundsWon, _currentRound);
 
         if (_playerRoundsWon >= 2)
         {
@@ -131,7 +133,7 @@ public class GameManager : MonoBehaviour
         var text = player1Wins ? "Player 1 " : "Player 2 ";
         text += "wins the 3 round series!";
         Debug.Log(text);
-        _scoreUI.UpdateRoundNumberText(text);
+        _scoreUI.UpdateRoundText(text);
         _newRoundsUI.ShowNewGameUI(true);
         _currentRound = 0;
         onGameComplete?.Invoke();
