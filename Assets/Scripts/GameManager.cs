@@ -14,11 +14,8 @@ public class GameManager : MonoBehaviour
     public EnemyPlayer enemy;
     public EnemyShooting enemyShooting;
 
+    private DiceManager _diceManager;
     private BarrierManager _barrierManager;
-
-    public GameObject diceContainer;
-    public DiceAnimController player1Dice;
-    public DiceAnimController player2Dice;
 
     private int _currentRound;
     private int _playerRoundsWon;
@@ -49,6 +46,7 @@ public class GameManager : MonoBehaviour
 
         enemy = enemyObj.GetComponent<EnemyPlayer>();
         enemyShooting = enemyObj.GetComponent<EnemyShooting>();
+        _diceManager = FindObjectOfType<DiceManager>();
         _barrierManager = FindObjectOfType<BarrierManager>();
 
         RegisterEvents();
@@ -72,11 +70,8 @@ public class GameManager : MonoBehaviour
 
     public void NewRound()
     {
-        var duration1 = player1Dice.AnimateRollDice();
-        var duration2 = player2Dice.AnimateRollDice();
         var p1Roll = Random.Range(1, 7);
         var p2Roll = Random.Range(1, 7);
-
         StartCoroutine(WaitForDiceAndStartRound(DiceAnimController.animWaitTimeInSeconds, p1Roll, p2Roll));
     }
 
@@ -181,23 +176,12 @@ public class GameManager : MonoBehaviour
         enemy.gameObject.SetActive(active);
         if (!active)
             _bulletDisplayUI.ClearTexts();
-
-        //diceContainer.SetActive(active);
-        // Todo: Respawn dice/don't destroy them altogether
-        if (player1Dice != null)
-        {
-            //player1Dice.gameObject.SetActive(active);
-        }
-
-        if (player2Dice != null)
-        {
-            //player2Dice.gameObject.SetActive(active);
-        }
     }
 
     public IEnumerator WaitForDiceAndStartRound(float duration, int p1Roll, int p2Roll)
     {
-        inBattle = false; // May not be necessary but just in case  
+        inBattle = false;
+        _diceManager.CreateDice();
         yield return new WaitForSeconds(duration);
         NewRound(p1Roll, p2Roll);
     }
