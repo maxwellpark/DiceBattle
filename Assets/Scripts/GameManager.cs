@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         var p1Roll = Random.Range(1, 7);
         var p2Roll = Random.Range(1, 7);
+        _newRoundsUI.ShowNewRoundUI(false);
         StartCoroutine(WaitForDiceAndStartRound(p1Roll, p2Roll));
     }
 
@@ -92,7 +93,6 @@ public class GameManager : MonoBehaviour
         // Subtract 6 from roll to get no. of barriers
         _barrierManager.SetupBarriers(6 - player1Roll, 6 - player2Roll);
 
-        _newRoundsUI.ShowNewRoundUI(false);
         player.ResetSelf();
         enemy.ResetSelf();
         onNewRound?.Invoke();
