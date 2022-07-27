@@ -28,6 +28,8 @@ public class BarrierManager : MonoBehaviour
 
         _playerGrid = playerGridObj.GetComponent<Grid>();
         _enemyGrid = enemyGridObj.GetComponent<EnemyGrid>();
+
+        GameManager.onRoundComplete += ResetBarriers;
     }
 
     public void SetupBarriers(int playerBarrierCount, int enemyBarrierCount)

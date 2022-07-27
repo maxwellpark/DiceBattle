@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
             ToggleObjects(false);
             _newRoundsUI.ShowNewRoundUI(true);
         }
+        onRoundComplete?.Invoke();
     }
 
     public void GameComplete(bool player1Wins)
