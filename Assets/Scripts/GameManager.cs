@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     {
         var p1Roll = Random.Range(1, 7);
         var p2Roll = Random.Range(1, 7);
-        StartCoroutine(WaitForDiceAndStartRound(DiceAnimController.animWaitTimeInSeconds, p1Roll, p2Roll));
+        StartCoroutine(WaitForDiceAndStartRound(p1Roll, p2Roll));
     }
 
     public void NewRound(int player1Roll, int player2Roll)
@@ -155,6 +155,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Time limit reached. The round was a draw.");
             RoundComplete();
         };
+        DestroyTimer.onDestroy += () => inBattle = true;
     }
 
     private void Init()
@@ -178,11 +179,14 @@ public class GameManager : MonoBehaviour
             _bulletDisplayUI.ClearTexts();
     }
 
-    public IEnumerator WaitForDiceAndStartRound(float duration, int p1Roll, int p2Roll)
+    public IEnumerator WaitForDiceAndStartRound(int p1Roll, int p2Roll)
     {
         inBattle = false;
-        _diceManager.CreateDice();
-        yield return new WaitForSeconds(duration);
+        _diceManager.CreateDice(p1Roll, p2Roll);
+        while (!inBattle)
+        {
+            yield return null;
+        }
         NewRound(p1Roll, p2Roll);
     }
 

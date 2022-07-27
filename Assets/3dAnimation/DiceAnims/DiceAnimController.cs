@@ -12,19 +12,6 @@ public class DiceAnimController : MonoBehaviour
         diceAnim = GetComponent<Animator>();
     }
 
-    public float AnimateRollDice()
-    {
-        if (diceAnim == null)
-        {
-            // Todo: Stop destroying the Dice Anim or re-create it.
-            //throw new System.Exception("Dice Animator was null.");
-            return -1f;
-        }
-
-        var info = diceAnim.GetCurrentAnimatorStateInfo(state);
-        return info.length;
-    }
-
     void Update()
     {
         SetAnimState(diceValue);

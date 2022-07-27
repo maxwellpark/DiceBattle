@@ -11,7 +11,7 @@ public class CountDown : MonoBehaviour
     private float _countDown;
 
     [SerializeField]
-    public TMP_Text _countDownText;
+    private TMP_Text _countDownText;
 
     public static event UnityAction onCountDownEnd;
 
