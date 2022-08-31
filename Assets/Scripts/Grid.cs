@@ -85,6 +85,16 @@ public class Grid : MonoBehaviour
         return null;
     }
 
+    public Cell GetCellByCoords(CoordPair coords)
+    {
+        foreach (var cell in cellCollection)
+        {
+            if (cell.xCoord == coords.x && cell.yCoord == coords.y)
+                return cell;
+        }
+        return null;
+    }
+
     public bool IsBarrierOnColumn(int yCoord)
     {
         foreach (var cell in cellCollection)

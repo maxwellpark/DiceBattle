@@ -3,9 +3,7 @@ using UnityEngine;
 public class EnemyPlayerSequential : EnemyPlayer
 {
     public CellSequence sequence;
-    private Cell CellInSequence => sequence.cells[_cellIndex];
-    
-    private int _cellIndex;
+    private int _coordsIndex;
 
     protected override void Start()
     {
@@ -17,29 +15,43 @@ public class EnemyPlayerSequential : EnemyPlayer
         base.Update();
     }
 
+    public override void ResetSelf()
+    {
+        _coordsIndex = 0;
+        base.ResetSelf();
+    }
+
     protected override Direction GetDirection()
     {
-        if (CellInSequence == grid.currentCell)
-            _cellIndex++;
-
-        if (_cellIndex > sequence.cells.Length - 1)
+        if (_coordsIndex > sequence.coords.Length - 1)
         {
             Debug.Log("Cell sequence finished.");
-            _cellIndex = 0;
+            _coordsIndex = 0;
             return Direction.Neutral;
         }
 
-        if (grid.currentCell.xCoord < CellInSequence.xCoord)
+        var cellInSequence = grid.GetCellByCoords(sequence.coords[_coordsIndex]);
+
+        if (cellInSequence == null)
+        {
+            Debug.LogWarning(nameof(cellInSequence) + " was null when getting direction.");
+            return Direction.Neutral;
+        }
+
+        if (grid.currentCell.xCoord < cellInSequence.xCoord)
             return Direction.Right;
 
-        if (grid.currentCell.xCoord > CellInSequence.xCoord)
+        if (grid.currentCell.xCoord > cellInSequence.xCoord)
             return Direction.Left;
 
-        if (grid.currentCell.yCoord < CellInSequence.yCoord)
+        if (grid.currentCell.yCoord < cellInSequence.yCoord)
             return Direction.Up;
 
-        if (grid.currentCell.yCoord < CellInSequence.yCoord)
+        if (grid.currentCell.yCoord > cellInSequence.yCoord)
             return Direction.Down;
+
+        if (cellInSequence == grid.currentCell)
+            _coordsIndex++;
 
         return Direction.Neutral;
     }
