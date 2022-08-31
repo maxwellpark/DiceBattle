@@ -7,6 +7,13 @@ public class EnemyShooting : PlayerShooting
 {
     [SerializeField]
     private float _shootDelayInSeconds;
+    [SerializeField]
+    private bool _dynamicShooting;
+    [SerializeField]
+    private float _shootDelayMin;
+    [SerializeField]
+    private float _shootDelayMax;
+
     private bool _canShoot = true;
     private Player _player;
     private EnemyPlayer _enemyPlayer;
@@ -45,8 +52,10 @@ public class EnemyShooting : PlayerShooting
         var playerCell = _player.grid.currentCell;
         var enemyCell = _enemyPlayer.grid.currentCell;
 
-        if (playerCell != null && enemyCell != null && playerCell.yCoord == enemyCell.yCoord)
-            Shoot();
+        //if (playerCell != null && enemyCell != null && playerCell.yCoord == enemyCell.yCoord)
+        //    Shoot();
+
+        Shoot();
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -64,8 +73,18 @@ public class EnemyShooting : PlayerShooting
     private IEnumerator DelayShooting()
     {
         _canShoot = false;
-        yield return new WaitForSeconds(_shootDelayInSeconds);
+        var delay = GetShootDelayInSeconds();
+        yield return new WaitForSeconds(delay);
         _canShoot = true;
+    }
+
+    protected float GetShootDelayInSeconds()
+    {
+        if (!_dynamicShooting)
+            return _shootDelayInSeconds;
+
+        var delay = UnityEngine.Random.Range(_shootDelayMin, _shootDelayMax);
+        return delay;
     }
 
     protected override void RegisterEvents()

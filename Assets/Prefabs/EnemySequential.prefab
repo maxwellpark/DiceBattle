@@ -116,6 +116,9 @@ MonoBehaviour:
   _yOffset: 0.75
   moveDelta: 0
   _moveDelayInSeconds: 0.35
+  _dynamicMovement: 1
+  _moveDelayMin: 0.25
+  _moveDelayMax: 0.75
   sequence: {fileID: 11400000, guid: c4535fa26a753db4ca9006a960617c5a, type: 2}
 --- !u!114 &4953635035355557834
 MonoBehaviour:
@@ -135,7 +138,10 @@ MonoBehaviour:
   _reloadTimeInSeconds: 2
   magSize: 6
   shotsRemaining: 0
-  _shootDelayInSeconds: 0.5
+  _shootDelayInSeconds: 0.25
+  _dynamicShooting: 1
+  _shootDelayMin: 0.25
+  _shootDelayMax: 0.5
 --- !u!54 &240301917477649741
 Rigidbody:
   m_ObjectHideFlags: 0
