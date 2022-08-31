@@ -8,11 +8,11 @@ public class EnemyPlayer : Player
     private float _moveDelayInSeconds;
 
     private bool _canMove = true;
-    private GameObject _playerObj;
-    private Player _player;
-    private readonly float _moveDeltaThreshold = 1f;
-    private readonly float _timeout = 2f;
-    private bool _barrierPref;
+    protected GameObject _playerObj;
+    protected Player _player;
+    protected readonly float _moveDeltaThreshold = 1f;
+    protected readonly float _timeout = 2f;
+    protected bool _barrierPref;
 
     protected override void Start()
     {
