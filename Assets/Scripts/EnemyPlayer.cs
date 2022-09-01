@@ -5,14 +5,20 @@ using UnityEngine;
 public class EnemyPlayer : Player
 {
     [SerializeField]
-    private float _moveDelayInSeconds;
+    protected float _moveDelayInSeconds;
+    [SerializeField]
+    protected bool _dynamicMovement;
+    [SerializeField]
+    protected float _moveDelayMin;
+    [SerializeField]
+    protected float _moveDelayMax;
 
-    private bool _canMove = true;
-    private GameObject _playerObj;
-    private Player _player;
-    private readonly float _moveDeltaThreshold = 1f;
-    private readonly float _timeout = 2f;
-    private bool _barrierPref;
+    protected bool _canMove = true;
+    protected GameObject _playerObj;
+    protected Player _player;
+    protected readonly float _moveDeltaThreshold = 1f;
+    protected readonly float _timeout = 2f;
+    protected bool _barrierPref;
 
     protected override void Start()
     {
@@ -88,8 +94,18 @@ public class EnemyPlayer : Player
     private IEnumerator DelayMovement()
     {
         _canMove = false;
-        yield return new WaitForSeconds(_moveDelayInSeconds);
+        var delay = GetMoveDelayInSeconds();
+        yield return new WaitForSeconds(delay);
         _canMove = true;
+    }
+
+    protected float GetMoveDelayInSeconds()
+    {
+        if (!_dynamicMovement)
+            return _moveDelayInSeconds;
+
+        var delay = UnityEngine.Random.Range(_moveDelayMin, _moveDelayMax);
+        return delay;
     }
 
     public override void ResetSelf()
