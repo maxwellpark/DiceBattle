@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnemyPlayerSequential : EnemyPlayer
 {
-    public CellSequence sequence;
+    public CellSequenceContainer container;
+    private int _sequenceIndex;
     private int _coordsIndex;
 
     protected override void Start()
@@ -17,20 +18,29 @@ public class EnemyPlayerSequential : EnemyPlayer
 
     public override void ResetSelf()
     {
+        _sequenceIndex = 0;
         _coordsIndex = 0;
         base.ResetSelf();
     }
 
     protected override Direction GetDirection()
     {
-        if (_coordsIndex > sequence.coords.Length - 1)
+        if (_sequenceIndex > container.sequences.Length - 1)
         {
-            Debug.Log("Cell sequence finished.");
-            _coordsIndex = 0;
+            Debug.Log("Cell sequence collection finished. Resetting.");
+            _sequenceIndex = 0;
             return Direction.Neutral;
         }
 
-        var cellInSequence = grid.GetCellByCoords(sequence.coords[_coordsIndex]);
+        if (_coordsIndex > container.sequences[_sequenceIndex].coords.Length - 1)
+        {
+            Debug.Log("Cell sequence finished. Re-sequencing.");
+            _coordsIndex = 0;
+            _sequenceIndex++;
+            return Direction.Neutral;
+        }
+
+        var cellInSequence = grid.GetCellByCoords(container.sequences[_sequenceIndex].coords[_coordsIndex]);
 
         if (cellInSequence == null)
         {

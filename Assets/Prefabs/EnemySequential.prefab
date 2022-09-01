@@ -119,7 +119,7 @@ MonoBehaviour:
   _dynamicMovement: 1
   _moveDelayMin: 0.25
   _moveDelayMax: 0.75
-  sequence: {fileID: 11400000, guid: c4535fa26a753db4ca9006a960617c5a, type: 2}
+  container: {fileID: 11400000, guid: 911a622bc25c4c1408da14ea8a00078e, type: 2}
 --- !u!114 &4953635035355557834
 MonoBehaviour:
   m_ObjectHideFlags: 0
