@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class EnemyPlayerSequential : EnemyPlayer
@@ -6,9 +7,16 @@ public class EnemyPlayerSequential : EnemyPlayer
     private int _sequenceIndex;
     private int _coordsIndex;
 
+    [SerializeField]
+    private bool _randomOrder;
+    private System.Random _random = new System.Random();
+
     protected override void Start()
     {
         base.Start();
+
+        if (_randomOrder)
+            ShuffleSequences();
     }
 
     protected override void Update()
@@ -20,6 +28,10 @@ public class EnemyPlayerSequential : EnemyPlayer
     {
         _sequenceIndex = 0;
         _coordsIndex = 0;
+
+        if (_randomOrder)
+            ShuffleSequences();
+
         base.ResetSelf();
     }
 
@@ -27,16 +39,13 @@ public class EnemyPlayerSequential : EnemyPlayer
     {
         if (_sequenceIndex > container.sequences.Length - 1)
         {
-            Debug.Log("Cell sequence collection finished. Resetting.");
-            _sequenceIndex = 0;
+            ResetSequences();
             return Direction.Neutral;
         }
 
         if (_coordsIndex > container.sequences[_sequenceIndex].coords.Length - 1)
         {
-            Debug.Log("Cell sequence finished. Re-sequencing.");
-            _coordsIndex = 0;
-            _sequenceIndex++;
+            ReSequence();
             return Direction.Neutral;
         }
 
@@ -64,5 +73,24 @@ public class EnemyPlayerSequential : EnemyPlayer
             _coordsIndex++;
 
         return Direction.Neutral;
+    }
+
+    private void ReSequence()
+    {
+        Debug.Log("Cell sequence finished. Re-sequencing.");
+        _coordsIndex = 0;
+        _sequenceIndex++;
+    }
+
+    private void ResetSequences()
+    {
+        Debug.Log("Cell sequence collection finished. Resetting.");
+        _sequenceIndex = 0;
+    }
+
+    private void ShuffleSequences()
+    {
+        var shuffled = container.sequences.OrderBy(x => _random.Next()).ToArray();
+        container.sequences = shuffled;
     }
 }

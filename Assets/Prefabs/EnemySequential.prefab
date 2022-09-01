@@ -120,6 +120,7 @@ MonoBehaviour:
   _moveDelayMin: 0.25
   _moveDelayMax: 0.75
   container: {fileID: 11400000, guid: 911a622bc25c4c1408da14ea8a00078e, type: 2}
+  _randomOrder: 1
 --- !u!114 &4953635035355557834
 MonoBehaviour:
   m_ObjectHideFlags: 0
