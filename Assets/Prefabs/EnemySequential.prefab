@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zOffset: 0.4
   _bulletPrefab: {fileID: 8539698259316770877, guid: fe6b9ef542656f344b05e15dcdbfd5c5, type: 3}
-  _maxHealth: 1
+  _maxHealth: 3
   _reloadTimeInSeconds: 2
   magSize: 6
   shotsRemaining: 0
