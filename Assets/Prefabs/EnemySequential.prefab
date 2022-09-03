@@ -143,6 +143,7 @@ MonoBehaviour:
   _dynamicShooting: 1
   _shootDelayMin: 0.25
   _shootDelayMax: 0.5
+  _rowConstraintNum: 1
 --- !u!54 &240301917477649741
 Rigidbody:
   m_ObjectHideFlags: 0

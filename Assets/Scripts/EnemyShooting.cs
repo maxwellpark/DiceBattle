@@ -13,6 +13,8 @@ public class EnemyShooting : PlayerShooting
     private float _shootDelayMin;
     [SerializeField]
     private float _shootDelayMax;
+    [SerializeField]
+    private float _rowConstraintNum;
 
     private bool _canShoot = true;
     private Player _player;
@@ -21,19 +23,19 @@ public class EnemyShooting : PlayerShooting
 
     protected override void Start()
     {
-        var _playerObj = GameObject.FindWithTag("Player");
+        var playerObj = GameObject.FindWithTag("Player");
 
-        if (_playerObj == null)
+        if (playerObj == null)
             throw new Exception("Could not find player object.");
 
-        _player = _playerObj.GetComponent<Player>();
+        _player = playerObj.GetComponent<Player>();
 
-        var _enemyObj = GameObject.FindWithTag("Enemy");
+        var enemyObj = GameObject.FindWithTag("Enemy");
 
-        if (_enemyObj == null)
+        if (enemyObj == null)
             throw new Exception("Could not find enemy player object.");
 
-        _enemyPlayer = _enemyObj.GetComponent<EnemyPlayer>();
+        _enemyPlayer = enemyObj.GetComponent<EnemyPlayer>();
 
         base.Start();
         onShoot += () => StartCoroutine(DelayShooting());
@@ -49,13 +51,10 @@ public class EnemyShooting : PlayerShooting
             StartCoroutine(Reload());
             return;
         }
-        var playerCell = _player.grid.currentCell;
-        var enemyCell = _enemyPlayer.grid.currentCell;
 
-        //if (playerCell != null && enemyCell != null && playerCell.yCoord == enemyCell.yCoord)
-        //    Shoot();
-
-        Shoot();
+        // Shoot if player y coord is within accepted range
+        if (IsInRowConstraint())
+            Shoot();
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -85,6 +84,18 @@ public class EnemyShooting : PlayerShooting
 
         var delay = UnityEngine.Random.Range(_shootDelayMin, _shootDelayMax);
         return delay;
+    }
+
+    protected bool IsInRowConstraint()
+    {
+        var playerCell = _player.grid.currentCell;
+        var enemyCell = _enemyPlayer.grid.currentCell;
+
+        if (playerCell == null || enemyCell == null)
+            return false;
+
+        var difference = Mathf.Abs(playerCell.yCoord - enemyCell.yCoord);
+        return difference <= _rowConstraintNum;
     }
 
     protected override void RegisterEvents()
