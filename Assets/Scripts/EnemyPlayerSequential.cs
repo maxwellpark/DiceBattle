@@ -9,7 +9,7 @@ public class EnemyPlayerSequential : EnemyPlayer
 
     [SerializeField]
     private bool _randomOrder;
-    private System.Random _random = new System.Random();
+    private readonly System.Random _random = new System.Random();
 
     protected override void Start()
     {
