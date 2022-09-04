@@ -17,6 +17,11 @@ public class DiceManager : MonoBehaviour
     [SerializeField]
     private Vector3 _diceScale;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void CreateDice(int p1Roll, int p2Roll)
     {
         var dice1 = Instantiate(_dicePrefab, _diceContainer.transform);

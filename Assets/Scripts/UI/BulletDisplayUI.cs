@@ -15,6 +15,7 @@ public class BulletDisplayUI : MonoBehaviour
         _playerShooting = FindObjectOfType<PlayerShooting>();
         _enemyShooting = FindObjectOfType<EnemyShooting>();
         RegisterEvents();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void UpdateText(BulletDisplayText text, PlayerShooting shooting, bool reloading = false)
@@ -67,6 +68,7 @@ public class BulletDisplayUI : MonoBehaviour
         {
             UpdateText(_player1Text, _playerShooting);
             UpdateText(_player2Text, _enemyShooting);
+            ToggleTexts(true);
         };
         GameManager.onRoundComplete += () =>
         {
