@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
+        NewBattle();
     }
 
     public void NewBattle()
@@ -70,7 +71,6 @@ public class GameManager : MonoBehaviour
         currentRound = 0;
         playerRoundsWon = 0;
         enemyRoundsWon = 0;
-        _newRoundsUI.ShowNewGameUI(false);
         onNewBattle?.Invoke();
         NewRound();
     }
@@ -136,11 +136,12 @@ public class GameManager : MonoBehaviour
         var text = player1Wins ? "Player 1 " : "Player 2 ";
         text += "wins the best of 3 battle!";
         Debug.Log(text);
-        _scoreUI.UpdateRoundText(text);
-        _newRoundsUI.ShowNewGameUI(true);
+        _scoreUI.ResetUI();
+        _newRoundsUI.ShowNewBattleUI(false);
         currentRound = 0;
         onBattleComplete?.Invoke();
         onBattleCompleteFlag?.Invoke(player1Wins);
+        ToggleObjects(false);
         _menuTransitionManager.Transition(_battleEndTransitionData);
     }
 
@@ -150,21 +151,21 @@ public class GameManager : MonoBehaviour
         {
             playerRoundsWon++;
             RoundComplete();
-            _scoreUI.UpdateRoundTextForEndOfRound();
+            _scoreUI.UpdateRoundTextForEndOfRound(true);
         };
 
         playerShooting.onDeath += () =>
         {
             enemyRoundsWon++;
             RoundComplete();
-            _scoreUI.UpdateRoundTextForEndOfRound();
+            _scoreUI.UpdateRoundTextForEndOfRound(false);
         };
 
         // Round is drawn if count down event fires
         CountDown.onCountDownEnd += () =>
         {
             RoundComplete();
-            _scoreUI.UpdateRoundTextForEndOfRound(true);
+            _scoreUI.UpdateRoundTextForDraw();
         };
         DestroyTimer.onDestroy += () => inBattle = true;
     }
@@ -176,7 +177,7 @@ public class GameManager : MonoBehaviour
         _newRoundsUI.newGameBtn.onClick.AddListener(NewBattle);
         _newRoundsUI.newRoundBtn.onClick.RemoveAllListeners();
         _newRoundsUI.newRoundBtn.onClick.AddListener(NewRound);
-        _newRoundsUI.ShowNewGameUI(true);
+        _newRoundsUI.ShowNewBattleUI(false);
         ToggleObjects(false);
     }
 

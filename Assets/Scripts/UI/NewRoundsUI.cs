@@ -13,14 +13,15 @@ public class NewRoundsUI : MonoBehaviour
     {
         newGameContainer.SetActive(false);
         newRoundContainer.SetActive(false);
+
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(newGameContainer);
+        DontDestroyOnLoad(newRoundContainer);
+        DontDestroyOnLoad(newGameBtn);
+        DontDestroyOnLoad(newRoundBtn);
     }
 
-    private void Start()
-    {
-
-    }
-
-    public void ShowNewGameUI(bool active)
+    public void ShowNewBattleUI(bool active)
     {
         newGameContainer.SetActive(active);
     }

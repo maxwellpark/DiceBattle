@@ -15,6 +15,10 @@ public class BulletDisplayUI : MonoBehaviour
         _playerShooting = FindObjectOfType<PlayerShooting>();
         _enemyShooting = FindObjectOfType<EnemyShooting>();
         RegisterEvents();
+
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_player1Text);
+        DontDestroyOnLoad(_player2Text);
     }
 
     private void UpdateText(BulletDisplayText text, PlayerShooting shooting, bool reloading = false)

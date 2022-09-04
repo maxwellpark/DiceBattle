@@ -17,6 +17,7 @@ public class DiceManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_diceContainer);
     }
 
     public void CreateDice(int p1Roll, int p2Roll)
