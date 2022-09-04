@@ -16,6 +16,7 @@ public class MusicManager : MonoBehaviour
     {
         menuSrc.enabled = true;
         battleSrc.enabled = true;
+        battleEndSrc.enabled = true;
         DontDestroyOnLoad(gameObject);
     }
 

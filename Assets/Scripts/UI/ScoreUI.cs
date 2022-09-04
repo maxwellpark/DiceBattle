@@ -37,6 +37,16 @@ public class ScoreUI : MonoBehaviour
         _currentRoundText.text = text;
     }
 
+    public void UpdateRoundTextForEndOfRound(bool wasDraw = false)
+    {
+        var text = wasDraw
+            ? "Time limit reached. The round was a draw!"
+            : "Player 1 wins round " + GameManager.currentRound + "!";
+
+        Debug.Log(text);
+        UpdateRoundText(text);
+    }
+
     public void ResetUI()
     {
         _p1ScoreText.text = string.Empty;
