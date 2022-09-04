@@ -1716,8 +1716,73 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiceWithAnimations
       objectReference: {fileID: 0}
+    - target: {fileID: 9069565264956882171, guid: 37d3c3a80664f23408e09f811866e135, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d3c3a80664f23408e09f811866e135, type: 3}
+--- !u!1001 &8564944940512973715
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833465061450427198, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673393044842985961, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_Name
+      value: ProjectileAsmall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673393044842985961, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0281fcb5733c7fd4084ea7322d2a804e, type: 3}
 --- !u!1001 &8717918219115146805
 PrefabInstance:
   m_ObjectHideFlags: 0

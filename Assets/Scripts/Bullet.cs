@@ -12,6 +12,13 @@ public class Bullet : MonoBehaviour
     private Vector3 _startPos;
     private Vector3 _vDirection;
 
+    public GameObject _hitBarrier;
+    public GameObject _hitEntity;
+    public GameObject _hitFromPlayer;
+
+
+
+
     private void Start()
     {
         _startPos = transform.position;
@@ -26,5 +33,33 @@ public class Bullet : MonoBehaviour
 
         if (Vector3.Distance(_startPos, transform.position) > _maxDistance)
             Destroy(gameObject);
+    }
+
+
+        private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag=="Enemy")
+        {
+            Debug.Log("Bullet Hit Enemy");
+            Instantiate(_hitEntity, transform.position, Quaternion.identity);
+            
+        }
+
+          if (other.tag=="Player")
+        {
+           
+            Instantiate(_hitFromPlayer, transform.position, Quaternion.identity);
+            
+        }
+
+         if (other.tag=="Barrier")
+        {
+            Debug.Log("Bullet Hit Barrier");
+            Instantiate(_hitBarrier, transform.position, Quaternion.identity);
+            
+        }
+
+        
+        
     }
 }

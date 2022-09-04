@@ -10,6 +10,7 @@ TagManager:
   - EnemyBullet
   - Enemy
   - BarrierManager
+  - Barrier
   layers:
   - Default
   - TransparentFX
