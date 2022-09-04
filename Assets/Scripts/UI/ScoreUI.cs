@@ -10,6 +10,14 @@ public class ScoreUI : MonoBehaviour
     [SerializeField]
     private TMP_Text _currentRoundText;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_p1ScoreText);
+        DontDestroyOnLoad(_p2ScoreText);
+        DontDestroyOnLoad(_currentRoundText);
+    }
+
     private void Start()
     {
         ResetUI();
@@ -35,6 +43,20 @@ public class ScoreUI : MonoBehaviour
     public void UpdateRoundText(string text)
     {
         _currentRoundText.text = text;
+    }
+
+    public void UpdateRoundTextForEndOfRound(bool player1Wins)
+    {
+        var text = $"Player {(player1Wins ? "1" : "2")} wins round " + GameManager.currentRound + "!";
+        Debug.Log(text);
+        UpdateRoundText(text);
+    }
+
+    public void UpdateRoundTextForDraw()
+    {
+        var text = "Time limit reached. The round was a draw!";
+        Debug.Log(text);
+        UpdateRoundText(text);
     }
 
     public void ResetUI()

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627e1f32fc66efc428238d1a9270c764, type: 3}
   m_Name: TitleToBattleMenu
   m_EditorClassIdentifier: 
-  sceneName: Arena
-  music: 1
+  sceneName: BattleMenuScene
+  music: 2

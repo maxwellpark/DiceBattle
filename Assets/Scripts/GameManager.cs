@@ -16,16 +16,21 @@ public class GameManager : MonoBehaviour
 
     private DiceManager _diceManager;
     private BarrierManager _barrierManager;
+    private MenuTransitionManager _menuTransitionManager;
 
-    private int _currentRound;
-    private int _playerRoundsWon;
-    private int _enemyRoundsWon;
+    public static int currentRound;
+    public static int playerRoundsWon;
+    public static int enemyRoundsWon;
     public static bool inBattle;
 
-    public static event UnityAction onNewGame;
+    [SerializeField]
+    private MenuTransitionData _battleEndTransitionData;
+
+    public static event UnityAction onNewBattle;
     public static event UnityAction onNewRound;
     public static event UnityAction onRoundComplete;
-    public static event UnityAction onGameComplete;
+    public static event UnityAction onBattleComplete;
+    public static event UnityAction<bool> onBattleCompleteFlag;
 
     private void Awake()
     {
@@ -48,23 +53,25 @@ public class GameManager : MonoBehaviour
         enemyShooting = enemyObj.GetComponent<EnemyShooting>();
         _diceManager = FindObjectOfType<DiceManager>();
         _barrierManager = FindObjectOfType<BarrierManager>();
+        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
 
         RegisterEvents();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         Init();
+        NewBattle();
     }
 
-    public void NewGame()
+    public void NewBattle()
     {
-        Debug.Log("Setting up new game...");
-        _currentRound = 0;
-        _playerRoundsWon = 0;
-        _enemyRoundsWon = 0;
-        _newRoundsUI.ShowNewGameUI(false);
-        onNewGame?.Invoke();
+        Debug.Log("Setting up new battles...");
+        currentRound = 0;
+        playerRoundsWon = 0;
+        enemyRoundsWon = 0;
+        onNewBattle?.Invoke();
         NewRound();
     }
 
@@ -79,12 +86,12 @@ public class GameManager : MonoBehaviour
     public void NewRound(int player1Roll, int player2Roll)
     {
         inBattle = true;
-        _currentRound++;
+        currentRound++;
         Debug.Log("Setting up new round...");
         Debug.Log("Player 1 roll = " + player1Roll);
         Debug.Log("Player 2 roll = " + player2Roll);
 
-        _scoreUI.UpdateUI(_playerRoundsWon, _enemyRoundsWon, _currentRound);
+        _scoreUI.UpdateUI(playerRoundsWon, enemyRoundsWon, currentRound);
 
         // Setup round based on dice roll values
         playerShooting.SetupShooting(player1Roll);
@@ -102,19 +109,19 @@ public class GameManager : MonoBehaviour
     public void RoundComplete()
     {
         inBattle = false;
-        Debug.Log("Round " + _currentRound + " complete");
+        Debug.Log("Round " + currentRound + " complete");
         playerShooting.ClearBullets();
         player.gameObject.SetActive(false);
         enemy.gameObject.SetActive(false);
-        _scoreUI.UpdateUI(_playerRoundsWon, _enemyRoundsWon, _currentRound);
+        _scoreUI.UpdateUI(playerRoundsWon, enemyRoundsWon, currentRound);
 
-        if (_playerRoundsWon >= 2)
+        if (playerRoundsWon >= 2)
         {
-            GameComplete(true);
+            BattleComplete(true);
         }
-        else if (_enemyRoundsWon >= 2)
+        else if (enemyRoundsWon >= 2)
         {
-            GameComplete(false);
+            BattleComplete(false);
         }
         else
         {
@@ -124,37 +131,41 @@ public class GameManager : MonoBehaviour
         onRoundComplete?.Invoke();
     }
 
-    public void GameComplete(bool player1Wins)
+    public void BattleComplete(bool player1Wins)
     {
         var text = player1Wins ? "Player 1 " : "Player 2 ";
-        text += "wins the 3 round series!";
+        text += "wins the best of 3 battle!";
         Debug.Log(text);
-        _scoreUI.UpdateRoundText(text);
-        _newRoundsUI.ShowNewGameUI(true);
-        _currentRound = 0;
-        onGameComplete?.Invoke();
+        _scoreUI.ResetUI();
+        _newRoundsUI.ShowNewBattleUI(false);
+        currentRound = 0;
+        onBattleComplete?.Invoke();
+        onBattleCompleteFlag?.Invoke(player1Wins);
+        ToggleObjects(false);
+        _menuTransitionManager.Transition(_battleEndTransitionData);
     }
 
     private void RegisterEvents()
     {
         enemyShooting.onDeath += () =>
         {
-            Debug.Log("Player 1 wins round " + _currentRound);
-            _playerRoundsWon++;
+            playerRoundsWon++;
             RoundComplete();
+            _scoreUI.UpdateRoundTextForEndOfRound(true);
         };
 
         playerShooting.onDeath += () =>
         {
-            Debug.Log("Player 2 wins round " + _currentRound);
-            _enemyRoundsWon++;
+            enemyRoundsWon++;
             RoundComplete();
+            _scoreUI.UpdateRoundTextForEndOfRound(false);
         };
 
+        // Round is drawn if count down event fires
         CountDown.onCountDownEnd += () =>
         {
-            Debug.Log("Time limit reached. The round was a draw.");
             RoundComplete();
+            _scoreUI.UpdateRoundTextForDraw();
         };
         DestroyTimer.onDestroy += () => inBattle = true;
     }
@@ -163,10 +174,10 @@ public class GameManager : MonoBehaviour
     {
         // Setup UI 
         _newRoundsUI.newGameBtn.onClick.RemoveAllListeners();
-        _newRoundsUI.newGameBtn.onClick.AddListener(NewGame);
+        _newRoundsUI.newGameBtn.onClick.AddListener(NewBattle);
         _newRoundsUI.newRoundBtn.onClick.RemoveAllListeners();
         _newRoundsUI.newRoundBtn.onClick.AddListener(NewRound);
-        _newRoundsUI.ShowNewGameUI(true);
+        _newRoundsUI.ShowNewBattleUI(false);
         ToggleObjects(false);
     }
 

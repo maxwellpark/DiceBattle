@@ -15,6 +15,12 @@ public class CountDown : MonoBehaviour
 
     public static event UnityAction onCountDownEnd;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_countDownText);
+    }
+
     private void Start()
     {
         _thirdOfLimit = _timeLimit / 3f;

@@ -8,14 +8,17 @@ public class DiceManager : MonoBehaviour
     [SerializeField]
     private GameObject _diceContainer;
 
-    private DiceAnimController _diceAnim1;
-    private DiceAnimController _diceAnim2;
-
     [SerializeField]
     private float _zOffset;
 
     [SerializeField]
     private Vector3 _diceScale;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_diceContainer);
+    }
 
     public void CreateDice(int p1Roll, int p2Roll)
     {

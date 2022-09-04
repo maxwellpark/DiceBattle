@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Arena.unity
     guid: 7416fee47398336478010436ade9e740
   - enabled: 1
-    path: Assets/Scenes/DiceRoundsTestScene.unity
+    path: Assets/Scenes/Archived/DiceRoundsTestScene.unity
     guid: 0acf4a4b2ece7b240891ccd511b7c68b
   - enabled: 1
-    path: Assets/Scenes/TitleScreenTestScene.unity
+    path: Assets/Scenes/TitleScreenScene.unity
     guid: 199450846b883a141b844220024f2e01
   - enabled: 1
     path: Assets/Scenes/CreditsScene.unity
@@ -26,4 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HowToPlayScene.unity
     guid: c4e0f5e8d1bdcdd48849c2e44f39b1e2
+  - enabled: 1
+    path: Assets/Scenes/BattleEndScene.unity
+    guid: 181099f732dd2f24391061fdb374a47a
+  - enabled: 1
+    path: Assets/Scenes/BattleMenuScene.unity
+    guid: efe6e7290c287fd4e9c685c96ecc7176
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelectScene.unity
+    guid: e9545afb5d209154f8910f51f4906d9d
+  - enabled: 1
+    path: Assets/Scenes/BattleScene.unity
+    guid: deb08cb667156434f916091f42cc7d20
   m_configObjects: {}
