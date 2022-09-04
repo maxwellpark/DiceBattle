@@ -72,7 +72,7 @@ public class BulletDisplayUI : MonoBehaviour
         {
             ToggleTexts(false);
         };
-        GameManager.onGameComplete += () =>
+        GameManager.onBattleComplete += () =>
         {
             ToggleTexts(false);
         };

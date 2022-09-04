@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7b8c56f3dbf9d498f2f527b6bfb46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerShooting: {fileID: 0}
+  enemy: {fileID: 0}
+  enemyShooting: {fileID: 0}
+  _battleEndTransitionData: {fileID: 11400000, guid: 4366da29ee9a1a044800646adc49523d, type: 2}

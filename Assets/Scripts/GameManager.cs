@@ -16,16 +16,20 @@ public class GameManager : MonoBehaviour
 
     private DiceManager _diceManager;
     private BarrierManager _barrierManager;
+    private MenuTransitionManager _menuTransitionManager;
 
     private int _currentRound;
     private int _playerRoundsWon;
     private int _enemyRoundsWon;
     public static bool inBattle;
 
-    public static event UnityAction onNewGame;
+    [SerializeField]
+    private MenuTransitionData _battleEndTransitionData;
+
+    public static event UnityAction onNewBattle;
     public static event UnityAction onNewRound;
     public static event UnityAction onRoundComplete;
-    public static event UnityAction onGameComplete;
+    public static event UnityAction onBattleComplete;
 
     private void Awake()
     {
@@ -48,8 +52,10 @@ public class GameManager : MonoBehaviour
         enemyShooting = enemyObj.GetComponent<EnemyShooting>();
         _diceManager = FindObjectOfType<DiceManager>();
         _barrierManager = FindObjectOfType<BarrierManager>();
+        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
 
         RegisterEvents();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -57,14 +63,14 @@ public class GameManager : MonoBehaviour
         Init();
     }
 
-    public void NewGame()
+    public void NewBattle()
     {
-        Debug.Log("Setting up new game...");
+        Debug.Log("Setting up new battles...");
         _currentRound = 0;
         _playerRoundsWon = 0;
         _enemyRoundsWon = 0;
         _newRoundsUI.ShowNewGameUI(false);
-        onNewGame?.Invoke();
+        onNewBattle?.Invoke();
         NewRound();
     }
 
@@ -110,11 +116,11 @@ public class GameManager : MonoBehaviour
 
         if (_playerRoundsWon >= 2)
         {
-            GameComplete(true);
+            BattleComplete(true);
         }
         else if (_enemyRoundsWon >= 2)
         {
-            GameComplete(false);
+            BattleComplete(false);
         }
         else
         {
@@ -124,15 +130,16 @@ public class GameManager : MonoBehaviour
         onRoundComplete?.Invoke();
     }
 
-    public void GameComplete(bool player1Wins)
+    public void BattleComplete(bool player1Wins)
     {
         var text = player1Wins ? "Player 1 " : "Player 2 ";
-        text += "wins the 3 round series!";
+        text += "wins the 3 round battle!";
         Debug.Log(text);
         _scoreUI.UpdateRoundText(text);
         _newRoundsUI.ShowNewGameUI(true);
         _currentRound = 0;
-        onGameComplete?.Invoke();
+        onBattleComplete?.Invoke();
+        _menuTransitionManager.Transition(_battleEndTransitionData);
     }
 
     private void RegisterEvents()
@@ -163,7 +170,7 @@ public class GameManager : MonoBehaviour
     {
         // Setup UI 
         _newRoundsUI.newGameBtn.onClick.RemoveAllListeners();
-        _newRoundsUI.newGameBtn.onClick.AddListener(NewGame);
+        _newRoundsUI.newGameBtn.onClick.AddListener(NewBattle);
         _newRoundsUI.newRoundBtn.onClick.RemoveAllListeners();
         _newRoundsUI.newRoundBtn.onClick.AddListener(NewRound);
         _newRoundsUI.ShowNewGameUI(true);
