@@ -8,9 +8,6 @@ public class DiceManager : MonoBehaviour
     [SerializeField]
     private GameObject _diceContainer;
 
-    private DiceAnimController _diceAnim1;
-    private DiceAnimController _diceAnim2;
-
     [SerializeField]
     private float _zOffset;
 
