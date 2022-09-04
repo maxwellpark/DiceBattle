@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DiceRoundsTestScene.unity
     guid: 0acf4a4b2ece7b240891ccd511b7c68b
+  - enabled: 1
+    path: Assets/Scenes/TitleScreenTestScene.unity
+    guid: 199450846b883a141b844220024f2e01
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 898dd201ab4069146ae369d03ab11cd0
+  - enabled: 1
+    path: Assets/Scenes/HowToPlayScene.unity
+    guid: c4e0f5e8d1bdcdd48849c2e44f39b1e2
   m_configObjects: {}

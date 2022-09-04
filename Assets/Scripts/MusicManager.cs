@@ -3,12 +3,13 @@ using UnityEngine;
 
 public enum MusicState
 {
-    Battle, Menu, None
+    Battle, BattleEnd, Menu, None
 }
 
 public class MusicManager : MonoBehaviour
 {
     public AudioSource battleSrc;
+    public AudioSource battleEndSrc;
     public AudioSource menuSrc;
 
     private void Awake()
@@ -26,6 +27,9 @@ public class MusicManager : MonoBehaviour
         {
             case MusicState.Battle:
                 src = battleSrc;
+                break;
+            case MusicState.BattleEnd:
+                src = battleEndSrc;
                 break;
             case MusicState.Menu:
                 src = menuSrc;
