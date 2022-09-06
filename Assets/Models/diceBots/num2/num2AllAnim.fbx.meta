@@ -1,49 +1,29 @@
 fileFormatVersion: 2
-guid: 50b31ed7732062c4e97f4ad8fd2e8128
+guid: fac6878dc2487c746ab5c291d58fdcf0
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -6842666708266138392
-    second: Armature|Armature.001|mixamo.com|Layer0
+      74: 5470755609133820506
+    second: Armature|Armature|Armature|Armature|Armature|hurt
   - first:
-      74: -751813995980742648
-    second: Armature|EmptyAction
+      74: 2303113150034500511
+    second: Armature|Armature|Armature|Armature|Armature|idle
   - first:
-      74: 9149661223541978141
-    second: Armature|Hurt
+      74: 6514314738942255339
+    second: Armature|Armature|Armature|Armature|Armature|shoot
   - first:
-      74: -693329386382754076
-    second: Armature|Idles
+      74: 6202417250690305952
+    second: Armature|Armature|Armature|DefeatAnim
   - first:
-      74: 3080552530631608311
-    second: Armature|Idles.001
-  - first:
-      74: 187042461701017347
-    second: Armature|megaIdle
-  - first:
-      74: 166632186121762533
-    second: Armature|newShoot2
-  - first:
-      74: -628353440543506889
-    second: Armature|newShoot2.001
-  - first:
-      74: -8756647942227100970
-    second: Cylinder.006|EmptyAction
-  - first:
-      74: -5572541973309549404
-    second: Empty|EmptyAction
+      74: -4862117126793046205
+    second: Armature|Armature|Armature|VictoryAnim
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: texrobotboy3
-    second: {fileID: 2100000, guid: 8a30cc53e68fda44a828ca0858f72039, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: texrobotboy4
-    second: {fileID: 2100000, guid: 8a30cc53e68fda44a828ca0858f72039, type: 2}
+      name: texrobotboy2
+    second: {fileID: 2100000, guid: c103b38a6c843a44c91589bd4d0e6d1d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -73,11 +53,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Armature.001|mixamo.com|Layer0
-      takeName: Armature|Armature.001|mixamo.com|Layer0
+      name: Armature|Armature|Armature|Armature|Armature|hurt
+      takeName: Armature|Armature|Armature|Armature|Armature|hurt
       internalID: 0
       firstFrame: 0
-      lastFrame: 322
+      lastFrame: 49
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -102,127 +82,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|EmptyAction
-      takeName: Armature|EmptyAction
+      name: Armature|Armature|Armature|Armature|Armature|idle
+      takeName: Armature|Armature|Armature|Armature|Armature|idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Hurt
-      takeName: Armature|Hurt
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 14
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Idles
-      takeName: Armature|Idles
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 61
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Idles.001
-      takeName: Armature|Idles.001
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|megaIdle
-      takeName: Armature|megaIdle
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 291
+      lastFrame: 140
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -247,11 +111,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|newShoot2
-      takeName: Armature|newShoot2
+      name: Armature|Armature|Armature|Armature|Armature|shoot
+      takeName: Armature|Armature|Armature|Armature|Armature|shoot
       internalID: 0
       firstFrame: 0
-      lastFrame: 14
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -276,11 +140,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|newShoot2.001
-      takeName: Armature|newShoot2.001
+      name: Armature|Armature|Armature|DefeatAnim
+      takeName: Armature|Armature|Armature|DefeatAnim
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 138
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -305,19 +169,19 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Cylinder.006|EmptyAction
-      takeName: Cylinder.006|EmptyAction
+      name: Armature|Armature|Armature|VictoryAnim
+      takeName: Armature|Armature|Armature|VictoryAnim
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 458
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -333,36 +197,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Empty|EmptyAction
-      takeName: Empty|EmptyAction
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1

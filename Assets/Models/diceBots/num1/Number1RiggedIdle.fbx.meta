@@ -4,47 +4,41 @@ ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 6759086803382991731
-    second: Armature|Armature|Armature|Armature|mixamo.com|Layer0
+      74: 271997525282036724
+    second: Armature|CylinderAction
   - first:
-      74: -4791504522942941401
-    second: Armature|Armature|mixamo.com|Layer0
+      74: -1139559589974317326
+    second: Armature|defeat
   - first:
-      74: -2609974887918531018
-    second: Armature|Cylinder|Cylinder|Armature|mixamo.com|Layer0
+      74: -751813995980742648
+    second: Armature|EmptyAction
   - first:
-      74: -576590201207095378
-    second: Armature|Cylinder|Cylinder|Armature|mixamo.com|Layer0.001
+      74: -7745344668303224716
+    second: Armature|floatIdle
   - first:
-      74: 3717595854249590155
-    second: Armature|Empty|mixamo.com|Layer0
+      74: -5742113246664979595
+    second: Armature|hit
   - first:
-      74: -89817818601394933
-    second: Armature|hurt.001
+      74: -8945691123924629249
+    second: Armature|Idle
   - first:
-      74: 330897806847967404
-    second: Armature|Idle001
+      74: 1300770197434942443
+    second: Armature|shoot
   - first:
-      74: 8287921051576333886
-    second: Armature|Shoot1.002
+      74: -1228952814471920847
+    second: Armature|Victory
   - first:
-      74: 3654032025365873525
-    second: Cylinder|Cylinder|Cylinder|Armature|mixamo.com|Layer0
+      74: -88723805440604879
+    second: Cylinder|CylinderAction
   - first:
-      74: -1946921795935419337
-    second: Cylinder|Cylinder|Cylinder|Armature|mixamo.com|Layer0.001
+      74: -5315980108583086191
+    second: Cylinder|EmptyAction
   - first:
-      74: 1243233255700461625
-    second: Cylinder|Empty|mixamo.com|Layer0
+      74: 5206355559787850552
+    second: Empty|CylinderAction
   - first:
-      74: -4480829258082349006
-    second: Empty|Cylinder|Cylinder|Armature|mixamo.com|Layer0
-  - first:
-      74: -3511090577309714133
-    second: Empty|Cylinder|Cylinder|Armature|mixamo.com|Layer0.001
-  - first:
-      74: -2159072801286254007
-    second: Empty|Empty|mixamo.com|Layer0
+      74: -5572541973309549404
+    second: Empty|EmptyAction
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -54,7 +48,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: texrobotboy4.001
+      name: texrobotboy4
     second: {fileID: 2100000, guid: c778e37cd49289544a31afed74fd5bc9, type: 2}
   materials:
     materialImportMode: 2
@@ -74,7 +68,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 1
+    importAnimatedCustomProperties: 0
     importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
@@ -85,11 +79,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|hurt.001
-      takeName: Armature|hurt.001
+      name: Armature|defeat
+      takeName: Armature|defeat
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 103
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -114,11 +108,69 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Idle001
-      takeName: Armature|Idle001
+      name: Armature|floatIdle
+      takeName: Armature|floatIdle
       internalID: 0
       firstFrame: 0
-      lastFrame: 138
+      lastFrame: 103
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|hit
+      takeName: Armature|hit
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 69
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle
+      takeName: Armature|Idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 143
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -143,11 +195,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Shoot1.002
-      takeName: Armature|Shoot1.002
+      name: Armature|shoot
+      takeName: Armature|shoot
       internalID: 0
       firstFrame: 0
-      lastFrame: 17
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -156,6 +208,35 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Victory
+      takeName: Armature|Victory
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 63
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

@@ -1,8 +1,14 @@
 fileFormatVersion: 2
-guid: 3135ab55ac98b1744b6568704409dab2
+guid: 6589aa1fa34338e4a8f46583dc3dbd1c
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
+  - first:
+      74: -1139559589974317326
+    second: Armature|defeat
+  - first:
+      74: -6441111746996703338
+    second: Armature|defeat2
   - first:
       74: 1323920681783110427
     second: Armature|hurt
@@ -12,12 +18,20 @@ ModelImporter:
   - first:
       74: 1300770197434942443
     second: Armature|shoot
+  - first:
+      74: 155323657473332376
+    second: Armature|victory
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: texrobotboy2
-    second: {fileID: 2100000, guid: c103b38a6c843a44c91589bd4d0e6d1d, type: 2}
+      name: texrobotboy3
+    second: {fileID: 2100000, guid: 8a30cc53e68fda44a828ca0858f72039, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: texrobotboy3.006
+    second: {fileID: 2100000, guid: 8a30cc53e68fda44a828ca0858f72039, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -47,11 +61,69 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
+      name: Armature|defeat
+      takeName: Armature|defeat
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 66
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|defeat2
+      takeName: Armature|defeat2
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 109
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: Armature|hurt
       takeName: Armature|hurt
       internalID: 0
       firstFrame: 0
-      lastFrame: 49
+      lastFrame: 36
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -80,7 +152,7 @@ ModelImporter:
       takeName: Armature|idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 140
+      lastFrame: 105
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -109,7 +181,7 @@ ModelImporter:
       takeName: Armature|shoot
       internalID: 0
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 51
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -118,6 +190,35 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|victory
+      takeName: Armature|victory
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 225
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
