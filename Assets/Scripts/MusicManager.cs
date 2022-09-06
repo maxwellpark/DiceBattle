@@ -52,6 +52,7 @@ public class MusicManager : Singleton<MusicManager>
     private void ResetSrcs()
     {
         battleSrc.Stop();
+        battleEndSrc.Stop();
         menuSrc.Stop();
     }
 }
