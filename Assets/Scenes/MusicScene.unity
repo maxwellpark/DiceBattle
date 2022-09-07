@@ -431,6 +431,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a4392e4cfa0ad4c95c5dd4d860ae40, type: 3}
+--- !u!1 &4586747537336654754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3703664531715859228, guid: c3a4392e4cfa0ad4c95c5dd4d860ae40, type: 3}
+  m_PrefabInstance: {fileID: 4586747537336654753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4586747537336654755 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8174636267778350708, guid: c3a4392e4cfa0ad4c95c5dd4d860ae40, type: 3}
+  m_PrefabInstance: {fileID: 4586747537336654753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4586747537336654756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586747537336654754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9630e99903679544f8b0192f137106e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeTime: 2
+  _meshDestroyDelay: 1
+  _posToSpawn: {fileID: 4586747537336654755}
+  _meshRefreshRate: 0.1
+  _mat: {fileID: 2100000, guid: ef793e1dde5c50b4e993569b832f777a, type: 2}
 --- !u!1001 &4899010272101055616
 PrefabInstance:
   m_ObjectHideFlags: 0
