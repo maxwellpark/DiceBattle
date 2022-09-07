@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletDisplayUI : MonoBehaviour
+public class BulletDisplayUI : Singleton<BulletDisplayUI>
 {
     [SerializeField]
     private BulletDisplayText _player1Text;
@@ -10,15 +10,29 @@ public class BulletDisplayUI : MonoBehaviour
     private PlayerShooting _playerShooting;
     private EnemyShooting _enemyShooting;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _playerShooting = FindObjectOfType<PlayerShooting>();
         _enemyShooting = FindObjectOfType<EnemyShooting>();
         RegisterEvents();
+    }
 
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(_player1Text);
-        DontDestroyOnLoad(_player2Text);
+    private void Start()
+    {
+        if (_player1Text == null)
+        {
+            var p1TextObj = GameObject.FindGameObjectWithTag("Player1BulletText");
+            if (p1TextObj != null)
+                _player1Text = p1TextObj.GetComponent<BulletDisplayText>();
+        }
+
+        if (_player2Text == null)
+        {
+            var p2TextObj = GameObject.FindGameObjectWithTag("Player2BulletText");
+            if (p2TextObj != null)
+                _player2Text = p2TextObj.GetComponent<BulletDisplayText>();
+        }
     }
 
     private void UpdateText(BulletDisplayText text, PlayerShooting shooting, bool reloading = false)
@@ -67,19 +81,37 @@ public class BulletDisplayUI : MonoBehaviour
         {
             UpdateText(_player2Text, _enemyShooting);
         };
-        GameManager.onNewRound += () =>
-        {
-            UpdateText(_player1Text, _playerShooting);
-            UpdateText(_player2Text, _enemyShooting);
-            ToggleTexts(true);
-        };
-        GameManager.onRoundComplete += () =>
-        {
-            ToggleTexts(false);
-        };
-        GameManager.onBattleComplete += () =>
-        {
-            ToggleTexts(false);
-        };
+        GameManager.onNewRound += OnNewRoundHandler;
+        GameManager.onRoundComplete += OnRoundCompleteHandler;
+        GameManager.onBattleComplete += OnBattleCompleteHandler;
+    }
+
+    private void OnNewRoundHandler()
+    {
+        UpdateText(_player1Text, _playerShooting);
+        UpdateText(_player2Text, _enemyShooting);
+        ToggleTexts(true);
+    }
+
+    private void OnRoundCompleteHandler()
+    {
+        ToggleTexts(false);
+    }
+
+    private void OnBattleCompleteHandler()
+    {
+        ToggleTexts(false);
+    }
+
+    private void UnRegisterEvents()
+    {
+        GameManager.onNewRound -= OnNewRoundHandler;
+        GameManager.onRoundComplete -= OnRoundCompleteHandler;
+        GameManager.onBattleComplete -= OnBattleCompleteHandler;
+    }
+
+    private void OnDestroy()
+    {
+        UnRegisterEvents();
     }
 }

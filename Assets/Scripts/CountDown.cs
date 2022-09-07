@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CountDown : MonoBehaviour
+public class CountDown : Singleton<CountDown>
 {
     [SerializeField]
     private float _timeLimit = 10f;
@@ -15,9 +15,9 @@ public class CountDown : MonoBehaviour
 
     public static event UnityAction onCountDownEnd;
 
-    private void Awake()
+    protected override void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
         DontDestroyOnLoad(_countDownText);
     }
 

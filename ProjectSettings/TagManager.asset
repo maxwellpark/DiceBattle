@@ -10,6 +10,8 @@ TagManager:
   - EnemyBullet
   - Enemy
   - BarrierManager
+  - Player1BulletText
+  - Player2BulletText
   layers:
   - Default
   - TransparentFX

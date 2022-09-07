@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : Singleton<SceneLoader>
 {
     public string tutorialSceneName;
     public string titleSceneName;
@@ -12,8 +12,9 @@ public class SceneLoader : MonoBehaviour
 
     private MusicManager _musicManager;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _musicManager = FindObjectOfType<MusicManager>();
         DontDestroyOnLoad(gameObject);
     }

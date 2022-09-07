@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuTransitionManager : MonoBehaviour
+public class MenuTransitionManager : Singleton<MenuTransitionManager>
 {
     private MusicManager _musicManager;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _musicManager = FindObjectOfType<MusicManager>();
         DontDestroyOnLoad(gameObject);
     }

@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2BulletText
       objectReference: {fileID: 0}
+    - target: {fileID: 7356619072541577102, guid: a6e48604befb4904082d1303749081b4, type: 3}
+      propertyPath: m_TagString
+      value: Player2BulletText
+      objectReference: {fileID: 0}
     - target: {fileID: 7356619072541577103, guid: a6e48604befb4904082d1303749081b4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -251,6 +255,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7356619072541577102, guid: a6e48604befb4904082d1303749081b4, type: 3}
       propertyPath: m_Name
+      value: Player1BulletText
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356619072541577102, guid: a6e48604befb4904082d1303749081b4, type: 3}
+      propertyPath: m_TagString
       value: Player1BulletText
       objectReference: {fileID: 0}
     - target: {fileID: 7356619072541577103, guid: a6e48604befb4904082d1303749081b4, type: 3}
