@@ -1,32 +1,35 @@
 fileFormatVersion: 2
-guid: 5205634e6b7f31749ad5dc15f25708fc
+guid: 7ae8b7a5110a44644b9fe7411137814e
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -5081630822047962297
-    second: Armature|dieing.002
+      74: 5973949734193549303
+    second: Armature|Armature|Armature|Armature|Armature|hit.001
   - first:
-      74: 3459509062478054866
-    second: Armature|dieing1
+      74: -7261588486704547445
+    second: Armature|Armature|Armature|Armature|Armature|idle027
   - first:
-      74: 2235894005628196251
-    second: Armature|hit.001
+      74: -2689119422837482620
+    second: Armature|Armature|Armature|Armature|Armature|idle1
   - first:
-      74: 2923318462195338971
-    second: Armature|idle027
+      74: -1487110410525114675
+    second: Armature|Armature|Armature|Armature|Armature|idle2
   - first:
-      74: 3297461196283193974
-    second: Armature|idle1
+      74: 3639014794676575703
+    second: Armature|Armature|Armature|Armature|Armature|reactHit
   - first:
-      74: 6958968346802185837
-    second: Armature|idle2
+      74: -8530686096564181008
+    second: Armature|Armature|Armature|Armature|Armature|shoot.001
   - first:
-      74: -6586139752638934359
-    second: Armature|reactHit
+      74: -6075444569960973409
+    second: Armature|Armature|Armature|idle
   - first:
-      74: 3070128558420827847
-    second: Armature|shoot.001
+      74: -4403783312228647136
+    second: Armature|Armature|Armature|victory
+  - first:
+      74: -9131349657557742433
+    second: Armature|die
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -37,7 +40,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: texrobotboy4
-    second: {fileID: 2100000, guid: c778e37cd49289544a31afed74fd5bc9, type: 2}
+    second: {fileID: 2100000, guid: 99687ba479303b341b60c1184284cbb6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -67,11 +70,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|dieing1
-      takeName: Armature|dieing1
+      name: Armature|Armature|Armature|Armature|Armature|hit.001
+      takeName: Armature|Armature|Armature|Armature|Armature|hit.001
       internalID: 0
       firstFrame: 0
-      lastFrame: 70
+      lastFrame: 148
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -96,8 +99,37 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|idle1
-      takeName: Armature|idle1
+      name: Armature|Armature|Armature|Armature|Armature|idle027
+      takeName: Armature|Armature|Armature|Armature|Armature|idle027
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 190
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Armature|Armature|Armature|Armature|idle1
+      takeName: Armature|Armature|Armature|Armature|Armature|idle1
       internalID: 0
       firstFrame: 0
       lastFrame: 120
@@ -125,8 +157,37 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|reactHit
-      takeName: Armature|reactHit
+      name: Armature|Armature|Armature|Armature|Armature|idle2
+      takeName: Armature|Armature|Armature|Armature|Armature|idle2
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 148
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Armature|Armature|Armature|Armature|reactHit
+      takeName: Armature|Armature|Armature|Armature|Armature|reactHit
       internalID: 0
       firstFrame: 0
       lastFrame: 38
@@ -154,8 +215,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|shoot.001
-      takeName: Armature|shoot.001
+      name: Armature|Armature|Armature|Armature|Armature|shoot.001
+      takeName: Armature|Armature|Armature|Armature|Armature|shoot.001
       internalID: 0
       firstFrame: 0
       lastFrame: 18
@@ -182,7 +243,94 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 1
+    - serializedVersion: 16
+      name: Armature|Armature|Armature|idle
+      takeName: Armature|Armature|Armature|idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 148
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Armature|Armature|victory
+      takeName: Armature|Armature|Armature|victory
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 456
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|die
+      takeName: Armature|die
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
