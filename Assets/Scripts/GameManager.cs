@@ -213,8 +213,9 @@ public class GameManager : Singleton<GameManager>
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Time.timeScale = 1f;
         FindReferences();
-        if (scene.name == "BattleScene" && !inBattle)
+        if (scene.name == "BattleScene")
         {
             RegisterBattleEvents();
             Init();
