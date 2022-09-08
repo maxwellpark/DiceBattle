@@ -10,14 +10,6 @@ public class ScoreUI : MonoBehaviour
     [SerializeField]
     private TMP_Text _currentRoundText;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(_p1ScoreText);
-        DontDestroyOnLoad(_p2ScoreText);
-        DontDestroyOnLoad(_currentRoundText);
-    }
-
     private void Start()
     {
         ResetUI();

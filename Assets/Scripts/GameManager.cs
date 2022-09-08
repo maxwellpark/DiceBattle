@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     private NewRoundsUI _newRoundsUI;
     private ScoreUI _scoreUI;
@@ -30,39 +31,10 @@ public class GameManager : MonoBehaviour
     public static event UnityAction onNewRound;
     public static event UnityAction onRoundComplete;
     public static event UnityAction onBattleComplete;
-    public static event UnityAction<bool> onBattleCompleteFlag;
 
-    private void Awake()
+    protected override void Awake()
     {
-        _newRoundsUI = FindObjectOfType<NewRoundsUI>();
-        _scoreUI = FindObjectOfType<ScoreUI>();
-        _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
-
-        var playerObj = GameObject.FindWithTag("Player");
-        if (playerObj == null)
-            throw new System.Exception("Player not found");
-
-        player = playerObj.GetComponent<Player>();
-        playerShooting = playerObj.GetComponent<PlayerShooting>();
-
-        var enemyObj = GameObject.FindWithTag("Enemy");
-        if (enemyObj == null)
-            throw new System.Exception("Enemy not found");
-
-        enemy = enemyObj.GetComponent<EnemyPlayer>();
-        enemyShooting = enemyObj.GetComponent<EnemyShooting>();
-        _diceManager = FindObjectOfType<DiceManager>();
-        _barrierManager = FindObjectOfType<BarrierManager>();
-        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
-
-        RegisterEvents();
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        Init();
-        NewBattle();
+        base.Awake();
     }
 
     public void NewBattle()
@@ -140,34 +112,46 @@ public class GameManager : MonoBehaviour
         _newRoundsUI.ShowNewBattleUI(false);
         currentRound = 0;
         onBattleComplete?.Invoke();
-        onBattleCompleteFlag?.Invoke(player1Wins);
         ToggleObjects(false);
         _menuTransitionManager.Transition(_battleEndTransitionData);
     }
 
-    private void RegisterEvents()
+    private void RegisterBattleEvents()
     {
-        enemyShooting.onDeath += () =>
-        {
-            playerRoundsWon++;
-            RoundComplete();
-            _scoreUI.UpdateRoundTextForEndOfRound(true);
-        };
+        enemyShooting.onDeath += OnEnemyDeath;
+        playerShooting.onDeath += OnPlayerDeath;
+    }
 
-        playerShooting.onDeath += () =>
-        {
-            enemyRoundsWon++;
-            RoundComplete();
-            _scoreUI.UpdateRoundTextForEndOfRound(false);
-        };
+    private void UnRegisterBattleEvents()
+    {
+        enemyShooting.onDeath -= OnEnemyDeath;
+        playerShooting.onDeath -= OnPlayerDeath;
+    }
 
+    private void OnEnemyDeath()
+    {
+        playerRoundsWon++;
+        RoundComplete();
+        _scoreUI.UpdateRoundTextForEndOfRound(true);
+    }
+
+    private void OnPlayerDeath()
+    {
+        enemyRoundsWon++;
+        RoundComplete();
+        _scoreUI.UpdateRoundTextForEndOfRound(false);
+    }
+
+    private void OnCountDownEnd()
+    {
         // Round is drawn if count down event fires
-        CountDown.onCountDownEnd += () =>
-        {
-            RoundComplete();
-            _scoreUI.UpdateRoundTextForDraw();
-        };
-        DestroyTimer.onDestroy += () => inBattle = true;
+        RoundComplete();
+        _scoreUI.UpdateRoundTextForDraw();
+    }
+
+    private void OnDestroyTimerEnd()
+    {
+        inBattle = true;
     }
 
     private void Init()
@@ -191,6 +175,53 @@ public class GameManager : MonoBehaviour
             _bulletDisplayUI.ClearTexts();
     }
 
+    private void FindReferences()
+    {
+        _newRoundsUI = FindObjectOfType<NewRoundsUI>();
+        _scoreUI = FindObjectOfType<ScoreUI>();
+        _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
+
+        // Get player refs 
+        var playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null)
+        {
+            player = playerObj.GetComponent<Player>();
+            playerShooting = playerObj.GetComponent<PlayerShooting>();
+        }
+        else
+        {
+            Debug.LogWarning("Player not found");
+        }
+
+        // Get enemy refs
+        var enemyObj = GameObject.FindWithTag("Enemy");
+        if (enemyObj != null)
+        {
+            enemy = enemyObj.GetComponent<EnemyPlayer>();
+            enemyShooting = enemyObj.GetComponent<EnemyShooting>();
+        }
+        else
+        {
+            Debug.LogWarning("Enemy not found");
+        }
+
+        // Get general refs
+        _diceManager = FindObjectOfType<DiceManager>();
+        _barrierManager = FindObjectOfType<BarrierManager>();
+        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FindReferences();
+        if (scene.name == "BattleScene" && !inBattle)
+        {
+            RegisterBattleEvents();
+            Init();
+            NewBattle();
+        }
+    }
+
     public IEnumerator WaitForDiceAndStartRound(int p1Roll, int p2Roll)
     {
         inBattle = false;
@@ -204,8 +235,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //// For testing 
-        //if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
-        //    NewGame(Random.Range(1, 7), Random.Range(1, 7));
+        // For testing 
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
+        {
+            //NewBattle();
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        CountDown.onCountDownEnd += OnCountDownEnd;
+        DestroyTimer.onDestroy += OnDestroyTimerEnd;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        CountDown.onCountDownEnd -= OnCountDownEnd;
+        DestroyTimer.onDestroy -= OnDestroyTimerEnd;
     }
 }

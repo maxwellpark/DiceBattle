@@ -6,23 +6,23 @@ public enum MusicState
     Battle, BattleEnd, Menu, None
 }
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : Singleton<MusicManager>
 {
     public AudioSource battleSrc;
     public AudioSource battleEndSrc;
     public AudioSource menuSrc;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         menuSrc.enabled = true;
         battleSrc.enabled = true;
         battleEndSrc.enabled = true;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void PlayMusic(MusicState state)
     {
-        AudioSource src = default;
+        AudioSource src;
 
         switch (state)
         {
@@ -37,7 +37,7 @@ public class MusicManager : MonoBehaviour
                 break;
             case MusicState.None:
                 ResetSrcs();
-                break;
+                return;
             default:
                 throw new Exception("Invalid music state");
         }
@@ -52,6 +52,7 @@ public class MusicManager : MonoBehaviour
     private void ResetSrcs()
     {
         battleSrc.Stop();
+        battleEndSrc.Stop();
         menuSrc.Stop();
     }
 }
