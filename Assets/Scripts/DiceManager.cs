@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DiceManager : MonoBehaviour
+public class DiceManager : Singleton<DiceManager>
 {
     [SerializeField]
     private GameObject _dicePrefab;
@@ -14,9 +14,9 @@ public class DiceManager : MonoBehaviour
     [SerializeField]
     private Vector3 _diceScale;
 
-    private void Awake()
+    protected override void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
         DontDestroyOnLoad(_diceContainer);
     }
 

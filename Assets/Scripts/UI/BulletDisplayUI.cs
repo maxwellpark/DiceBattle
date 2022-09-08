@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletDisplayUI : Singleton<BulletDisplayUI>
+public class BulletDisplayUI : MonoBehaviour
 {
     [SerializeField]
     private BulletDisplayText _player1Text;
@@ -10,9 +10,8 @@ public class BulletDisplayUI : Singleton<BulletDisplayUI>
     private PlayerShooting _playerShooting;
     private EnemyShooting _enemyShooting;
 
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         _playerShooting = FindObjectOfType<PlayerShooting>();
         _enemyShooting = FindObjectOfType<EnemyShooting>();
         RegisterEvents();

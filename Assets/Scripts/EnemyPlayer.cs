@@ -118,7 +118,12 @@ public class EnemyPlayer : Player
     protected override void RegisterEvents()
     {
         // Prefer barriers when health is low 
-        EnemyShooting.onLowHealth += () => _barrierPref = true;
+        EnemyShooting.onLowHealth += OnLowHealth;
+    }
+
+    protected void OnLowHealth()
+    {
+        _barrierPref = true;
     }
 
     private void Realign()
@@ -138,5 +143,10 @@ public class EnemyPlayer : Player
             return;
 
         grid.UpdateGrid(currentCell);
+    }
+
+    private void OnDestroy()
+    {
+        EnemyShooting.onLowHealth -= OnLowHealth;
     }
 }

@@ -68,4 +68,9 @@ public class CountDown : Singleton<CountDown>
 
         return Color.red;
     }
+
+    private void OnDestroy()
+    {
+        GameManager.onNewRound -= ResetCountDown;
+    }
 }

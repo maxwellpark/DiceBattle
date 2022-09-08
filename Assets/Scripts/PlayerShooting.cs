@@ -14,7 +14,7 @@ public class PlayerShooting : MonoBehaviour
     private string _bulletColliderTag;
 
     [SerializeField]
-    private float _reloadTimeInSeconds;
+    protected float _reloadTimeInSeconds;
     public int magSize;
     public int shotsRemaining;
 
@@ -35,9 +35,9 @@ public class PlayerShooting : MonoBehaviour
     protected virtual void Start()
     {
         // Set tag to collide with based on tag
-        if (gameObject.tag == "Player")
+        if (gameObject.CompareTag("Player"))
             _bulletColliderTag = "EnemyBullet";
-        else if (gameObject.tag == "Enemy")
+        else if (gameObject.CompareTag("Enemy"))
             _bulletColliderTag = "PlayerBullet";
         else
             throw new System.Exception("Invalid tag");

@@ -86,6 +86,13 @@ public class EnemyShooting : PlayerShooting
         return delay;
     }
 
+    protected override IEnumerator Reload()
+    {
+        _canShoot = false;
+        yield return base.Reload();
+        _canShoot = true;
+    }
+
     protected bool IsInRowConstraint()
     {
         var playerCell = _player.grid.currentCell;

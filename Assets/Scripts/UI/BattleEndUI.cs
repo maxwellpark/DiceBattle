@@ -8,7 +8,6 @@ public class BattleEndUI : MonoBehaviour
 
     private ScoreUI _scoreUI;
 
-    // Start is called before the first frame update
     void Start()
     {
         _scoreUI = FindObjectOfType<ScoreUI>();
@@ -16,14 +15,7 @@ public class BattleEndUI : MonoBehaviour
         if (_scoreUI != null)
             _scoreUI.ResetUI();
 
-        GameManager.onBattleCompleteFlag += p1Wins => UpdateText(p1Wins);
         UpdateText(GameManager.playerRoundsWon >= 2);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void UpdateText(bool player1Wins)
