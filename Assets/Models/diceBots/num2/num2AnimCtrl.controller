@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-2491198424409243733
+--- !u!1102 &-7286196658786286053
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature|shoot
+  m_Name: Armature|Armature|Armature|Armature|Armature|VictoryAnim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,20 +20,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6514314738942255339, guid: fac6878dc2487c746ab5c291d58fdcf0, type: 3}
+  m_Motion: {fileID: 7166318512163416089, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-1762837224829848865
+--- !u!1102 &-4245917972186054093
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DefeatAnim
+  m_Name: Armature|Armature|Armature|Armature|Armature|DefeatAnim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -46,7 +46,59 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6202417250690305952, guid: fac6878dc2487c746ab5c291d58fdcf0, type: 3}
+  m_Motion: {fileID: -6012916228674525717, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-1270766926362443730
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Armature|Armature|Armature|Armature|Armature|Armature|Armature|idle
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 5854833139495946130, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &-347975050815424321
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Armature|Armature|Armature|Armature|Armature|Armature|Armature|hurt
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 1136357912904446627, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -74,14 +126,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &983647679311600874
+--- !u!1102 &99932230149900414
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature|hurt
+  m_Name: Armature|Armature|Armature|Armature|Armature|Armature|Armature|shoot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -94,7 +146,59 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 5470755609133820506, guid: fac6878dc2487c746ab5c291d58fdcf0, type: 3}
+  m_Motion: {fileID: 2510931442639349759, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &3425050370134827549
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Armature|DodgeFoward
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -563281858505177060, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &5524272646311851165
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Armature|DodgeRighht
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -7967176240761202419, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -110,20 +214,32 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 983647679311600874}
-    m_Position: {x: 350, y: 70, z: 0}
+    m_State: {fileID: 8428986839076410463}
+    m_Position: {x: 368.09875, y: 429.88474, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 7167341745251970084}
-    m_Position: {x: 320, y: 130, z: 0}
+    m_State: {fileID: 3425050370134827549}
+    m_Position: {x: 378.09875, y: 439.88474, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -2491198424409243733}
-    m_Position: {x: 370, y: 260, z: 0}
+    m_State: {fileID: 7475649312478558750}
+    m_Position: {x: 388.09875, y: 449.88474, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -1762837224829848865}
-    m_Position: {x: 390, y: 340, z: 0}
+    m_State: {fileID: 5524272646311851165}
+    m_Position: {x: 398.09875, y: 459.88474, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 5917908332416155847}
-    m_Position: {x: 330, y: 210, z: 0}
+    m_State: {fileID: -7286196658786286053}
+    m_Position: {x: 537.29724, y: 270.78775, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4245917972186054093}
+    m_Position: {x: 739.3252, y: 359.175, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 99932230149900414}
+    m_Position: {x: 671.14075, y: 114.21607, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1270766926362443730}
+    m_Position: {x: 335.2693, y: 99.06399, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -347975050815424321}
+    m_Position: {x: 736.7998, y: 571.3043, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -133,15 +249,15 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -1762837224829848865}
---- !u!1102 &5917908332416155847
+  m_DefaultState: {fileID: 8428986839076410463}
+--- !u!1102 &7475649312478558750
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VictoryAnim
+  m_Name: Armature|DodgeLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -154,20 +270,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -4862117126793046205, guid: fac6878dc2487c746ab5c291d58fdcf0, type: 3}
+  m_Motion: {fileID: -2064942323879628708, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &7167341745251970084
+--- !u!1102 &8428986839076410463
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature|idle
+  m_Name: Armature|DodgeBack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -180,7 +296,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2303113150034500511, guid: fac6878dc2487c746ab5c291d58fdcf0, type: 3}
+  m_Motion: {fileID: -2846330962234241766, guid: a2f43711ddea63d43bcbdcc3445f4c9c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
