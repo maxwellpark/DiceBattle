@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, destination, elapsed / _moveDuration);
             elapsed += Time.deltaTime;
 
+            // Allow input buffering
             if (elapsed >= _moveBuffer)
                 _directionLocked = false;
 
