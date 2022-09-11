@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _moveBuffer = 0.2f;
 
-    private bool _directionLocked;
+    protected bool _directionLocked;
     public float moveDelta;
 
     protected virtual void Start()

@@ -39,7 +39,7 @@ public class EnemyPlayer : Player
             Realign();
 
         moveDelta += Time.deltaTime; // To cover downtime 
-        if (!_canMove)
+        if (!_canMove || _directionLocked)
             return;
 
         base.Update();
