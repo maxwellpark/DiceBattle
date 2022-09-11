@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +9,12 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private float _yOffset = 1f;
+    [SerializeField]
+    private float _moveDuration = 0.25f;
+    [SerializeField]
+    private float _moveBuffer = 0.2f;
 
+    protected bool _directionLocked;
     public float moveDelta;
 
     protected virtual void Start()
@@ -28,13 +34,19 @@ public class Player : MonoBehaviour
 
         if (cell != null)
         {
-            MovePlayer(cell.transform.position);
+            var destination = new Vector3(
+                cell.transform.position.x, cell.transform.position.y + _yOffset, cell.transform.position.z);
+
+            StartCoroutine(MovePlayerSmooth(transform.position, destination));
             onPlayerMove?.Invoke();
         }
     }
 
     protected virtual Direction GetDirection()
     {
+        if (_directionLocked)
+            return Direction.Neutral;
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             return Direction.Up;
 
@@ -52,12 +64,34 @@ public class Player : MonoBehaviour
 
     protected void MovePlayer(Vector3 destination)
     {
-        transform.position = new Vector3(destination.x, destination.y + _yOffset, destination.z);
+        var offsetDest = new Vector3(destination.x, destination.y + _yOffset, destination.z); // Add y offset
+        transform.position = offsetDest;
         moveDelta = 0f;
+    }
+
+    protected IEnumerator MovePlayerSmooth(Vector3 startPosition, Vector3 destination)
+    {
+        _directionLocked = true;
+        var elapsed = 0f;
+
+        while (elapsed < _moveDuration)
+        {
+            transform.position = Vector3.Lerp(startPosition, destination, elapsed / _moveDuration);
+            elapsed += Time.deltaTime;
+
+            // Allow input buffering
+            if (elapsed >= _moveBuffer)
+                _directionLocked = false;
+
+            yield return null;
+        }
+        transform.position = destination;
+        _directionLocked = false;
     }
 
     public virtual void ResetSelf()
     {
+        _directionLocked = false;
         gameObject.SetActive(true);
         GoToRandomCell();
     }
@@ -73,5 +107,10 @@ public class Player : MonoBehaviour
     protected virtual void RegisterEvents()
     {
 
+    }
+
+    private void OnValidate()
+    {
+        _moveBuffer = Mathf.Min(_moveDuration, _moveBuffer);
     }
 }

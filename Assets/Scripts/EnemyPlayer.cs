@@ -39,7 +39,7 @@ public class EnemyPlayer : Player
             Realign();
 
         moveDelta += Time.deltaTime; // To cover downtime 
-        if (!_canMove)
+        if (!_canMove || _directionLocked)
             return;
 
         base.Update();
@@ -132,7 +132,8 @@ public class EnemyPlayer : Player
 
         foreach (var cell in grid.cellCollection)
         {
-            if (cell.transform.position.z == transform.position.z)
+            if (cell.transform.position.z == transform.position.z 
+                && cell.transform.position.x == transform.position.x)
             {
                 currentCell = cell;
                 break;
