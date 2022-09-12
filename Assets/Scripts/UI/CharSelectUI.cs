@@ -10,6 +10,10 @@ public class CharSelectUI : MonoBehaviour
     private GameObject _btnPrefab;
 
     private CharacterManager _charManager;
+    private MenuTransitionManager _menuTransManager;
+
+    [SerializeField]
+    private MenuTransitionData _transData;
 
     public void CreateButtons()
     {
@@ -28,12 +32,36 @@ public class CharSelectUI : MonoBehaviour
     private void SelectChar(CharacterData data)
     {
         _charManager.p1CharData = data;
+        _menuTransManager.Transition(_transData);
+
+        // Remove if implementing human P2
+        SelectEnemyChar();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         _charManager = FindObjectOfType<CharacterManager>();
+        _menuTransManager = FindObjectOfType<MenuTransitionManager>();
         CreateButtons();
+    }
+
+    private void SelectEnemyChar()
+    {
+        CharacterData enemyChar = default;
+
+        foreach (var @char in _container.chars)
+        {
+            if (@char != _charManager.p1CharData)
+            {
+                enemyChar = @char;
+                break;
+            }
+        }
+
+        if (enemyChar == null)
+            Debug.LogError("Could not set enemy char data");
+
+        _charManager.p2CharData = enemyChar;
     }
 }
