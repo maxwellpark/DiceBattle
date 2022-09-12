@@ -8,7 +8,7 @@ public class CharacterManager : Singleton<CharacterManager>
     public void CreateChars()
     {
         CreateP1Char();
-        CreateP2Char();
+        //CreateP2Char();
     }
 
     public GameObject CreateP1Char()

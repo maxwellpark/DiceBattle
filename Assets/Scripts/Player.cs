@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
 
     protected virtual void Start()
     {
+        var gridObj = GameObject.FindWithTag("PlayerGrid");
+        if (gridObj == null)
+            Debug.LogError("Could not find PlayerGrid (by tag)");
+        else
+            grid = gridObj.GetComponent<Grid>();
         MovePlayer(grid.currentCell.transform.position);
     }
 

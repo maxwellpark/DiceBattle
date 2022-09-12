@@ -182,6 +182,14 @@ public class GameManager : Singleton<GameManager>
         _scoreUI = FindObjectOfType<ScoreUI>();
         _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
 
+        _diceManager = FindObjectOfType<DiceManager>();
+        _barrierManager = FindObjectOfType<BarrierManager>();
+        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
+        _characterManager = FindObjectOfType<CharacterManager>();
+    }
+
+    private void FindPlayerReferences()
+    {
         // Get player refs 
         var playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
@@ -205,12 +213,6 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.LogWarning("Enemy not found");
         }
-
-        // Get general refs
-        _diceManager = FindObjectOfType<DiceManager>();
-        _barrierManager = FindObjectOfType<BarrierManager>();
-        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
-        _characterManager = FindObjectOfType<CharacterManager>();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -218,8 +220,9 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1f;
         if (scene.name == "BattleScene")
         {
-            _characterManager.CreateChars();
             FindReferences();
+            _characterManager.CreateChars();
+            FindPlayerReferences();
             RegisterBattleEvents();
             Init();
             NewBattle();
