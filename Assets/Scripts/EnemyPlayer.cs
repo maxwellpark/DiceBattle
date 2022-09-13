@@ -20,7 +20,7 @@ public class EnemyPlayer : Player
     protected readonly float _timeout = 2f;
     protected bool _barrierPref;
 
-    protected override void Start()
+    public override void Init()
     {
         _playerObj = GameObject.FindWithTag("Player");
 
@@ -30,7 +30,13 @@ public class EnemyPlayer : Player
         _player = _playerObj.GetComponent<Player>();
         onPlayerMove += () => StartCoroutine(DelayMovement());
         //_player.onPlayerMove += () => StartCoroutine(DelayMovement());
-        base.Start();
+
+        var gridObj = GameObject.FindWithTag("EnemyGrid");
+        if (gridObj == null)
+            Debug.LogError("Could not find EnemyGrid (by tag)");
+        else
+            grid = gridObj.GetComponent<Grid>();
+        MovePlayer(grid.currentCell.transform.position);
     }
 
     protected override void Update()
@@ -47,6 +53,9 @@ public class EnemyPlayer : Player
 
     protected override Direction GetDirection()
     {
+        if (_directionLocked)
+            return Direction.Neutral;
+
         var playerCell = _player.grid.currentCell;
         var enemyCell = grid.currentCell;
 
@@ -132,7 +141,7 @@ public class EnemyPlayer : Player
 
         foreach (var cell in grid.cellCollection)
         {
-            if (cell.transform.position.z == transform.position.z 
+            if (cell.transform.position.z == transform.position.z
                 && cell.transform.position.x == transform.position.x)
             {
                 currentCell = cell;

@@ -17,8 +17,13 @@ public class Player : MonoBehaviour
     protected bool _directionLocked;
     public float moveDelta;
 
-    protected virtual void Start()
+    public virtual void Init()
     {
+        var gridObj = GameObject.FindWithTag("PlayerGrid");
+        if (gridObj == null)
+            Debug.LogError("Could not find PlayerGrid (by tag)");
+        else
+            grid = gridObj.GetComponent<Grid>();
         MovePlayer(grid.currentCell.transform.position);
     }
 

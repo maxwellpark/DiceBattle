@@ -11,9 +11,9 @@ public class EnemyPlayerSequential : EnemyPlayer
     private bool _randomOrder;
     private readonly System.Random _random = new System.Random();
 
-    protected override void Start()
+    public override void Init()
     {
-        base.Start();
+        base.Init();
 
         if (_randomOrder)
             ShuffleSequences();
@@ -37,6 +37,9 @@ public class EnemyPlayerSequential : EnemyPlayer
 
     protected override Direction GetDirection()
     {
+        if (_directionLocked)
+            return Direction.Neutral;
+
         if (_sequenceIndex > container.sequences.Length - 1)
         {
             ResetSequences();

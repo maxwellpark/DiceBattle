@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     private DiceManager _diceManager;
     private BarrierManager _barrierManager;
     private MenuTransitionManager _menuTransitionManager;
+    private CharacterManager _characterManager;
 
     public static int currentRound;
     public static int playerRoundsWon;
@@ -39,7 +40,7 @@ public class GameManager : Singleton<GameManager>
 
     public void NewBattle()
     {
-        Debug.Log("Setting up new battles...");
+        Debug.Log("Setting up new battle...");
         currentRound = 0;
         playerRoundsWon = 0;
         enemyRoundsWon = 0;
@@ -181,6 +182,14 @@ public class GameManager : Singleton<GameManager>
         _scoreUI = FindObjectOfType<ScoreUI>();
         _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
 
+        _diceManager = FindObjectOfType<DiceManager>();
+        _barrierManager = FindObjectOfType<BarrierManager>();
+        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
+        _characterManager = FindObjectOfType<CharacterManager>();
+    }
+
+    private void FindPlayerReferences()
+    {
         // Get player refs 
         var playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
@@ -204,20 +213,19 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.LogWarning("Enemy not found");
         }
-
-        // Get general refs
-        _diceManager = FindObjectOfType<DiceManager>();
-        _barrierManager = FindObjectOfType<BarrierManager>();
-        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Time.timeScale = 1f;
-        FindReferences();
         if (scene.name == "BattleScene")
         {
+            FindReferences();
+            _characterManager.CreateChars();
+            FindPlayerReferences();
             RegisterBattleEvents();
+            player.Init();
+            enemy.Init();
             Init();
             NewBattle();
         }
