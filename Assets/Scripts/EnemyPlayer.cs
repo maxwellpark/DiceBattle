@@ -53,6 +53,9 @@ public class EnemyPlayer : Player
 
     protected override Direction GetDirection()
     {
+        if (_directionLocked)
+            return Direction.Neutral;
+
         var playerCell = _player.grid.currentCell;
         var enemyCell = grid.currentCell;
 
