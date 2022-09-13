@@ -11,9 +11,9 @@ public class EnemyPlayerSequential : EnemyPlayer
     private bool _randomOrder;
     private readonly System.Random _random = new System.Random();
 
-    protected override void Start()
+    public override void Init()
     {
-        base.Start();
+        base.Init();
 
         if (_randomOrder)
             ShuffleSequences();

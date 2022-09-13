@@ -20,7 +20,7 @@ public class EnemyPlayer : Player
     protected readonly float _timeout = 2f;
     protected bool _barrierPref;
 
-    protected override void Start()
+    public override void Init()
     {
         _playerObj = GameObject.FindWithTag("Player");
 

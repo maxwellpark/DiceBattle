@@ -224,6 +224,8 @@ public class GameManager : Singleton<GameManager>
             _characterManager.CreateChars();
             FindPlayerReferences();
             RegisterBattleEvents();
+            player.Init();
+            enemy.Init();
             Init();
             NewBattle();
         }
