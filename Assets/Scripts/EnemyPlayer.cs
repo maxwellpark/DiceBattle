@@ -20,6 +20,8 @@ public class EnemyPlayer : Player
     protected readonly float _timeout = 2f;
     protected bool _barrierPref;
 
+    protected override string GridTag { get; } = "EnemyGrid";
+
     public override void Init()
     {
         _playerObj = GameObject.FindWithTag("Player");
@@ -30,13 +32,7 @@ public class EnemyPlayer : Player
         _player = _playerObj.GetComponent<Player>();
         onPlayerMove += () => StartCoroutine(DelayMovement());
         //_player.onPlayerMove += () => StartCoroutine(DelayMovement());
-
-        var gridObj = GameObject.FindWithTag("EnemyGrid");
-        if (gridObj == null)
-            Debug.LogError("Could not find EnemyGrid (by tag)");
-        else
-            grid = gridObj.GetComponent<Grid>();
-        MovePlayer(grid.currentCell.transform.position);
+        base.Init();
     }
 
     protected override void Update()

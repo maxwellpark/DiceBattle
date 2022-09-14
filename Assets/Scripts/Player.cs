@@ -17,11 +17,13 @@ public class Player : MonoBehaviour
     protected bool _directionLocked;
     public float moveDelta;
 
+    protected virtual string GridTag { get; } = "PlayerGrid";
+
     public virtual void Init()
     {
-        var gridObj = GameObject.FindWithTag("PlayerGrid");
+        var gridObj = GameObject.FindWithTag(GridTag);
         if (gridObj == null)
-            Debug.LogError("Could not find PlayerGrid (by tag)");
+            Debug.LogError($"Could not find grid '{GridTag}' by tag");
         else
             grid = gridObj.GetComponent<Grid>();
         MovePlayer(grid.currentCell.transform.position);
