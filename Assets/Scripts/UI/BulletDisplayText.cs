@@ -2,13 +2,13 @@ using TMPro;
 using UnityEngine;
 
 public class BulletDisplayText : MonoBehaviour
-{
+{   
     [SerializeField]
     private string _playerName;
 
     private TMP_Text _text;
 
-    private void Awake()
+    ?private void Awake()
     {
         _text = GetComponent<TMP_Text>();
     }

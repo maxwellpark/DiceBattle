@@ -23,6 +23,7 @@ public class PlayerShooting : MonoBehaviour
     public event UnityAction onEmptyMag;
     public event UnityAction onReloadStart;
     public event UnityAction onReloadEnd;
+    public event UnityAction<int> onDamageTaken;
     public event UnityAction onDeath;
 
     public virtual void SetupShooting(int magSize)
@@ -79,6 +80,7 @@ public class PlayerShooting : MonoBehaviour
         {
             Destroy(other.gameObject);
             _health--;
+            onDamageTaken?.Invoke(_health);
             if (_health <= 0)
             {
                 Die();
