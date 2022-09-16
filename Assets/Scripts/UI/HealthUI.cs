@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthUI : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class HealthUI : MonoBehaviour
     private string _p1Prefix = "P1 health: ";
     [SerializeField]
     private string _p2Prefix = "P2 health: ";
+
+    private (UnityAction<int>, UnityAction<int>) _dmgActions;
+    private (UnityAction, UnityAction) _rdActions;
 
     private (PlayerShooting p1, PlayerShooting p2) GetRefs()
     {
@@ -37,26 +41,35 @@ public class HealthUI : MonoBehaviour
     public void Init()
     {
         var (p1, p2) = GetRefs();
-        p1.onDamageTaken += h => SetText(h, _p1HealthText, _p1Prefix);
-        p2.onDamageTaken += h => SetText(h, _p2HealthText, _p2Prefix);
-        GameManager.onNewRound += () => SetText(p1.health, _p1HealthText, _p1Prefix);
-        GameManager.onNewRound += () => SetText(p2.health, _p2HealthText, _p2Prefix);
+
+        UnityAction<int> p1DmgAction = h => SetText(h, _p1HealthText, _p1Prefix);
+        UnityAction<int> p2DmgAction = h => SetText(h, _p2HealthText, _p2Prefix);
+        p1.onDamageTaken += p1DmgAction;
+        p2.onDamageTaken += p2DmgAction;
+        _dmgActions = (p1DmgAction, p2DmgAction);
+
+        UnityAction p1RdAction = () => SetText(p1.health, _p1HealthText, _p1Prefix);
+        UnityAction p2RdAction = () => SetText(p2.health, _p2HealthText, _p2Prefix);
+        GameManager.onNewRound += p1RdAction;
+        GameManager.onNewRound += p2RdAction;
+        _rdActions = (p1RdAction, p2RdAction);
+
         SetActive(true);
     }
 
     private void TearDown()
     {
         var (p1, p2) = GetRefs();
-        p1.onDamageTaken -= h => SetText(h, _p1HealthText, "P1 health: ");
-        p2.onDamageTaken -= h => SetText(h, _p2HealthText, "P2 health: ");
-        GameManager.onNewRound -= () => SetText(p1.health, _p1HealthText, _p1Prefix);
-        GameManager.onNewRound -= () => SetText(p2.health, _p2HealthText, _p2Prefix);
+        p1.onDamageTaken -= _dmgActions.Item1;
+        p2.onDamageTaken -= _dmgActions.Item2;
+        GameManager.onNewRound -= _rdActions.Item1;
+        GameManager.onNewRound -= _rdActions.Item2;
     }
 
     public void SetActive(bool active)
     {
         _p1HealthText.gameObject.SetActive(active);
-        _p1HealthText.gameObject.SetActive(active);
+        _p2HealthText.gameObject.SetActive(active);
     }
 
     // Start is called before the first frame update
