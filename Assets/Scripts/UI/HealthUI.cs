@@ -17,39 +17,32 @@ public class HealthUI : MonoBehaviour
     [SerializeField]
     private string _p2Prefix = "P2 health: ";
 
-    private (UnityAction<int>, UnityAction<int>) _dmgActions;
-    private (UnityAction, UnityAction) _rdActions;
+    private (UnityAction<int> p1, UnityAction<int> p2) _dmgActions;
+    private (UnityAction p1, UnityAction p2) _rdActions;
 
-    private (PlayerShooting p1, PlayerShooting p2) GetComps()
+    private (PlayerShooting p1, PlayerShooting p2) GetPlayerShootingComps()
     {
         _p1 = GameObject.FindWithTag("Player");
         _p2 = GameObject.FindWithTag("Enemy");
 
-        (PlayerShooting, PlayerShooting) comps = default;
+        (PlayerShooting p1, PlayerShooting p2) comps = default;
 
         if (_p1 == null || !_p1.TryGetComponent<PlayerShooting>(out var p1Comp))
-        {
             Debug.LogWarning("Could not get player obj in health script");
-        }
         else
-        {
-            comps.Item1 = p1Comp;
-        }
+            comps.p1 = p1Comp;
 
         if (_p2 == null || !_p2.TryGetComponent<PlayerShooting>(out var p2Comp))
-        {
             Debug.LogWarning("Could not get player obj in health script");
-        }
         else
-        {
-            comps.Item2 = p2Comp;
-        }
+            comps.p2 = p2Comp;
+
         return comps;
     }
 
     public void Init()
     {
-        var (p1, p2) = GetComps();
+        var (p1, p2) = GetPlayerShootingComps();
 
         UnityAction<int> p1DmgAction = h => SetText(h, _p1HealthText, _p1Prefix);
         UnityAction<int> p2DmgAction = h => SetText(h, _p2HealthText, _p2Prefix);
@@ -68,11 +61,16 @@ public class HealthUI : MonoBehaviour
 
     private void TearDown()
     {
-        var (p1, p2) = GetComps();
-        p1.onDamageTaken -= _dmgActions.Item1;
-        p2.onDamageTaken -= _dmgActions.Item2;
-        GameManager.onNewRound -= _rdActions.Item1;
-        GameManager.onNewRound -= _rdActions.Item2;
+        var (p1, p2) = GetPlayerShootingComps();
+
+        if (p1 != null)
+            p1.onDamageTaken -= _dmgActions.p1;
+
+        if (p2 != null)
+            p2.onDamageTaken -= _dmgActions.p2;
+
+        GameManager.onNewRound -= _rdActions.p1;
+        GameManager.onNewRound -= _rdActions.p2;
     }
 
     public void SetActive(bool active)
