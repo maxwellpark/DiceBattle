@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,26 +20,36 @@ public class HealthUI : MonoBehaviour
     private (UnityAction<int>, UnityAction<int>) _dmgActions;
     private (UnityAction, UnityAction) _rdActions;
 
-    private (PlayerShooting p1, PlayerShooting p2) GetRefs()
+    private (PlayerShooting p1, PlayerShooting p2) GetComps()
     {
         _p1 = GameObject.FindWithTag("Player");
         _p2 = GameObject.FindWithTag("Enemy");
 
+        (PlayerShooting, PlayerShooting) comps = default;
+
         if (_p1 == null || !_p1.TryGetComponent<PlayerShooting>(out var p1Comp))
         {
-            throw new Exception("Could not get player obj in health script");
+            Debug.LogWarning("Could not get player obj in health script");
+        }
+        else
+        {
+            comps.Item1 = p1Comp;
         }
 
         if (_p2 == null || !_p2.TryGetComponent<PlayerShooting>(out var p2Comp))
         {
-            throw new Exception("Could not get player obj in health script");
+            Debug.LogWarning("Could not get player obj in health script");
         }
-        return (p1Comp, p2Comp);
+        else
+        {
+            comps.Item2 = p2Comp;
+        }
+        return comps;
     }
 
     public void Init()
     {
-        var (p1, p2) = GetRefs();
+        var (p1, p2) = GetComps();
 
         UnityAction<int> p1DmgAction = h => SetText(h, _p1HealthText, _p1Prefix);
         UnityAction<int> p2DmgAction = h => SetText(h, _p2HealthText, _p2Prefix);
@@ -59,7 +68,7 @@ public class HealthUI : MonoBehaviour
 
     private void TearDown()
     {
-        var (p1, p2) = GetRefs();
+        var (p1, p2) = GetComps();
         p1.onDamageTaken -= _dmgActions.Item1;
         p2.onDamageTaken -= _dmgActions.Item2;
         GameManager.onNewRound -= _rdActions.Item1;
