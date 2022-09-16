@@ -10,7 +10,7 @@ public class PlayerShooting : MonoBehaviour
     private GameObject _bulletPrefab;
     [SerializeField]
     private int _maxHealth;
-    private int _health;
+    public int health;
     private string _bulletColliderTag;
 
     [SerializeField]
@@ -23,11 +23,12 @@ public class PlayerShooting : MonoBehaviour
     public event UnityAction onEmptyMag;
     public event UnityAction onReloadStart;
     public event UnityAction onReloadEnd;
+    public event UnityAction<int> onDamageTaken;
     public event UnityAction onDeath;
 
     public virtual void SetupShooting(int magSize)
     {
-        _health = _maxHealth;
+        health = _maxHealth;
         this.magSize = magSize;
         shotsRemaining = this.magSize;
     }
@@ -78,8 +79,9 @@ public class PlayerShooting : MonoBehaviour
         if (other.CompareTag(_bulletColliderTag))
         {
             Destroy(other.gameObject);
-            _health--;
-            if (_health <= 0)
+            health--;
+            onDamageTaken?.Invoke(health);
+            if (health <= 0)
             {
                 Die();
                 return;

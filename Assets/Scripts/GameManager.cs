@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     private NewRoundsUI _newRoundsUI;
     private ScoreUI _scoreUI;
     private BulletDisplayUI _bulletDisplayUI;
+    private HealthUI _healthUI;
 
     public Player player;
     public PlayerShooting playerShooting;
@@ -174,6 +175,7 @@ public class GameManager : Singleton<GameManager>
         enemy.gameObject.SetActive(active);
         if (!active)
             _bulletDisplayUI.ClearTexts();
+        _healthUI.SetActive(active);
     }
 
     private void FindReferences()
@@ -181,6 +183,7 @@ public class GameManager : Singleton<GameManager>
         _newRoundsUI = FindObjectOfType<NewRoundsUI>();
         _scoreUI = FindObjectOfType<ScoreUI>();
         _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
+        _healthUI = FindObjectOfType<HealthUI>();
 
         _diceManager = FindObjectOfType<DiceManager>();
         _barrierManager = FindObjectOfType<BarrierManager>();
@@ -226,6 +229,7 @@ public class GameManager : Singleton<GameManager>
             RegisterBattleEvents();
             player.Init();
             enemy.Init();
+            _healthUI.Init();
             Init();
             NewBattle();
         }
