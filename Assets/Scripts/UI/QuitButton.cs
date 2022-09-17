@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +27,7 @@ public class QuitButton : MonoBehaviour
         }
         else
         {
-            throw new NotImplementedException("Quit mode not supported");
+            Debug.LogError("Quit mode not supported");
         }
     }
 }
