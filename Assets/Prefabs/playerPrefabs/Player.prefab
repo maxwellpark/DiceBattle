@@ -115,7 +115,7 @@ MonoBehaviour:
   grid: {fileID: 0}
   _yOffset: 0.75
   _moveDuration: 0.25
-  _moveBuffer: 0.2
+  _moveBuffer: 0.225
   moveDelta: 0
 --- !u!114 &8934178152332887095
 MonoBehaviour:
