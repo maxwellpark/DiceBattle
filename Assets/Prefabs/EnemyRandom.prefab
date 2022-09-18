@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8482427136439136231}
-  - component: {fileID: 1800213191626168081}
+  - component: {fileID: -2112973677687662089}
   - component: {fileID: 8482427136439136230}
   - component: {fileID: 8482427136439136225}
   - component: {fileID: 8482427136439136224}
   - component: {fileID: 4953635035355557834}
   - component: {fileID: 240301917477649741}
   m_Layer: 0
-  m_Name: EnemySequential
+  m_Name: EnemyRandom
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1800213191626168081
+--- !u!114 &-2112973677687662089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,20 +46,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8482427136439136227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5f8c201257a918438a063f0fb0f83bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 2436809803d10e940bb603eb88b5fd56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
-  _yOffset: 0.75
+  _yOffset: 1
   _moveDuration: 0.25
-  _moveBuffer: 0.2
+  _moveBuffer: 0.225
   moveDelta: 0
   _moveDelayInSeconds: 0.35
-  _dynamicMovement: 1
+  _dynamicMovement: 0
   _moveDelayMin: 0.25
   _moveDelayMax: 0.75
-  container: {fileID: 11400000, guid: 911a622bc25c4c1408da14ea8a00078e, type: 2}
-  _randomOrder: 1
+  container: {fileID: 0}
+  _randomOrder: 0
 --- !u!33 &8482427136439136230
 MeshFilter:
   m_ObjectHideFlags: 0
