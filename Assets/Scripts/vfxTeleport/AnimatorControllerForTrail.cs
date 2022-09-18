@@ -54,7 +54,14 @@ public class AnimatorControllerForTrail : MonoBehaviour
             _myAnim.SetBool("goingLeft",true);    
         }else if(!Input.GetKey(KeyCode.A))
         {_myAnim.SetBool("goingLeft",false);   }
+
+
         
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            _myAnim.SetTrigger("shooting");
+
+        }
         
     }
 }
