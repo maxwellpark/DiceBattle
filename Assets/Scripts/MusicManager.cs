@@ -65,19 +65,13 @@ public class MusicManager : Singleton<MusicManager>
 
     private AudioSource GetSrcByState(MusicState state)
     {
+        Debug.Log("Getting audio src by music state: " + state);
+
         if (_srcMap.ContainsKey(state))
             return _srcMap[state];
 
         Debug.LogWarning("No item exists in src map with state key: " + state);
         return null;
-        //return state switch
-        //{
-        //    MusicState.Battle => battleSrc,
-        //    MusicState.BattleEnd => battleEndSrc,
-        //    MusicState.Menu => menuSrc,
-        //    MusicState.None => null,
-        //    _ => throw new Exception("Invalid music state"),
-        //};
     }
 
     public MusicState GetStateBySrc(AudioSource src)
@@ -89,22 +83,12 @@ public class MusicManager : Singleton<MusicManager>
         }
         Debug.LogWarning("No key found in src map for audio src: " + src);
         return MusicState.None;
-
-        //if (src == battleSrc)
-        //    return MusicState.Battle;
-
-        //if (src == battleEndSrc)
-        //    return MusicState.BattleEnd;
-
-        //if (src == menuSrc)
-        //    return MusicState.Menu;
-
-        //Debug.LogError("Audio src is either null or nothing is playing");
-        //return MusicState.None;
     }
 
     public MusicState GetStateByScene(string sceneName)
     {
+        Debug.Log("Getting music state for scene: " + sceneName);
+
         if (_sceneMap.ContainsKey(sceneName))
             return _sceneMap[sceneName];
 
