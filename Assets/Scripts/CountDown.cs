@@ -2,34 +2,27 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CountDown : Singleton<CountDown>
+public class CountDown : MonoBehaviour
 {
     [SerializeField]
-    private float _timeLimit = 10f;
+    protected float _timeLimit = 10f;
 
-    private float _thirdOfLimit;
-    private float _countDown;
+    protected float _thirdOfLimit;
+    protected float _countDown;
 
     [SerializeField]
-    private TMP_Text _countDownText;
+    protected TMP_Text _countDownText;
 
-    public static event UnityAction onCountDownEnd;
+    public event UnityAction onCountDownEnd;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(_countDownText);
-    }
-
-    private void Start()
+    protected virtual void Start()
     {
         _thirdOfLimit = _timeLimit / 3f;
         ResetCountDown();
-        GameManager.onNewRound += ResetCountDown;
         _countDownText.gameObject.SetActive(false);
     }
 
-    private void ResetCountDown()
+    protected virtual void ResetCountDown()
     {
         _countDownText.color = Color.white;
         SetText(0f);
@@ -37,7 +30,7 @@ public class CountDown : Singleton<CountDown>
         _countDown = _timeLimit;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!GameManager.inBattle)
             return;
@@ -53,12 +46,12 @@ public class CountDown : Singleton<CountDown>
         }
     }
 
-    private void SetText(float timeRemaining)
+    protected virtual void SetText(float timeRemaining)
     {
         _countDownText.text = "Time remaining: " + timeRemaining;
     }
 
-    private Color GetTextColor()
+    protected virtual Color GetTextColor()
     {
         if (_countDown > _timeLimit - _thirdOfLimit)
             return Color.green;
@@ -69,8 +62,28 @@ public class CountDown : Singleton<CountDown>
         return Color.red;
     }
 
-    private void OnDestroy()
+    protected virtual void RegisterEvents()
+    {
+        GameManager.onNewRound += ResetCountDown;
+    }
+
+    protected virtual void UnRegisterEvents()
     {
         GameManager.onNewRound -= ResetCountDown;
+    }
+
+    private void OnEnable()
+    {
+        RegisterEvents();
+    }
+
+    private void OnDisable()
+    {
+        UnRegisterEvents();
+    }
+
+    protected virtual void OnDestroy()
+    {
+        UnRegisterEvents();
     }
 }

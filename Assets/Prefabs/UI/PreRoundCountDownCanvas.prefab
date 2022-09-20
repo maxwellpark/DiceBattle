@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3838841428538342166
+--- !u!1 &7232433182725137199
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,31 +8,31 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3838841428538342154}
-  - component: {fileID: 3838841428538342153}
-  - component: {fileID: 3838841428538342152}
-  - component: {fileID: 3838841428538342167}
-  - component: {fileID: 3838841428538342155}
+  - component: {fileID: 7232433182725137203}
+  - component: {fileID: 7232433182725137200}
+  - component: {fileID: 7232433182725137201}
+  - component: {fileID: 7232433182725137198}
+  - component: {fileID: 5843577032352520251}
   m_Layer: 5
-  m_Name: CountDownCanvas
-  m_TagString: BattleCountDown
+  m_Name: PreRoundCountDownCanvas
+  m_TagString: PreRoundCountDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3838841428538342154
+--- !u!224 &7232433182725137203
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838841428538342166}
+  m_GameObject: {fileID: 7232433182725137199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3838841429505788369}
+  - {fileID: 7232433183390568936}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41,13 +41,13 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!223 &3838841428538342153
+--- !u!223 &7232433182725137200
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838841428538342166}
+  m_GameObject: {fileID: 7232433182725137199}
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
@@ -62,13 +62,13 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &3838841428538342152
+--- !u!114 &7232433182725137201
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838841428538342166}
+  m_GameObject: {fileID: 7232433182725137199}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
@@ -85,13 +85,13 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &3838841428538342167
+--- !u!114 &7232433182725137198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838841428538342166}
+  m_GameObject: {fileID: 7232433182725137199}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
@@ -102,21 +102,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3838841428538342155
+--- !u!114 &5843577032352520251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838841428538342166}
+  m_GameObject: {fileID: 7232433182725137199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4427172c5c1d9a941a2015cffdd350ad, type: 3}
+  m_Script: {fileID: 11500000, guid: eede34c5383e60d4baa99478f833230f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeLimit: 10
-  _countDownText: {fileID: 3838841429505788370}
---- !u!1 &3838841429505788368
+  _timeLimit: 3
+  _countDownText: {fileID: 7232433183390568939}
+--- !u!1 &7232433183390568937
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,9 +124,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3838841429505788369}
-  - component: {fileID: 3838841429505788371}
-  - component: {fileID: 3838841429505788370}
+  - component: {fileID: 7232433183390568936}
+  - component: {fileID: 7232433183390568938}
+  - component: {fileID: 7232433183390568939}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -134,41 +134,41 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3838841429505788369
+--- !u!224 &7232433183390568936
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838841429505788368}
+  m_GameObject: {fileID: 7232433183390568937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3838841428538342154}
+  m_Father: {fileID: 7232433182725137203}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 158.26}
+  m_AnchoredPosition: {x: 0.000030518, y: 103}
   m_SizeDelta: {x: 200, y: 92.5321}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3838841429505788371
+--- !u!222 &7232433183390568938
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838841429505788368}
+  m_GameObject: {fileID: 7232433183390568937}
   m_CullTransparentMesh: 1
---- !u!114 &3838841429505788370
+--- !u!114 &7232433183390568939
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838841429505788368}
+  m_GameObject: {fileID: 7232433183390568937}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time Remaining: '
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
