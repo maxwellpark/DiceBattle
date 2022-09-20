@@ -95,11 +95,16 @@ public class Player : MonoBehaviour
         _directionLocked = false;
     }
 
-    public virtual void ResetSelf()
+    public virtual void PrepareForRound()
     {
-        _directionLocked = false;
+        _directionLocked = true;
         gameObject.SetActive(true);
         GoToRandomCell();
+    }
+
+    public virtual void StartRound()
+    {
+        _directionLocked = false;
     }
 
     public void GoToRandomCell()

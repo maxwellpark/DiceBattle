@@ -75,19 +75,26 @@ public class GameManager : Singleton<GameManager>
         // Subtract 6 from roll to get no. of barriers
         _barrierManager.SetupBarriers(6 - player1Roll, 6 - player2Roll);
 
-        //player.ResetSelf();
-        //enemy.ResetSelf();
-        //onNewRound?.Invoke();
+        player.PrepareForRound();
+        enemy.PrepareForRound();
+
+        playerShooting.SetCanShoot(false);
+        enemyShooting.SetCanShoot(false);
+
+        ToggleBackgroundObjs(true);
         onPreRound?.Invoke();
-        ToggleBackground(true);
     }
 
     public void StartRound()
     {
         Debug.Log("Starting round " + currentRound);
         inBattle = true;
-        player.ResetSelf();
-        enemy.ResetSelf();
+
+        player.StartRound();
+        enemy.StartRound();
+
+        playerShooting.SetCanShoot(true);
+        enemyShooting.SetCanShoot(true);
         onNewRound?.Invoke();
     }
 
@@ -109,7 +116,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            ToggleBackground(false);
+            ToggleBackgroundObjs(false);
             _newRoundsUI.ShowNewRoundUI(true);
         }
         onRoundComplete?.Invoke();
@@ -124,7 +131,7 @@ public class GameManager : Singleton<GameManager>
         _newRoundsUI.ShowNewBattleUI(false);
         currentRound = 0;
         onBattleComplete?.Invoke();
-        ToggleBackground(false);
+        ToggleBackgroundObjs(false);
         _menuTransitionManager.Transition(_battleEndTransitionData);
     }
 
@@ -170,9 +177,6 @@ public class GameManager : Singleton<GameManager>
     private void OnPreRoundCountDownEnd()
     {
         StartRound();
-        //inBattle = true;
-        //player.ResetSelf();
-        //enemy.ResetSelf();
     }
 
     private void OnDestroyTimerEnd()
@@ -188,11 +192,11 @@ public class GameManager : Singleton<GameManager>
         _newRoundsUI.newRoundBtn.onClick.RemoveAllListeners();
         _newRoundsUI.newRoundBtn.onClick.AddListener(NewRound);
         _newRoundsUI.ShowNewBattleUI(false);
-        ToggleBackground(false);
+        ToggleBackgroundObjs(false);
         TogglePlayers(false);
     }
 
-    private void ToggleBackground(bool active)
+    private void ToggleBackgroundObjs(bool active)
     {
         player.grid.gameObject.SetActive(active);
         enemy.grid.gameObject.SetActive(active);

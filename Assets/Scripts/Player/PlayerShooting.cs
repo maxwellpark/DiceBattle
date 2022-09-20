@@ -18,6 +18,8 @@ public class PlayerShooting : MonoBehaviour
     public int magSize;
     public int shotsRemaining;
 
+    protected bool _canShoot = true;
+
     // Events 
     public event UnityAction onShoot;
     public event UnityAction onEmptyMag;
@@ -48,11 +50,19 @@ public class PlayerShooting : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (!_canShoot)
+            return;
+
         if (shotsRemaining > 0 && Input.GetKeyDown(KeyCode.Space))
             Shoot();
 
         if (Input.GetKeyDown(KeyCode.R))
             StartCoroutine(Reload());
+    }
+
+    public virtual void SetCanShoot(bool canShoot)
+    {
+        _canShoot = canShoot;
     }
 
     protected virtual void Shoot()

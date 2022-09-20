@@ -19,7 +19,7 @@ public class EnemyPlayerSequential : EnemyPlayer
             ShuffleSequences();
     }
 
-    public override void ResetSelf()
+    public override void PrepareForRound()
     {
         _sequenceIndex = 0;
         _coordsIndex = 0;
@@ -27,7 +27,7 @@ public class EnemyPlayerSequential : EnemyPlayer
         if (container != null && _randomOrder)
             ShuffleSequences();
 
-        base.ResetSelf();
+        base.PrepareForRound();
     }
 
     protected override Direction GetDirection()
