@@ -113,10 +113,16 @@ public class EnemyPlayer : Player
         return delay;
     }
 
-    public override void ResetSelf()
+    public override void PrepareForRound()
     {
-        base.ResetSelf();
+        base.PrepareForRound();
         _barrierPref = false;
+        _canMove = false;
+    }
+
+    public override void StartRound()
+    {
+        base.StartRound();
         _canMove = true;
     }
 

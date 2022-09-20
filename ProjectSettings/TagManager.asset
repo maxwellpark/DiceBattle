@@ -12,6 +12,8 @@ TagManager:
   - BarrierManager
   - Player1BulletText
   - Player2BulletText
+  - PreRoundCountDown
+  - BattleCountDown
   layers:
   - Default
   - TransparentFX
