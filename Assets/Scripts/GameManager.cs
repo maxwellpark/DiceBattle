@@ -301,6 +301,6 @@ public class GameManager : Singleton<GameManager>
 
     private void OnDestroy()
     {
-        UnRegisterBattleEvents();
+        //UnRegisterBattleEvents();
     }
 }

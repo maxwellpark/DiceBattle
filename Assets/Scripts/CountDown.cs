@@ -30,6 +30,11 @@ public class CountDown : MonoBehaviour
         _countDown = _timeLimit;
     }
 
+    protected void ClearText()
+    {
+        _countDownText.text = string.Empty;
+    }
+
     protected virtual void Update()
     {
         if (!GameManager.inBattle)
@@ -65,11 +70,13 @@ public class CountDown : MonoBehaviour
     protected virtual void RegisterEvents()
     {
         GameManager.onNewRound += ResetCountDown;
+        GameManager.onPreRound += ClearText;
     }
 
     protected virtual void UnRegisterEvents()
     {
         GameManager.onNewRound -= ResetCountDown;
+        GameManager.onPreRound -= ClearText;
     }
 
     private void OnEnable()
