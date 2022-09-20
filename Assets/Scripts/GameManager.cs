@@ -271,6 +271,7 @@ public class GameManager : Singleton<GameManager>
             player.Init();
             enemy.Init();
             _healthUI.Init();
+            _bulletDisplayUI.Init();
             Init();
             NewBattle();
         }
