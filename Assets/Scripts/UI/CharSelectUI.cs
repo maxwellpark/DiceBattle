@@ -21,7 +21,8 @@ public class CharSelectUI : MonoBehaviour
         {
             var obj = Instantiate(_btnPrefab, transform);
             var text = obj.GetComponentInChildren<TMP_Text>();
-            text.text = @char.charName;
+            //text.text = @char.charName;
+            text.text = @char.prefab.name;
 
             var btn = obj.GetComponent<Button>();
             btn.onClick.RemoveAllListeners();
