@@ -20,7 +20,9 @@ public class EnemyPlayer : Player
     protected readonly float _timeout = 2f;
     protected bool _barrierPref;
 
-    protected override void Start()
+    protected override string GridTag { get; } = "EnemyGrid";
+
+    public override void Init()
     {
         _playerObj = GameObject.FindWithTag("Player");
 
@@ -30,7 +32,7 @@ public class EnemyPlayer : Player
         _player = _playerObj.GetComponent<Player>();
         onPlayerMove += () => StartCoroutine(DelayMovement());
         //_player.onPlayerMove += () => StartCoroutine(DelayMovement());
-        base.Start();
+        base.Init();
     }
 
     protected override void Update()
@@ -47,6 +49,9 @@ public class EnemyPlayer : Player
 
     protected override Direction GetDirection()
     {
+        if (_directionLocked)
+            return Direction.Neutral;
+
         var playerCell = _player.grid.currentCell;
         var enemyCell = grid.currentCell;
 
@@ -108,10 +113,16 @@ public class EnemyPlayer : Player
         return delay;
     }
 
-    public override void ResetSelf()
+    public override void PrepareForRound()
     {
-        base.ResetSelf();
+        base.PrepareForRound();
         _barrierPref = false;
+        _canMove = false;
+    }
+
+    public override void StartRound()
+    {
+        base.StartRound();
         _canMove = true;
     }
 
@@ -132,7 +143,7 @@ public class EnemyPlayer : Player
 
         foreach (var cell in grid.cellCollection)
         {
-            if (cell.transform.position.z == transform.position.z 
+            if (cell.transform.position.z == transform.position.z
                 && cell.transform.position.x == transform.position.x)
             {
                 currentCell = cell;

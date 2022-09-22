@@ -16,7 +16,6 @@ public class EnemyShooting : PlayerShooting
     [SerializeField]
     private float _rowConstraintNum;
 
-    private bool _canShoot = true;
     private Player _player;
     private EnemyPlayer _enemyPlayer;
     public static event UnityAction onLowHealth;

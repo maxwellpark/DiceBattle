@@ -11,32 +11,30 @@ public class EnemyPlayerSequential : EnemyPlayer
     private bool _randomOrder;
     private readonly System.Random _random = new System.Random();
 
-    protected override void Start()
+    public override void Init()
     {
-        base.Start();
+        base.Init();
 
-        if (_randomOrder)
+        if (container != null && _randomOrder)
             ShuffleSequences();
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
-
-    public override void ResetSelf()
+    public override void PrepareForRound()
     {
         _sequenceIndex = 0;
         _coordsIndex = 0;
 
-        if (_randomOrder)
+        if (container != null && _randomOrder)
             ShuffleSequences();
 
-        base.ResetSelf();
+        base.PrepareForRound();
     }
 
     protected override Direction GetDirection()
     {
+        if (_directionLocked)
+            return Direction.Neutral;
+
         if (_sequenceIndex > container.sequences.Length - 1)
         {
             ResetSequences();
@@ -45,7 +43,7 @@ public class EnemyPlayerSequential : EnemyPlayer
 
         if (_coordsIndex > container.sequences[_sequenceIndex].coords.Length - 1)
         {
-            ReSequence();
+            NextSequence();
             return Direction.Neutral;
         }
 
@@ -57,27 +55,42 @@ public class EnemyPlayerSequential : EnemyPlayer
             return Direction.Neutral;
         }
 
-        if (grid.currentCell.xCoord < cellInSequence.xCoord)
-            return Direction.Right;
+        var nextDir = GetNextDirectionByCoords(grid.currentCell, cellInSequence);
 
-        if (grid.currentCell.xCoord > cellInSequence.xCoord)
-            return Direction.Left;
-
-        if (grid.currentCell.yCoord < cellInSequence.yCoord)
-            return Direction.Up;
-
-        if (grid.currentCell.yCoord > cellInSequence.yCoord)
-            return Direction.Down;
+        if (nextDir != Direction.Neutral)
+            return nextDir;
 
         if (cellInSequence == grid.currentCell)
             _coordsIndex++;
 
+        return nextDir;
+    }
+
+    protected virtual Direction GetNextDirectionByCoords(int myX, int myY, int destX, int destY)
+    {
+        if (myX < destX)
+            return Direction.Right;
+
+        if (myX > destX)
+            return Direction.Left;
+
+        if (myY < destY)
+            return Direction.Up;
+
+        if (myY > destY)
+            return Direction.Down;
+
         return Direction.Neutral;
     }
 
-    private void ReSequence()
+    protected virtual Direction GetNextDirectionByCoords(Cell myCell, Cell destCell)
     {
-        Debug.Log("Cell sequence finished. Re-sequencing.");
+        return GetNextDirectionByCoords(myCell.xCoord, myCell.yCoord, destCell.xCoord, destCell.yCoord);
+    }
+
+    private void NextSequence()
+    {
+        Debug.Log("Cell sequence finished. Going to next sequence in collection.");
         _coordsIndex = 0;
         _sequenceIndex++;
     }

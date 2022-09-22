@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
     private NewRoundsUI _newRoundsUI;
     private ScoreUI _scoreUI;
     private BulletDisplayUI _bulletDisplayUI;
+    private HealthUI _healthUI;
 
     public Player player;
     public PlayerShooting playerShooting;
@@ -18,10 +19,16 @@ public class GameManager : Singleton<GameManager>
     private DiceManager _diceManager;
     private BarrierManager _barrierManager;
     private MenuTransitionManager _menuTransitionManager;
+    private CharacterManager _characterManager;
+
+    private CountDown _battleCountDown;
+    private PreRoundCountDown _preRoundCountDown;
 
     public static int currentRound;
     public static int playerRoundsWon;
     public static int enemyRoundsWon;
+
+    public static bool waitingForDice;
     public static bool inBattle;
 
     [SerializeField]
@@ -29,17 +36,13 @@ public class GameManager : Singleton<GameManager>
 
     public static event UnityAction onNewBattle;
     public static event UnityAction onNewRound;
+    public static event UnityAction onPreRound;
     public static event UnityAction onRoundComplete;
     public static event UnityAction onBattleComplete;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     public void NewBattle()
     {
-        Debug.Log("Setting up new battles...");
+        Debug.Log("Setting up new battle...");
         currentRound = 0;
         playerRoundsWon = 0;
         enemyRoundsWon = 0;
@@ -52,14 +55,14 @@ public class GameManager : Singleton<GameManager>
         var p1Roll = Random.Range(1, 7);
         var p2Roll = Random.Range(1, 7);
         _newRoundsUI.ShowNewRoundUI(false);
-        StartCoroutine(WaitForDiceAndStartRound(p1Roll, p2Roll));
+        StartCoroutine(WaitForDiceThenPrepareRound(p1Roll, p2Roll));
     }
 
-    public void NewRound(int player1Roll, int player2Roll)
+    public void PrepareRound(int player1Roll, int player2Roll)
     {
-        inBattle = true;
+        inBattle = false;
         currentRound++;
-        Debug.Log("Setting up new round...");
+        Debug.Log("Preparing new round...");
         Debug.Log("Player 1 roll = " + player1Roll);
         Debug.Log("Player 2 roll = " + player2Roll);
 
@@ -72,10 +75,27 @@ public class GameManager : Singleton<GameManager>
         // Subtract 6 from roll to get no. of barriers
         _barrierManager.SetupBarriers(6 - player1Roll, 6 - player2Roll);
 
-        player.ResetSelf();
-        enemy.ResetSelf();
+        player.PrepareForRound();
+        enemy.PrepareForRound();
+
+        playerShooting.SetCanShoot(false);
+        enemyShooting.SetCanShoot(false);
+
+        ToggleBackgroundObjs(true);
+        onPreRound?.Invoke();
+    }
+
+    public void StartRound()
+    {
+        Debug.Log("Starting round " + currentRound);
+        inBattle = true;
+
+        player.StartRound();
+        enemy.StartRound();
+
+        playerShooting.SetCanShoot(true);
+        enemyShooting.SetCanShoot(true);
         onNewRound?.Invoke();
-        ToggleObjects(true);
     }
 
     public void RoundComplete()
@@ -83,8 +103,7 @@ public class GameManager : Singleton<GameManager>
         inBattle = false;
         Debug.Log("Round " + currentRound + " complete");
         playerShooting.ClearBullets();
-        player.gameObject.SetActive(false);
-        enemy.gameObject.SetActive(false);
+        TogglePlayers(false);
         _scoreUI.UpdateUI(playerRoundsWon, enemyRoundsWon, currentRound);
 
         if (playerRoundsWon >= 2)
@@ -97,7 +116,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            ToggleObjects(false);
+            ToggleBackgroundObjs(false);
             _newRoundsUI.ShowNewRoundUI(true);
         }
         onRoundComplete?.Invoke();
@@ -112,7 +131,7 @@ public class GameManager : Singleton<GameManager>
         _newRoundsUI.ShowNewBattleUI(false);
         currentRound = 0;
         onBattleComplete?.Invoke();
-        ToggleObjects(false);
+        ToggleBackgroundObjs(false);
         _menuTransitionManager.Transition(_battleEndTransitionData);
     }
 
@@ -120,12 +139,18 @@ public class GameManager : Singleton<GameManager>
     {
         enemyShooting.onDeath += OnEnemyDeath;
         playerShooting.onDeath += OnPlayerDeath;
+
+        _battleCountDown.onCountDownEnd += OnBattleCountDownEnd;
+        _preRoundCountDown.onPreCountDownEnd += OnPreRoundCountDownEnd;
     }
 
     private void UnRegisterBattleEvents()
     {
         enemyShooting.onDeath -= OnEnemyDeath;
         playerShooting.onDeath -= OnPlayerDeath;
+
+        _battleCountDown.onCountDownEnd -= OnBattleCountDownEnd;
+        _preRoundCountDown.onPreCountDownEnd -= OnPreRoundCountDownEnd;
     }
 
     private void OnEnemyDeath()
@@ -142,16 +167,21 @@ public class GameManager : Singleton<GameManager>
         _scoreUI.UpdateRoundTextForEndOfRound(false);
     }
 
-    private void OnCountDownEnd()
+    private void OnBattleCountDownEnd()
     {
         // Round is drawn if count down event fires
         RoundComplete();
         _scoreUI.UpdateRoundTextForDraw();
     }
 
+    private void OnPreRoundCountDownEnd()
+    {
+        StartRound();
+    }
+
     private void OnDestroyTimerEnd()
     {
-        inBattle = true;
+        waitingForDice = false;
     }
 
     private void Init()
@@ -162,17 +192,23 @@ public class GameManager : Singleton<GameManager>
         _newRoundsUI.newRoundBtn.onClick.RemoveAllListeners();
         _newRoundsUI.newRoundBtn.onClick.AddListener(NewRound);
         _newRoundsUI.ShowNewBattleUI(false);
-        ToggleObjects(false);
+        ToggleBackgroundObjs(false);
+        TogglePlayers(false);
     }
 
-    private void ToggleObjects(bool active)
+    private void ToggleBackgroundObjs(bool active)
     {
         player.grid.gameObject.SetActive(active);
-        player.gameObject.SetActive(active);
         enemy.grid.gameObject.SetActive(active);
-        enemy.gameObject.SetActive(active);
         if (!active)
             _bulletDisplayUI.ClearTexts();
+        _healthUI.SetActive(active);
+    }
+
+    private void TogglePlayers(bool active)
+    {
+        player.gameObject.SetActive(active);
+        enemy.gameObject.SetActive(active);
     }
 
     private void FindReferences()
@@ -180,7 +216,24 @@ public class GameManager : Singleton<GameManager>
         _newRoundsUI = FindObjectOfType<NewRoundsUI>();
         _scoreUI = FindObjectOfType<ScoreUI>();
         _bulletDisplayUI = FindObjectOfType<BulletDisplayUI>();
+        _healthUI = FindObjectOfType<HealthUI>();
 
+        _diceManager = FindObjectOfType<DiceManager>();
+        _barrierManager = FindObjectOfType<BarrierManager>();
+        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
+        _characterManager = FindObjectOfType<CharacterManager>();
+
+        var battleCd = GameObject.FindWithTag("BattleCountDown");
+        if (battleCd != null)
+            _battleCountDown = battleCd.GetComponent<CountDown>();
+
+        var preRoundCd = GameObject.FindWithTag("PreRoundCountDown");
+        if (preRoundCd != null)
+            _preRoundCountDown = preRoundCd.GetComponent<PreRoundCountDown>();
+    }
+
+    private void FindPlayerReferences()
+    {
         // Get player refs 
         var playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
@@ -204,56 +257,51 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.LogWarning("Enemy not found");
         }
-
-        // Get general refs
-        _diceManager = FindObjectOfType<DiceManager>();
-        _barrierManager = FindObjectOfType<BarrierManager>();
-        _menuTransitionManager = FindObjectOfType<MenuTransitionManager>();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Time.timeScale = 1f;
-        FindReferences();
         if (scene.name == "BattleScene")
         {
+            FindReferences();
+            _characterManager.CreateChars();
+            FindPlayerReferences();
             RegisterBattleEvents();
+            player.Init();
+            enemy.Init();
+            _healthUI.Init();
+            _bulletDisplayUI.Init();
             Init();
             NewBattle();
         }
     }
 
-    public IEnumerator WaitForDiceAndStartRound(int p1Roll, int p2Roll)
+    public IEnumerator WaitForDiceThenPrepareRound(int p1Roll, int p2Roll)
     {
-        inBattle = false;
+        waitingForDice = true;
         _diceManager.CreateDice(p1Roll, p2Roll);
-        while (!inBattle)
+        while (waitingForDice)
         {
             yield return null;
         }
-        NewRound(p1Roll, p2Roll);
-    }
-
-    private void Update()
-    {
-        // For testing 
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.T))
-        {
-            //NewBattle();
-        }
+        PrepareRound(p1Roll, p2Roll);
     }
 
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        CountDown.onCountDownEnd += OnCountDownEnd;
         DestroyTimer.onDestroy += OnDestroyTimerEnd;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        CountDown.onCountDownEnd -= OnCountDownEnd;
         DestroyTimer.onDestroy -= OnDestroyTimerEnd;
+    }
+
+    private void OnDestroy()
+    {
+        //UnRegisterBattleEvents();
     }
 }

@@ -10,14 +10,7 @@ public class BulletDisplayUI : MonoBehaviour
     private PlayerShooting _playerShooting;
     private EnemyShooting _enemyShooting;
 
-    protected void Awake()
-    {
-        _playerShooting = FindObjectOfType<PlayerShooting>();
-        _enemyShooting = FindObjectOfType<EnemyShooting>();
-        RegisterEvents();
-    }
-
-    private void Start()
+    public void Init()
     {
         if (_player1Text == null)
         {
@@ -32,6 +25,13 @@ public class BulletDisplayUI : MonoBehaviour
             if (p2TextObj != null)
                 _player2Text = p2TextObj.GetComponent<BulletDisplayText>();
         }
+
+        var playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null)
+            _playerShooting = playerObj.GetComponent<PlayerShooting>();
+
+        _enemyShooting = FindObjectOfType<EnemyShooting>();
+        RegisterEvents();
     }
 
     private void UpdateText(BulletDisplayText text, PlayerShooting shooting, bool reloading = false)

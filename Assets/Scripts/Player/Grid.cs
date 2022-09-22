@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Grid : MonoBehaviour
@@ -113,5 +114,18 @@ public class Grid : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    public Cell GetRandomCell()
+    {
+        if (cellCollection == null)
+            GetCellCollection();
+
+        var index = Random.Range(0, cellCollection.Count);
+        var cell = cellCollection.ElementAt(index);
+        if (cell == null)
+            Debug.LogWarning("Grid: Cell was null when trying to get random cell.");
+
+        return cell;
     }
 }

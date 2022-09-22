@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 public class BulletDisplayText : MonoBehaviour
-{
+{   
     [SerializeField]
     private string _playerName;
 

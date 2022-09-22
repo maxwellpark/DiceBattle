@@ -114,8 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   _yOffset: 0.75
-  _lerpValue: 0.1
   _moveDuration: 0.25
+  _moveBuffer: 0.225
   moveDelta: 0
 --- !u!114 &8934178152332887095
 MonoBehaviour:
@@ -131,7 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zOffset: -0.4
   _bulletPrefab: {fileID: 8539698259316770877, guid: cbb371facbd5d4c4eaa6aee0f655ffc9, type: 3}
-  _maxHealth: 1
+  _maxHealth: 3
+  health: 0
   _reloadTimeInSeconds: 2
   magSize: 6
   shotsRemaining: 0

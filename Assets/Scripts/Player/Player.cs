@@ -12,13 +12,20 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _moveDuration = 0.25f;
     [SerializeField]
-    private float _moveBuffer = 0.2f;
+    private float _moveBuffer = 0.225f;
 
     protected bool _directionLocked;
     public float moveDelta;
 
-    protected virtual void Start()
+    protected virtual string GridTag { get; } = "PlayerGrid";
+
+    public virtual void Init()
     {
+        var gridObj = GameObject.FindWithTag(GridTag);
+        if (gridObj == null)
+            Debug.LogError($"Could not find grid '{GridTag}' by tag");
+        else
+            grid = gridObj.GetComponent<Grid>();
         MovePlayer(grid.currentCell.transform.position);
     }
 
@@ -27,7 +34,7 @@ public class Player : MonoBehaviour
         moveDelta += Time.deltaTime;
         var direction = GetDirection();
 
-        if (direction == Direction.Neutral)
+        if (_directionLocked || direction == Direction.Neutral)
             return;
 
         var cell = grid.UpdateGrid(direction);
@@ -85,15 +92,19 @@ public class Player : MonoBehaviour
 
             yield return null;
         }
-        transform.position = destination;
         _directionLocked = false;
     }
 
-    public virtual void ResetSelf()
+    public virtual void PrepareForRound()
     {
-        _directionLocked = false;
+        _directionLocked = true;
         gameObject.SetActive(true);
         GoToRandomCell();
+    }
+
+    public virtual void StartRound()
+    {
+        _directionLocked = false;
     }
 
     public void GoToRandomCell()
