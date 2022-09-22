@@ -41,7 +41,7 @@ public class EnemyPlayer : Player
             Realign();
 
         moveDelta += Time.deltaTime; // To cover downtime 
-        if (!_canMove || _directionLocked)
+        if (!_canMove || directionLocked)
             return;
 
         base.Update();
@@ -49,7 +49,7 @@ public class EnemyPlayer : Player
 
     protected override Direction GetDirection()
     {
-        if (_directionLocked)
+        if (directionLocked)
             return Direction.Neutral;
 
         var playerCell = _player.grid.currentCell;

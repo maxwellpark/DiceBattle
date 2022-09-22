@@ -78,8 +78,8 @@ public class GameManager : Singleton<GameManager>
         player.PrepareForRound();
         enemy.PrepareForRound();
 
-        playerShooting.SetCanShoot(false);
-        enemyShooting.SetCanShoot(false);
+        playerShooting.CanShoot = false;
+        enemyShooting.CanShoot = false;
 
         ToggleBackgroundObjs(true);
         onPreRound?.Invoke();
@@ -93,8 +93,8 @@ public class GameManager : Singleton<GameManager>
         player.StartRound();
         enemy.StartRound();
 
-        playerShooting.SetCanShoot(true);
-        enemyShooting.SetCanShoot(true);
+        playerShooting.CanShoot = true;
+        enemyShooting.CanShoot = true;
         onNewRound?.Invoke();
     }
 
