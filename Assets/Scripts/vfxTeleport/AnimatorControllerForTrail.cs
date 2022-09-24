@@ -33,7 +33,7 @@ public class AnimatorControllerForTrail : MonoBehaviour
             {
                 _myAnim.SetBool("goingUps", false);
             }
-
+                
             if (Input.GetKey(KeyCode.S))
             {
 

@@ -55,7 +55,6 @@ public class CharSelectUI : MonoBehaviour
 
     private void SelectEnemyChar()
     {
-        CharacterData enemyChar = default;
         var availableEnemyChars = new List<CharacterData>();
 
         foreach (var @char in _enemyCharContainer.chars)
@@ -71,7 +70,7 @@ public class CharSelectUI : MonoBehaviour
             Debug.LogError("Could not set enemy char data. No chars available.");
 
         var index = Random.Range(0, availableEnemyChars.Count);
-        enemyChar = availableEnemyChars[index];
+        var enemyChar = availableEnemyChars[index];
 
         if (enemyChar == null)
             throw new Exception("Could not select enemy char data from available list.");

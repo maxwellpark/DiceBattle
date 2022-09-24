@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyNum1
       objectReference: {fileID: 0}
+    - target: {fileID: 8717918218477460556, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8717918218477460558, guid: 0280bb78ece3df542a261caee846be97, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -77,30 +81,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8717918218477460556, guid: 0280bb78ece3df542a261caee846be97, type: 3}
   m_PrefabInstance: {fileID: 7586938535611887043}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &569667076468913688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276343921338691983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec19e12497275f448f2266263e78f70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _zOffset: 0.4
-  _bulletPrefab: {fileID: 8539698259316770877, guid: fe6b9ef542656f344b05e15dcdbfd5c5, type: 3}
-  _maxHealth: 3
-  health: 0
-  _reloadTimeInSeconds: 2
-  magSize: 6
-  shotsRemaining: 0
-  _shootDelayInSeconds: 0.25
-  _dynamicShooting: 1
-  _shootDelayMin: 0.25
-  _shootDelayMax: 0.5
-  _rowConstraintNum: 1
 --- !u!114 &12212334476013143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +105,30 @@ MonoBehaviour:
   _moveDelayMax: 0.75
   container: {fileID: 0}
   _randomOrder: 0
+--- !u!114 &569667076468913688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276343921338691983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec19e12497275f448f2266263e78f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zOffset: 0.4
+  _bulletPrefab: {fileID: 8539698259316770877, guid: fe6b9ef542656f344b05e15dcdbfd5c5, type: 3}
+  _maxHealth: 3
+  health: 0
+  _reloadTimeInSeconds: 2
+  magSize: 6
+  shotsRemaining: 0
+  _shootDelayInSeconds: 0.25
+  _dynamicShooting: 1
+  _shootDelayMin: 0.25
+  _shootDelayMax: 0.5
+  _rowConstraintNum: 1
 --- !u!1001 &7586938536731349392
 PrefabInstance:
   m_ObjectHideFlags: 0
