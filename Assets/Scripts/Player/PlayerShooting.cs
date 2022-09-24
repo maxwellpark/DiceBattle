@@ -5,17 +5,20 @@ using UnityEngine.Events;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField]
-    private float _zOffset;
+    private float _zOffset = 0.4f;
     [SerializeField]
     private GameObject _bulletPrefab;
     [SerializeField]
-    private int _maxHealth;
+    private int _maxHealth = 3;
+    [HideInInspector]
     public int health;
     private string _bulletColliderTag;
 
     [SerializeField]
     protected float _reloadTimeInSeconds;
+    [HideInInspector]
     public int magSize;
+    [HideInInspector]
     public int shotsRemaining;
 
     public bool CanShoot { get; set; } = true;

@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemyPlayer : Player
 {
     [SerializeField]
-    protected float _moveDelayInSeconds;
+    protected float _moveDelayInSeconds = 0.35f;
     [SerializeField]
     protected bool _dynamicMovement;
     [SerializeField]
-    protected float _moveDelayMin;
+    protected float _moveDelayMin = 0.25f;
     [SerializeField]
-    protected float _moveDelayMax;
+    protected float _moveDelayMax = 0.1f;
 
     protected bool _canMove = true;
     protected GameObject _playerObj;
