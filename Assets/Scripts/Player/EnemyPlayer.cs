@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemyPlayer : Player
 {
     [SerializeField]
-    protected float _moveDelayInSeconds;
+    protected float _moveDelayInSeconds = 0.35f;
     [SerializeField]
     protected bool _dynamicMovement;
     [SerializeField]
-    protected float _moveDelayMin;
+    protected float _moveDelayMin = 0.25f;
     [SerializeField]
-    protected float _moveDelayMax;
+    protected float _moveDelayMax = 0.1f;
 
     protected bool _canMove = true;
     protected GameObject _playerObj;
@@ -41,7 +41,7 @@ public class EnemyPlayer : Player
             Realign();
 
         moveDelta += Time.deltaTime; // To cover downtime 
-        if (!_canMove || _directionLocked)
+        if (!_canMove || directionLocked)
             return;
 
         base.Update();
@@ -49,7 +49,7 @@ public class EnemyPlayer : Player
 
     protected override Direction GetDirection()
     {
-        if (_directionLocked)
+        if (directionLocked)
             return Direction.Neutral;
 
         var playerCell = _player.grid.currentCell;
@@ -113,10 +113,16 @@ public class EnemyPlayer : Player
         return delay;
     }
 
-    public override void ResetSelf()
+    public override void PrepareForRound()
     {
-        base.ResetSelf();
+        base.PrepareForRound();
         _barrierPref = false;
+        _canMove = false;
+    }
+
+    public override void StartRound()
+    {
+        base.StartRound();
         _canMove = true;
     }
 

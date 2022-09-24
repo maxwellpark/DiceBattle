@@ -201,6 +201,10 @@ PrefabInstance:
       propertyPath: m_ChildControlHeight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7618882659660380319, guid: e26596eab28f1a94e9991560b14fc0b7, type: 3}
+      propertyPath: _playerCharContainer
+      value: 
+      objectReference: {fileID: 11400000, guid: 5caa713c9d884404bbce092fd4608e5d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e26596eab28f1a94e9991560b14fc0b7, type: 3}
 --- !u!224 &8506276897921763402 stripped

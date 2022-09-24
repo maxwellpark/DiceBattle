@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CharacterData2
   m_EditorClassIdentifier: 
   charName: Char2
-  prefab: {fileID: 2399900086481510067, guid: c6ee8d1db4bd7944c9aa9def98127889, type: 3}
+  prefab: {fileID: 1276343921338691983, guid: a691faba734b4bd44867ca9dbbf7e194, type: 3}

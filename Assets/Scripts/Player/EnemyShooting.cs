@@ -16,7 +16,6 @@ public class EnemyShooting : PlayerShooting
     [SerializeField]
     private float _rowConstraintNum;
 
-    private bool _canShoot = true;
     private Player _player;
     private EnemyPlayer _enemyPlayer;
     public static event UnityAction onLowHealth;
@@ -43,7 +42,7 @@ public class EnemyShooting : PlayerShooting
 
     protected override void Update()
     {
-        if (!_canShoot)
+        if (!CanShoot)
             return;
 
         if (shotsRemaining <= 0)
@@ -66,15 +65,15 @@ public class EnemyShooting : PlayerShooting
     public override void SetupShooting(int magSize)
     {
         base.SetupShooting(magSize);
-        _canShoot = true;
+        CanShoot = true;
     }
 
     private IEnumerator DelayShooting()
     {
-        _canShoot = false;
+        CanShoot = false;
         var delay = GetShootDelayInSeconds();
         yield return new WaitForSeconds(delay);
-        _canShoot = true;
+        CanShoot = true;
     }
 
     protected float GetShootDelayInSeconds()
@@ -84,13 +83,6 @@ public class EnemyShooting : PlayerShooting
 
         var delay = UnityEngine.Random.Range(_shootDelayMin, _shootDelayMax);
         return delay;
-    }
-
-    protected override IEnumerator Reload()
-    {
-        _canShoot = false;
-        yield return base.Reload();
-        _canShoot = true;
     }
 
     protected bool IsInRowConstraint()

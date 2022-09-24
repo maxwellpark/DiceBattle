@@ -12,9 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _moveDuration = 0.25f;
     [SerializeField]
-    private float _moveBuffer = 0.225f;
+    private float _moveBuffer = 0.2f;
 
-    protected bool _directionLocked;
+    public bool directionLocked;
     public float moveDelta;
 
     protected virtual string GridTag { get; } = "PlayerGrid";
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         moveDelta += Time.deltaTime;
         var direction = GetDirection();
 
-        if (_directionLocked || direction == Direction.Neutral)
+        if (directionLocked || direction == Direction.Neutral)
             return;
 
         var cell = grid.UpdateGrid(direction);
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
 
     protected virtual Direction GetDirection()
     {
-        if (_directionLocked)
+        if (directionLocked)
             return Direction.Neutral;
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
     protected IEnumerator MovePlayerSmooth(Vector3 startPosition, Vector3 destination)
     {
-        _directionLocked = true;
+        directionLocked = true;
         var elapsed = 0f;
 
         while (elapsed < _moveDuration)
@@ -88,18 +88,23 @@ public class Player : MonoBehaviour
 
             // Allow input buffering
             if (elapsed >= _moveBuffer)
-                _directionLocked = false;
+                directionLocked = false;
 
             yield return null;
         }
-        _directionLocked = false;
+        directionLocked = false;
     }
 
-    public virtual void ResetSelf()
+    public virtual void PrepareForRound()
     {
-        _directionLocked = false;
+        directionLocked = true;
         gameObject.SetActive(true);
         GoToRandomCell();
+    }
+
+    public virtual void StartRound()
+    {
+        directionLocked = false;
     }
 
     public void GoToRandomCell()

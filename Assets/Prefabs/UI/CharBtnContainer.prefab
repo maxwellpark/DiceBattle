@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141ad8974f0b4f247a1d928826525263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 11400000, guid: 5caa713c9d884404bbce092fd4608e5d, type: 2}
+  _playerCharContainer: {fileID: 11400000, guid: 5caa713c9d884404bbce092fd4608e5d, type: 2}
+  _enemyCharContainer: {fileID: 11400000, guid: f70b3c5ece6a1f6439cdb38530e6560f, type: 2}
   _btnPrefab: {fileID: 8381106647754475947, guid: cde80715620fa304bbe6fb953c3dd990, type: 3}
   _transData: {fileID: 11400000, guid: c5786c0757e32cd4faec21b3605924df, type: 2}
