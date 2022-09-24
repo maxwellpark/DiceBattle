@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 606167f86a771be41bbf5a2a1274baa6, type: 3}
-  m_Name: CharacterData1
+  m_Name: EnemyCharacterData2
   m_EditorClassIdentifier: 
-  charName: Char1
-  prefab: {fileID: 8043436354013032987, guid: b677d8290575fb5499476e0dddfe3936, type: 3}
+  charName: 
+  prefab: {fileID: 1276343921338691983, guid: 970164a618f2ac8458514eb55c5deff5, type: 3}

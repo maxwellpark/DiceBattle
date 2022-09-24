@@ -32,7 +32,7 @@ public class EnemyPlayerSequential : EnemyPlayer
 
     protected override Direction GetDirection()
     {
-        if (_directionLocked)
+        if (directionLocked)
             return Direction.Neutral;
 
         if (_sequenceIndex > container.sequences.Length - 1)

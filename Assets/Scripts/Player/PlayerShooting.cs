@@ -5,20 +5,23 @@ using UnityEngine.Events;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField]
-    private float _zOffset;
+    private float _zOffset = 0.4f;
     [SerializeField]
     private GameObject _bulletPrefab;
     [SerializeField]
-    private int _maxHealth;
+    private int _maxHealth = 3;
+    [HideInInspector]
     public int health;
     private string _bulletColliderTag;
 
     [SerializeField]
     protected float _reloadTimeInSeconds;
+    [HideInInspector]
     public int magSize;
+    [HideInInspector]
     public int shotsRemaining;
 
-    protected bool _canShoot = true;
+    public bool CanShoot { get; set; } = true;
 
     // Events 
     public event UnityAction onShoot;
@@ -50,7 +53,7 @@ public class PlayerShooting : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!_canShoot)
+        if (!CanShoot)
             return;
 
         if (shotsRemaining > 0 && Input.GetKeyDown(KeyCode.Space))
@@ -58,11 +61,6 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
             StartCoroutine(Reload());
-    }
-
-    public virtual void SetCanShoot(bool canShoot)
-    {
-        _canShoot = canShoot;
     }
 
     protected virtual void Shoot()
@@ -77,10 +75,12 @@ public class PlayerShooting : MonoBehaviour
 
     protected virtual IEnumerator Reload()
     {
+        CanShoot = false;
         shotsRemaining = 0;
         onReloadStart?.Invoke();
         yield return new WaitForSeconds(_reloadTimeInSeconds);
         shotsRemaining = magSize;
+        CanShoot = true;
         onReloadEnd?.Invoke();
     }
 
