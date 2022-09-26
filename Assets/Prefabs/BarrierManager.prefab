@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05389e61005fbb4c949f87ccb815cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _barrierPrefab: {fileID: 273499214982417570, guid: 35b0530fd5d0526429d044d271147639, type: 3}
+  _playerBarrierPrefab: {fileID: 273499214982417570, guid: cc68a0c3e1854134e80fb2faca131790, type: 3}
+  _enemyBarrierPrefab: {fileID: 273499214982417570, guid: 35b0530fd5d0526429d044d271147639, type: 3}
   _zOffset: 0.4
   _yOffset: 0.5

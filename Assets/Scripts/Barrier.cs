@@ -6,6 +6,7 @@ public class Barrier : MonoBehaviour
     public int health;
     public string colliderTag;
     public Cell cell;
+    public event UnityAction onDamageTaken;
     public event UnityAction onDestroy;
 
     private void OnTriggerEnter(Collider other)
@@ -14,6 +15,7 @@ public class Barrier : MonoBehaviour
         {
             Destroy(other.gameObject);
             health--;
+            onDamageTaken?.Invoke();
             if (health <= 0)
                 Destroy();
         }

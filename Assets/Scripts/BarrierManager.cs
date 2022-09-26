@@ -4,7 +4,9 @@ using UnityEngine;
 public class BarrierManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _barrierPrefab;
+    private GameObject _playerBarrierPrefab;
+    [SerializeField]
+    private GameObject _enemyBarrierPrefab;
     [SerializeField]
     private float _zOffset; // z offset is flipped depending on side 
     [SerializeField]
@@ -35,11 +37,11 @@ public class BarrierManager : MonoBehaviour
     public void SetupBarriers(int playerBarrierCount, int enemyBarrierCount)
     {
         ResetBarriers();
-        SetupBarriers(playerBarrierCount, _zOffset * -1, "EnemyBullet", _playerGrid, ref _playerBarriers);
-        SetupBarriers(enemyBarrierCount, _zOffset, "PlayerBullet", _enemyGrid, ref _enemyBarriers);
+        SetupBarriers(playerBarrierCount, _zOffset * -1, "EnemyBullet", _playerGrid, _playerBarrierPrefab, ref _playerBarriers);
+        SetupBarriers(enemyBarrierCount, _zOffset, "PlayerBullet", _enemyGrid, _enemyBarrierPrefab, ref _enemyBarriers);
     }
 
-    public void SetupBarriers(int count, float zOffset, string bulletTag, Grid grid, ref List<GameObject> barriers)
+    public void SetupBarriers(int count, float zOffset, string bulletTag, Grid grid, GameObject prefab, ref List<GameObject> barriers)
     {
         barriers.Clear();
         var possibleCoords = GetPossibleCellCoords();
@@ -55,16 +57,16 @@ public class BarrierManager : MonoBehaviour
                 Debug.LogError("Cell could not be found at " + coords);
                 continue;
             }
-            var barrier = CreateBarrier(cell, zOffset, bulletTag);
+            var barrier = CreateBarrier(cell, zOffset, bulletTag, prefab);
             barriers.Add(barrier);
             cell.hasBarrier = true;
             possibleCoords.RemoveAt(index);
         }
     }
 
-    private GameObject CreateBarrier(Cell cell, float zOffset, string bulletTag)
+    private GameObject CreateBarrier(Cell cell, float zOffset, string bulletTag, GameObject prefab)
     {
-        var barrier = Instantiate(_barrierPrefab);
+        var barrier = Instantiate(prefab);
         var component = barrier.GetComponent<Barrier>();
         component.cell = cell;
         component.colliderTag = bulletTag;
