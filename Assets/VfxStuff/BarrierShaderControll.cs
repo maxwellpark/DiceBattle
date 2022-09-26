@@ -21,10 +21,45 @@ public class BarrierShaderControll : MonoBehaviour
         _shaderSettings = new Dictionary<int, BarrierShaderSettings>
         {
             { 0, new BarrierShaderSettings(0f, -1f, 0.8f, Color.cyan) },
-            { 1, new BarrierShaderSettings(0.2f ,05f,  0.7f, Color.cyan) },
+            { 1, new BarrierShaderSettings(0.2f ,0.5f,  0.7f, Color.cyan) },
             { 2, new BarrierShaderSettings(0.4f, 1f, 0.6f, Color.red) },
             { 3, new BarrierShaderSettings(0.8f, 2f, 0.5f, Color.red) }
         };
+        SetShaderSettings();
+    }
+
+    private void SetShaderSettings()
+    {
+        if (!_shaderSettings.ContainsKey(barrierState))
+            throw new System.Exception("Key does not exist in shader settings dictionary: " + barrierState);
+
+        var settings = _shaderSettings[barrierState];
+        var currentEnabledDistortion = mat.GetFloat("_Enabledistortion");
+
+        _myRenderer.material.SetFloat("_Enabledistortion", settings.EnabledDistortion - currentEnabledDistortion);
+        _myRenderer.material.SetFloat("_Globalopacity", settings.GlobalOpacity);
+        _myRenderer.material.SetColor("_Maincolor", settings.MainColor);
+
+        if (settings.DistortionSpeed >= 0)
+            _myRenderer.material.SetFloat("_Distortionspeed", settings.DistortionSpeed);
+    }
+
+    private void OnDamageTakenHandler()
+    {
+        ChangeState();
+        SetShaderSettings();
+    }
+
+    private void ChangeState()
+    {
+        barrierState = Mathf.Min(barrierState + 1, 3);
+        barrierState = Mathf.Max(barrierState, 0);
+    }
+
+    private void OnDestroy()
+    {
+        if (_myBarrier != null)
+            _myBarrier.onDamageTaken -= ChangeState;
     }
 
     // Update is called once per frame
@@ -77,36 +112,5 @@ public class BarrierShaderControll : MonoBehaviour
             _myRenderer.material.SetFloat("_Globalopacity", 0.5f);
             _myRenderer.material.SetFloat("_Distortionspeed", 2f);
         }
-    }
-
-    private void SetShaderSettings()
-    {
-        if (!_shaderSettings.ContainsKey(barrierState))
-            throw new System.Exception("Key does not exist in shader settings dictionary: " + barrierState);
-
-        var settings = _shaderSettings[barrierState];
-
-        _myRenderer.material.SetFloat("_Enabledistortion", settings.EnabledDistortion);
-        _myRenderer.material.SetFloat("_Distortionspeed", settings.DistortionSpeed);
-        _myRenderer.material.SetFloat("_Globalopacity", settings.GlobalOpacity);
-        _myRenderer.material.SetColor("_Maincolor", settings.MainColor);
-    }
-
-    private void OnDamageTakenHandler()
-    {
-        ChangeState();
-        SetShaderSettings();
-    }
-
-    private void ChangeState()
-    {
-        barrierState = Mathf.Min(barrierState + 1, 3);
-        barrierState = Mathf.Max(barrierState, 0);
-    }
-
-    private void OnDestroy()
-    {
-        if (_myBarrier != null)
-            _myBarrier.onDamageTaken -= ChangeState;
     }
 }
