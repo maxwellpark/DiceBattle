@@ -21,6 +21,15 @@ public class PlayerShooting : MonoBehaviour
     [HideInInspector]
     public int shotsRemaining;
 
+    [SerializeField]
+    private AudioSource _shootSource;
+    [SerializeField]
+    private AudioClip _shootClip;
+    [SerializeField]
+    private AudioSource _reloadSource;
+    [SerializeField]
+    private AudioClip _reloadClip;
+
     public bool CanShoot { get; set; } = true;
 
     // Events 
@@ -69,6 +78,9 @@ public class PlayerShooting : MonoBehaviour
         bullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + _zOffset);
         shotsRemaining = Mathf.Max(0, shotsRemaining - 1);
         onShoot?.Invoke();
+        // TODO: Add audio clips 
+        //_shootSource.Play();
+
         if (shotsRemaining <= 0)
             onEmptyMag?.Invoke();
     }
@@ -78,6 +90,9 @@ public class PlayerShooting : MonoBehaviour
         CanShoot = false;
         shotsRemaining = 0;
         onReloadStart?.Invoke();
+        // TODO: Add audio clips 
+        //_reloadSource.Play();
+
         yield return new WaitForSeconds(_reloadTimeInSeconds);
         shotsRemaining = magSize;
         CanShoot = true;
