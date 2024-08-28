@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public bool directionLocked;
     public float moveDelta;
 
+    private AudioSource _audioSource;
+
     protected virtual string GridTag { get; } = "PlayerGrid";
 
     public virtual void Init()
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour
         else
             grid = gridObj.GetComponent<Grid>();
         MovePlayer(grid.currentCell.transform.position);
+        _audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void Update()
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour
 
             StartCoroutine(MovePlayerSmooth(transform.position, destination));
             onPlayerMove?.Invoke();
+            // TODO: Add audio clips 
+            //_audioSource.Play();
         }
     }
 

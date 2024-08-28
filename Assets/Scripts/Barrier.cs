@@ -9,6 +9,17 @@ public class Barrier : MonoBehaviour
     public event UnityAction onDamageTaken;
     public event UnityAction onDestroy;
 
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _hitClip;
+    [SerializeField]
+    private AudioClip _destroyClip;
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(colliderTag))
@@ -17,7 +28,15 @@ public class Barrier : MonoBehaviour
             health--;
             onDamageTaken?.Invoke();
             if (health <= 0)
+            {
+                // TODO: Add audio clips 
+                //_audioSource.PlayOneShot(_destroyClip);
                 Destroy();
+            }
+            else
+            {
+                //_audioSource.PlayOneShot(_hitClip);
+            }
         }
     }
 
