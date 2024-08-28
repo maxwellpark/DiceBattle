@@ -69,8 +69,8 @@ public class GameManager : Singleton<GameManager>
         _scoreUI.UpdateUI(playerRoundsWon, enemyRoundsWon, currentRound);
 
         // Setup round based on dice roll values
-        playerShooting.SetupShooting(player1Roll);
-        enemyShooting.SetupShooting(player2Roll);
+        playerShooting.SetupShooting(player1Roll, CharacterManager.p1CharData.bulletPrefab);
+        enemyShooting.SetupShooting(player2Roll, CharacterManager.p2CharData.bulletPrefab);
 
         // Subtract 6 from roll to get no. of barriers
         _barrierManager.SetupBarriers(6 - player1Roll, 6 - player2Roll);

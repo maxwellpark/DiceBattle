@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CharacterManager : Singleton<CharacterManager>
 {
-    public CharacterData p1CharData;
-    public CharacterData p2CharData;
+    public static CharacterData p1CharData;
+    public static CharacterData p2CharData;
 
     public void CreateChars()
     {
@@ -21,17 +21,5 @@ public class CharacterManager : Singleton<CharacterManager>
     {
         var obj = Instantiate(p2CharData.prefab);
         return obj;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

@@ -14,9 +14,7 @@ public class CharSelectUI : MonoBehaviour
     [SerializeField]
     private GameObject _btnPrefab;
 
-    private CharacterManager _charManager;
     private MenuTransitionManager _menuTransManager;
-
     [SerializeField]
     private MenuTransitionData _transData;
 
@@ -26,8 +24,7 @@ public class CharSelectUI : MonoBehaviour
         {
             var obj = Instantiate(_btnPrefab, transform);
             var text = obj.GetComponentInChildren<TMP_Text>();
-            //text.text = @char.charName; // Use custom name if set 
-            text.text = @char.prefab.name;
+            text.text = @char.charName;
 
             var btn = obj.GetComponent<Button>();
             btn.onClick.RemoveAllListeners();
@@ -37,7 +34,7 @@ public class CharSelectUI : MonoBehaviour
 
     private void SelectChar(CharacterData data)
     {
-        _charManager.p1CharData = data;
+        CharacterManager.p1CharData = data;
         _menuTransManager.Transition(_transData);
 
         // Pick enemy once player has chosen theirs to exclude theirs
@@ -45,10 +42,8 @@ public class CharSelectUI : MonoBehaviour
         SelectEnemyChar();
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
-        _charManager = FindObjectOfType<CharacterManager>();
         _menuTransManager = FindObjectOfType<MenuTransitionManager>();
         CreateButtons();
     }
@@ -60,7 +55,7 @@ public class CharSelectUI : MonoBehaviour
         foreach (var @char in _enemyCharContainer.chars)
         {
             // Don't select the same char as the player
-            if (@char.prefab.name != _charManager.p1CharData.prefab.name)
+            if (@char.prefab.name != CharacterManager.p1CharData.prefab.name)
             {
                 availableEnemyChars.Add(@char);
             }
@@ -75,6 +70,6 @@ public class CharSelectUI : MonoBehaviour
         if (enemyChar == null)
             throw new Exception("Could not select enemy char data from available list.");
 
-        _charManager.p2CharData = enemyChar;
+        CharacterManager.p2CharData = enemyChar;
     }
 }
