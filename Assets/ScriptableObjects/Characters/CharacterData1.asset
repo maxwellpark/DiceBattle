@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Char1
   prefab: {fileID: 8043436354013032987, guid: b677d8290575fb5499476e0dddfe3936, type: 3}
+  bulletPrefab: {fileID: 8539698259316770877, guid: cbb371facbd5d4c4eaa6aee0f655ffc9, type: 3}

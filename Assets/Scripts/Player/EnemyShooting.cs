@@ -62,9 +62,9 @@ public class EnemyShooting : PlayerShooting
         onLowHealth?.Invoke();
     }
 
-    public override void SetupShooting(int magSize)
+    public override void SetupShooting(int magSize, GameObject bulletPrefab)
     {
-        base.SetupShooting(magSize);
+        base.SetupShooting(magSize, bulletPrefab);
         CanShoot = true;
     }
 
@@ -95,10 +95,5 @@ public class EnemyShooting : PlayerShooting
 
         var difference = Mathf.Abs(playerCell.yCoord - enemyCell.yCoord);
         return difference <= _rowConstraintNum;
-    }
-
-    protected override void RegisterEvents()
-    {
-
     }
 }

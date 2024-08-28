@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606167f86a771be41bbf5a2a1274baa6, type: 3}
   m_Name: EnemyCharacterData2
   m_EditorClassIdentifier: 
-  charName: 
+  charName: EnemyNum1
   prefab: {fileID: 1276343921338691983, guid: 970164a618f2ac8458514eb55c5deff5, type: 3}
+  bulletPrefab: {fileID: 8539698259316770877, guid: fe6b9ef542656f344b05e15dcdbfd5c5, type: 3}

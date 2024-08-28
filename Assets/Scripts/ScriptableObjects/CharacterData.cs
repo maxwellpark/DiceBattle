@@ -5,16 +5,13 @@ public class CharacterData : ScriptableObject
 {
     public string charName;
     public GameObject prefab;
+    public GameObject bulletPrefab;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnValidate()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (string.IsNullOrWhiteSpace(charName) && prefab != null)
+        {
+            charName = prefab.name;
+        }
     }
 }

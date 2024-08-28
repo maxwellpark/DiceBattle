@@ -7,8 +7,6 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private float _zOffset = 0.4f;
     [SerializeField]
-    private GameObject _bulletPrefab;
-    [SerializeField]
     private int _maxHealth = 3;
     [HideInInspector]
     public int health;
@@ -30,6 +28,9 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private AudioClip _reloadClip;
 
+    private CharacterManager _charManager;
+    private GameObject _bulletPrefab; // Set based on characters selected 
+
     public bool CanShoot { get; set; } = true;
 
     // Events 
@@ -40,11 +41,12 @@ public class PlayerShooting : MonoBehaviour
     public event UnityAction<int> onDamageTaken;
     public event UnityAction onDeath;
 
-    public virtual void SetupShooting(int magSize)
+    public virtual void SetupShooting(int magSize, GameObject bulletPrefab)
     {
         health = _maxHealth;
         this.magSize = magSize;
         shotsRemaining = this.magSize;
+        _bulletPrefab =  bulletPrefab;
     }
 
     protected virtual void Start()
@@ -58,6 +60,7 @@ public class PlayerShooting : MonoBehaviour
             throw new System.Exception("Invalid tag");
 
         onEmptyMag += () => StartCoroutine(Reload());
+        _charManager = FindObjectOfType<CharacterManager>();
     }
 
     protected virtual void Update()
@@ -129,9 +132,5 @@ public class PlayerShooting : MonoBehaviour
         {
             Destroy(bullet.gameObject);
         }
-    }
-
-    protected virtual void RegisterEvents()
-    {
     }
 }

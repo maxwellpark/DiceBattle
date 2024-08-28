@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606167f86a771be41bbf5a2a1274baa6, type: 3}
   m_Name: CharacterData3
   m_EditorClassIdentifier: 
-  charName: Char2
+  charName: Char3
   prefab: {fileID: 4253016054781735490, guid: 744d91da596ee8047903334ccc033ac6, type: 3}
+  bulletPrefab: {fileID: 8539698259316770877, guid: cbb371facbd5d4c4eaa6aee0f655ffc9, type: 3}
