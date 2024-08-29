@@ -5139,6 +5139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161522044444268171}
   - component: {fileID: 8718615494394062085}
+  - component: {fileID: 4509736104869638209}
   m_Layer: 0
   m_Name: num2Bullet
   m_TagString: PlayerBullet
@@ -5162,7 +5163,7 @@ Transform:
   - {fileID: 7402192237076387405}
   - {fileID: 1760360549133520917}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &8718615494394062085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5178,6 +5179,29 @@ MonoBehaviour:
   _speed: 2
   _maxDistance: 10
   _direction: 3
+--- !u!136 &4509736104869638209
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972926342921619534}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2298163928888932350
 PrefabInstance:
   m_ObjectHideFlags: 0
