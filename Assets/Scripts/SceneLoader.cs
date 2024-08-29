@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// TODO: Can this not be removed now in favour of MenuTransitionManager? 
 public class SceneLoader : Singleton<SceneLoader>
 {
     public string tutorialSceneName;
@@ -26,6 +27,7 @@ public class SceneLoader : Singleton<SceneLoader>
 
     private void Update()
     {
+        // Why? 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             var scene = SceneManager.GetActiveScene();
