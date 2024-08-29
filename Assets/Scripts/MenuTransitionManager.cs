@@ -18,7 +18,7 @@ public class MenuTransitionManager : Singleton<MenuTransitionManager>
     public void Transition(MenuTransitionData data)
     {
         // In case we choose a random scene between multiple options 
-        var sceneName = data.sceneNames.Any() ? data.sceneNames[Random.Range(0, data.sceneNames.Length)] : data.sceneName;
+        var sceneName = data.sceneNames != null && data.sceneNames.Any() ? data.sceneNames[Random.Range(0, data.sceneNames.Length)] : data.sceneName;
         Transition(sceneName, data.music);
     }
 
