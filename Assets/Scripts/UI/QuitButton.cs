@@ -6,8 +6,7 @@ public class QuitButton : MonoBehaviour
     [SerializeField]
     private Button _quitButton;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _quitButton = GetComponent<Button>();
         _quitButton.onClick.RemoveAllListeners();
@@ -17,17 +16,16 @@ public class QuitButton : MonoBehaviour
     private void Quit()
     {
         Debug.Log("Quitting game...");
+#if UNITY_EDITOR
         if (Application.isEditor)
         {
             UnityEditor.EditorApplication.isPlaying = false;
         }
+#else
         else if (Application.isPlaying)
         {
             Application.Quit();
         }
-        else
-        {
-            Debug.LogError("Quit mode not supported");
-        }
+#endif
     }
 }
