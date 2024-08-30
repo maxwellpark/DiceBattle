@@ -9,7 +9,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private Direction _direction;
 
-
+    [SerializeField]
+    private GameObject explosionPrefab;
 
     private Vector3 _startPos;
     private Vector3 _vDirection;
@@ -28,5 +29,13 @@ public class Bullet : MonoBehaviour
 
         if (Vector3.Distance(_startPos, transform.position) > _maxDistance)
             Destroy(gameObject);
+    }
+
+    public void SpawnExplosion()
+    {
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

@@ -24,6 +24,10 @@ public class Barrier : MonoBehaviour
     {
         if (other.CompareTag(colliderTag))
         {
+            if (other.TryGetComponent<Bullet>(out var bullet))
+            {
+                bullet.SpawnExplosion();
+            }
             Destroy(other.gameObject);
             health--;
             onDamageTaken?.Invoke();

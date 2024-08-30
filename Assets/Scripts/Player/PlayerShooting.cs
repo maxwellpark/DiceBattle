@@ -106,6 +106,10 @@ public class PlayerShooting : MonoBehaviour
     {
         if (other.CompareTag(_bulletColliderTag))
         {
+            if (other.TryGetComponent<Bullet>(out var bullet))
+            {
+                bullet.SpawnExplosion();
+            }
             Destroy(other.gameObject);
             health--;
             onDamageTaken?.Invoke(health);

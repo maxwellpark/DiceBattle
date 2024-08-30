@@ -202,7 +202,7 @@ public class GameManager : Singleton<GameManager>
         enemy.grid.gameObject.SetActive(active);
         if (!active)
             _bulletDisplayUI.ClearTexts();
-        _healthUI.SetActive(active);
+        _healthUI.SetTextsActive(active);
     }
 
     private void TogglePlayers(bool active)
