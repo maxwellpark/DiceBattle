@@ -4,64 +4,68 @@ public class AnimatorControllerForTrail : MonoBehaviour
 {
     private Player _myPlayer;
     private PlayerShooting _myShooting;
+    private PlayerVelocity _pVelocity;
 
     public Animator _myAnim;
-    public float realBlendy;
+  
     // Start is called before the first frame update
     void Start()
     {
         _myPlayer = GetComponentInParent<Player>();
         _myShooting = GetComponentInParent<PlayerShooting>();
+        _pVelocity = GetComponentInParent<PlayerVelocity>();    
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (realBlendy <= 0)
-        {
-            realBlendy = 0;
-        }
+   
+
 
         if (!_myPlayer.directionLocked)
         {
+            if (_pVelocity.velocityX==0f) 
+            { 
+                _myAnim.SetBool("goingDown", false);
+                _myAnim.SetBool("goingUps", false); 
+            }
 
-            if (Input.GetKey(KeyCode.W))
+
+
+            if (_pVelocity.velocityX>0f)
             {
                 _myAnim.SetBool("goingUps", true);
+                _myAnim.SetBool("goingDown", false);
             }
-            else if (!Input.GetKey(KeyCode.W))
-            {
-                _myAnim.SetBool("goingUps", false);
-            }
+         
                 
-            if (Input.GetKey(KeyCode.S))
+            if (_pVelocity.velocityX < 0f)
             {
 
                 _myAnim.SetBool("goingDown", true);
-            }
-            else if (!Input.GetKey(KeyCode.D))
-            {
-                _myAnim.SetBool("goingDown", false);
+                _myAnim.SetBool("goingUps", false);
+
             }
 
-            if (Input.GetKey(KeyCode.D))
+            if (_pVelocity.velocityZ == 0f)
+            {
+                _myAnim.SetBool("goingRight", false);
+                _myAnim.SetBool("goingLeft", false);
+            }
+
+
+            if (_pVelocity.velocityZ>0)
             {
                 _myAnim.SetBool("goingRight", true);
             }
-            else if (!Input.GetKey(KeyCode.D))
-            {
-                _myAnim.SetBool("goingRight", false);
-            }
 
-            if (Input.GetKey(KeyCode.A))
+
+            if (_pVelocity.velocityZ < 0)
             {
 
                 _myAnim.SetBool("goingLeft", true);
             }
-            else if (!Input.GetKey(KeyCode.A))
-            {
-                _myAnim.SetBool("goingLeft", false);
-            }
+          
         }
 
         if (_myShooting.CanShoot && _myShooting.shotsRemaining > 0 && Input.GetKeyDown(KeyCode.Space))
