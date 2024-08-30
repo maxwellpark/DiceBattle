@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private Direction _direction;
 
+
+
     private Vector3 _startPos;
     private Vector3 _vDirection;
 
