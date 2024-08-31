@@ -108,18 +108,260 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1520
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3af01c3e1c2a0674ea47a27042a4b28a
+      internalID: -189820092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1520
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c299d4e450fc5c4bb23324b50c49fd2
+      internalID: 2020532624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1520
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1561f6082d402942be66db2b567d705
+      internalID: 1180706383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 992
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d408f7ea40245ef48a77cc886e28205f
+      internalID: 1480147019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 992
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9eba0e699e90fb4fa229fa7a7f476d4
+      internalID: 1905199737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 992
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f26f1987c496f7b40bcdb0899327bf5e
+      internalID: 1153068814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 992
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53fe77e480dfff84a915445c6614cc3c
+      internalID: 336603413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 464
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f154c740fadbfe47b6819438628e80f
+      internalID: 2053480238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 464
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ec52b25e0d8d664aada74b6dc4af524
+      internalID: -1677245316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 464
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60907abf000f97e40af9395ebc334416
+      internalID: 1637298581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fire_1_512-comp_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 464
+        width: 512
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 252d792ec94b48f4dbaecc340583a512
+      internalID: -670349193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 154de8a8b1399224fb8e2ff3ad8829f2
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fire_1_512-comp_sheet_0: -189820092
+      Fire_1_512-comp_sheet_1: 2020532624
+      Fire_1_512-comp_sheet_10: -670349193
+      Fire_1_512-comp_sheet_2: 1180706383
+      Fire_1_512-comp_sheet_3: 1480147019
+      Fire_1_512-comp_sheet_4: 1905199737
+      Fire_1_512-comp_sheet_5: 1153068814
+      Fire_1_512-comp_sheet_6: 336603413
+      Fire_1_512-comp_sheet_7: 2053480238
+      Fire_1_512-comp_sheet_8: -1677245316
+      Fire_1_512-comp_sheet_9: 1637298581
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

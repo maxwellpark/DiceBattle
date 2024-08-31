@@ -5139,7 +5139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161522044444268171}
   - component: {fileID: 8718615494394062085}
-  - component: {fileID: 4509736104869638209}
+  - component: {fileID: 7949013211140561781}
   m_Layer: 0
   m_Name: num2Bullet
   m_TagString: PlayerBullet
@@ -5179,7 +5179,8 @@ MonoBehaviour:
   _speed: 2
   _maxDistance: 10
   _direction: 3
---- !u!136 &4509736104869638209
+  explosionPrefab: {fileID: 4852578684122495406, guid: f90818eaf88785849b3262b6614ef6b8, type: 3}
+--- !u!136 &7949013211140561781
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5198,10 +5199,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.14395317
+  m_Height: 0.2879064
+  m_Direction: 0
+  m_Center: {x: -0.0042186975, y: -0.0016005039, z: -0.13674158}
 --- !u!1001 &2298163928888932350
 PrefabInstance:
   m_ObjectHideFlags: 0
