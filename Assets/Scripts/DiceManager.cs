@@ -14,9 +14,12 @@ public class DiceManager : Singleton<DiceManager>
     [SerializeField]
     private Vector3 _diceScale;
 
+    private AudioSource _audioSource;
+
     protected override void Awake()
     {
         base.Awake();
+        _audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(_diceContainer);
     }
 
@@ -35,5 +38,7 @@ public class DiceManager : Singleton<DiceManager>
         var diceAnim2 = dice2.GetComponent<DiceAnimController>();
         diceAnim1.diceValue = p1Roll;
         diceAnim2.diceValue = p2Roll;
+
+        _audioSource.Play();
     }
 }
