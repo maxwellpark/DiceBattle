@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3657251969510126796, guid: 0280bb78ece3df542a261caee846be97, type: 3}
@@ -76,6 +77,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8717918218477460552, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4363714177950999090}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0280bb78ece3df542a261caee846be97, type: 3}
 --- !u!4 &4253016054781735494 stripped
 Transform:
@@ -87,6 +94,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4253016054781735494}
     m_Modifications:
     - target: {fileID: 3371062790079647776, guid: 94c44b0923282a042a7253534190d8be, type: 3}
@@ -162,6 +170,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8314656218714050784, guid: 94c44b0923282a042a7253534190d8be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5866666020439701620}
+    - targetCorrespondingSourceObject: {fileID: 8314656218714050784, guid: 94c44b0923282a042a7253534190d8be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5866666020439701622}
   m_SourcePrefab: {fileID: 100100000, guid: 94c44b0923282a042a7253534190d8be, type: 3}
 --- !u!4 &265216742182083700 stripped
 Transform:
@@ -185,11 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2353b7fd03590bb4d97ee29c82ce7e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeTime: 0.3
-  _meshDestroyDelay: 0.2
+  _activeTime: 0.5
+  _meshDestroyDelay: 0.25
   _posToSpawn: {fileID: 265216742182083700}
   _meshRefreshRate: 0.1
-  _mat: {fileID: 2100000, guid: 9292dbf87a3644d4eab551f6a0e29204, type: 2}
+  _mat: {fileID: 2100000, guid: 125877802077cbd41b5a7172744b3f59, type: 2}
 --- !u!114 &5866666020439701622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +220,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myAnim: {fileID: 7669395111572617288}
-  realBlendy: 0
+--- !u!4 &4363714177950999090 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8658248811514284634, guid: 94c44b0923282a042a7253534190d8be, type: 3}
+  m_PrefabInstance: {fileID: 4946994765735077992}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &7669395111572617288 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3371062790079647776, guid: 94c44b0923282a042a7253534190d8be, type: 3}
