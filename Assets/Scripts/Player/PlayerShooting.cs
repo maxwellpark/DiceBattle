@@ -44,7 +44,7 @@ public class PlayerShooting : MonoBehaviour
         health = _maxHealth;
         this.magSize = magSize;
         shotsRemaining = this.magSize;
-        _bulletPrefab =  bulletPrefab;
+        _bulletPrefab = bulletPrefab;
     }
 
     protected virtual void Start()
@@ -110,8 +110,11 @@ public class PlayerShooting : MonoBehaviour
                 bullet.SpawnExplosion();
             }
             Destroy(other.gameObject);
+
             health--;
             onDamageTaken?.Invoke(health);
+            _damagedSource.Play();
+
             if (health <= 0)
             {
                 Die();

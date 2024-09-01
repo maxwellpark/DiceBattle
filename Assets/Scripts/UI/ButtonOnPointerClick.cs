@@ -19,6 +19,10 @@ public class ButtonOnPointerClick : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        // TODO: Get reference on scene change 
+        if (_audioSource == null)
+            _audioSource = GetComponent<AudioSource>();
+
         _audioSource.Play();
         _animator.SetTrigger("Press");
     }
