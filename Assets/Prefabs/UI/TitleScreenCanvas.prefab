@@ -380,6 +380,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BtnContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 7565949231249202918, guid: 988e0eb3914aba2488cc5147b37975f6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 32709
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944242527702652842, guid: 988e0eb3914aba2488cc5147b37975f6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 32709
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944242528525695867, guid: 988e0eb3914aba2488cc5147b37975f6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 32709
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
