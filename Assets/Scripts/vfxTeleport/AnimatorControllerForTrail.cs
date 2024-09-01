@@ -32,14 +32,14 @@ public class AnimatorControllerForTrail : MonoBehaviour
 
 
 
-            if (_pVelocity.velocityX>0f)
+            if (_pVelocity.velocityX>0)
             {
                 _myAnim.SetBool("goingUps", true);
                 _myAnim.SetBool("goingDown", false);
             }
          
                 
-            if (_pVelocity.velocityX < 0f)
+            if (_pVelocity.velocityX < 0)
             {
 
                 _myAnim.SetBool("goingDown", true);
@@ -57,6 +57,7 @@ public class AnimatorControllerForTrail : MonoBehaviour
             if (_pVelocity.velocityZ>0)
             {
                 _myAnim.SetBool("goingRight", true);
+                _myAnim.SetBool("goingLeft", false);
             }
 
 
@@ -64,6 +65,7 @@ public class AnimatorControllerForTrail : MonoBehaviour
             {
 
                 _myAnim.SetBool("goingLeft", true);
+                _myAnim.SetBool("goingRight", false);
             }
           
         }
