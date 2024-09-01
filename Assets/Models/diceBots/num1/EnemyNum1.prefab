@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8717918218477460552, guid: 0280bb78ece3df542a261caee846be97, type: 3}
@@ -70,7 +71,24 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8934178152332887095, guid: 0280bb78ece3df542a261caee846be97, type: 3}
     - {fileID: 8929958151792390765, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8717918218477460552, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7980520495351428731}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8717918218477460556, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 12212334476013143}
+    - targetCorrespondingSourceObject: {fileID: 8717918218477460556, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 569667076468913688}
   m_SourcePrefab: {fileID: 100100000, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+--- !u!82 &346711907523858730 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7891991832400624873, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+  m_PrefabInstance: {fileID: 7586938535611887043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1276343921338691979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8717918218477460552, guid: 0280bb78ece3df542a261caee846be97, type: 3}
@@ -118,22 +136,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zOffset: 0.4
-  _bulletPrefab: {fileID: 8539698259316770877, guid: fe6b9ef542656f344b05e15dcdbfd5c5, type: 3}
   _maxHealth: 3
   health: 0
   _reloadTimeInSeconds: 2
   magSize: 6
   shotsRemaining: 0
+  _shootSource: {fileID: 3023060514613912991}
+  _reloadSource: {fileID: 2618448763787607662}
+  _damagedSource: {fileID: 346711907523858730}
   _shootDelayInSeconds: 0.25
   _dynamicShooting: 1
   _shootDelayMin: 0.25
   _shootDelayMax: 0.5
   _rowConstraintNum: 1
+--- !u!82 &2618448763787607662 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5556493205920322477, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+  m_PrefabInstance: {fileID: 7586938535611887043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &3023060514613912991 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4665212323094071388, guid: 0280bb78ece3df542a261caee846be97, type: 3}
+  m_PrefabInstance: {fileID: 7586938535611887043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7586938536731349392
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1276343921338691979}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 89a1f72b42ac6a54fb22a494f677dd8a, type: 3}
@@ -209,6 +240,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 89a1f72b42ac6a54fb22a494f677dd8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1057904712}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 89a1f72b42ac6a54fb22a494f677dd8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1057904713}
   m_SourcePrefab: {fileID: 100100000, guid: 89a1f72b42ac6a54fb22a494f677dd8a, type: 3}
 --- !u!95 &4044423570575109121 stripped
 Animator:
@@ -255,4 +295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myAnim: {fileID: 4044423570575109121}
-  realBlendy: 0
+--- !u!4 &7980520495351428731 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 89a1f72b42ac6a54fb22a494f677dd8a, type: 3}
+  m_PrefabInstance: {fileID: 7586938536731349392}
+  m_PrefabAsset: {fileID: 0}

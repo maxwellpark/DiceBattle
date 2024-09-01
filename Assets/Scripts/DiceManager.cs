@@ -39,6 +39,10 @@ public class DiceManager : Singleton<DiceManager>
         diceAnim1.diceValue = p1Roll;
         diceAnim2.diceValue = p2Roll;
 
+        // TODO: Get reference on scene change 
+        if (_audioSource == null)
+            _audioSource = GetComponent<AudioSource>();
+
         _audioSource.Play();
     }
 }
