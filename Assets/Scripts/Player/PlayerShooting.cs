@@ -33,6 +33,9 @@ public class PlayerShooting : MonoBehaviour
 
     public bool CanShoot { get; set; } = true;
 
+    //Bool for animator get when entity is hit (set animator parameter)
+    public bool beenHit { get; set; } = false;
+
     // Events 
     public event UnityAction onShoot;
     public event UnityAction onEmptyMag;
@@ -109,16 +112,40 @@ public class PlayerShooting : MonoBehaviour
             if (other.TryGetComponent<Bullet>(out var bullet))
             {
                 bullet.SpawnExplosion();
+               //Debug.Log("HITbyBULLET");
+                beenHit = true;
+
+                // courotine to reset beenhit
+                StartCoroutine(ResetBeenHit());
+
             }
+          
             Destroy(other.gameObject);
             health--;
             onDamageTaken?.Invoke(health);
+            
+
+
             if (health <= 0)
             {
+                beenHit = false;
                 Die();
                 return;
             }
+
+
         }
+       
+
+    }
+
+    private IEnumerator ResetBeenHit()
+    {
+        // Wait for 1 second (or any duration you choose)
+        yield return new WaitForSeconds(0.1f);
+
+        // Reset the bool back to false
+        beenHit = false;
     }
 
     protected void Die()
