@@ -8,6 +8,9 @@ public class QuitButton : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_WEBGL
+        Destroy(gameObject);
+#endif
         _quitButton = GetComponent<Button>();
         _quitButton.onClick.RemoveAllListeners();
         _quitButton.onClick.AddListener(Quit);

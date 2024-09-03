@@ -22,11 +22,9 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private AudioSource _shootSource;
     [SerializeField]
-    private AudioClip _shootClip;
-    [SerializeField]
     private AudioSource _reloadSource;
     [SerializeField]
-    private AudioClip _reloadClip;
+    private AudioSource _damagedSource;
 
     private CharacterManager _charManager;
     private GameObject _bulletPrefab; // Set based on characters selected 
@@ -49,7 +47,7 @@ public class PlayerShooting : MonoBehaviour
         health = _maxHealth;
         this.magSize = magSize;
         shotsRemaining = this.magSize;
-        _bulletPrefab =  bulletPrefab;
+        _bulletPrefab = bulletPrefab;
     }
 
     protected virtual void Start()
@@ -84,8 +82,9 @@ public class PlayerShooting : MonoBehaviour
         bullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + _zOffset);
         shotsRemaining = Mathf.Max(0, shotsRemaining - 1);
         onShoot?.Invoke();
-        // TODO: Add audio clips 
-        //_shootSource.Play();
+        // TODO: Add audio clips based on character selected 
+        if (_shootSource.clip != null)
+            _shootSource.Play();
 
         if (shotsRemaining <= 0)
             onEmptyMag?.Invoke();
@@ -121,10 +120,10 @@ public class PlayerShooting : MonoBehaviour
             }
           
             Destroy(other.gameObject);
+
             health--;
             onDamageTaken?.Invoke(health);
-            
-
+            _damagedSource.Play();
 
             if (health <= 0)
             {
