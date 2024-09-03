@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1d1d52e5cdde7854f96b2e1987fec87f
+guid: 11c6fc2092c0f124c806593befeb08e0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -110,76 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Impact009Yellow _0
+      name: Impact009Yellow 2B_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 71
-        width: 55
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 569c886b270ebcc4e81e82913ffa4592
-      internalID: 8966166
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact009Yellow _1
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 37
-        width: 144
-        height: 123
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b30c2e3799747c4eb78fbdfcf469f8b
-      internalID: 1956713789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact009Yellow _2
-      rect:
-        serializedVersion: 2
-        x: 392
-        y: 21
-        width: 183
-        height: 155
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38daf66acd8fbe045b7b98fdd7a8d9a7
-      internalID: 2050104959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact009Yellow _3
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 4
+        x: 0
+        y: 0
         width: 192
-        height: 186
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +124,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f69db7a4ce7223449f6018dbca5bf85
-      internalID: 484073573
+      spriteID: b0d9483c1ef95f242b19dfafd71af087
+      internalID: 376329257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Impact009Yellow 2B_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74014d071c3b1744c81f6de7fc64ce7f
+      internalID: 1311846857
       vertices: []
       indices: 
       edges: []
@@ -196,7 +154,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 33d703882f3dc0a47a89c9f2db1aefcf
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -204,10 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Impact009Yellow _0: 8966166
-      Impact009Yellow _1: 1956713789
-      Impact009Yellow _2: 2050104959
-      Impact009Yellow _3: 484073573
+      Impact009Yellow 2B_0: 376329257
+      Impact009Yellow 2B_1: 1311846857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

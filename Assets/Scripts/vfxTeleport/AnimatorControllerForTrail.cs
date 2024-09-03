@@ -7,6 +7,7 @@ public class AnimatorControllerForTrail : MonoBehaviour
     private PlayerVelocity _pVelocity;
 
     public Animator _myAnim;
+    
   
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,9 @@ public class AnimatorControllerForTrail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
+
+        _myAnim.SetBool("HITBYBULLET", _myShooting.beenHit);
+      
 
 
         if (!_myPlayer.directionLocked)
@@ -32,14 +35,14 @@ public class AnimatorControllerForTrail : MonoBehaviour
 
 
 
-            if (_pVelocity.velocityX>0f)
+            if (_pVelocity.velocityX>0)
             {
                 _myAnim.SetBool("goingUps", true);
                 _myAnim.SetBool("goingDown", false);
             }
          
                 
-            if (_pVelocity.velocityX < 0f)
+            if (_pVelocity.velocityX < 0)
             {
 
                 _myAnim.SetBool("goingDown", true);
@@ -57,6 +60,7 @@ public class AnimatorControllerForTrail : MonoBehaviour
             if (_pVelocity.velocityZ>0)
             {
                 _myAnim.SetBool("goingRight", true);
+                _myAnim.SetBool("goingLeft", false);
             }
 
 
@@ -64,6 +68,7 @@ public class AnimatorControllerForTrail : MonoBehaviour
             {
 
                 _myAnim.SetBool("goingLeft", true);
+                _myAnim.SetBool("goingRight", false);
             }
           
         }

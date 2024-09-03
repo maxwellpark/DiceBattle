@@ -49,6 +49,7 @@ MonoBehaviour:
   _speed: 2
   _maxDistance: 10
   _direction: 3
+  explosionPrefab: {fileID: 3468463495790390098, guid: 73099d3f075d2944c89daa857c1ed675, type: 3}
 --- !u!136 &3949257186252374357
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -68,10 +69,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.09376757
+  m_Height: 0.3877636
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.0014753193, y: -0.0005594492, z: -0.010143548}
 --- !u!1 &6510005910230392084
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +285,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a1ea55e869b60af4d8690bbae77d8401, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a1ea55e869b60af4d8690bbae77d8401, type: 3}
+      propertyPath: m_TagString
+      value: PlayerBullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

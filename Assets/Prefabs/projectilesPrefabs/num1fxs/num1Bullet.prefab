@@ -75,7 +75,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.7
+  m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -262,6 +262,7 @@ MonoBehaviour:
   _speed: 2
   _maxDistance: 10
   _direction: 3
+  explosionPrefab: {fileID: 125242588189473207, guid: 5ef762a7e5bd12a4d82d78da68c62f04, type: 3}
 --- !u!136 &3581469145821544988
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -281,10 +282,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 0.07376511
+  m_Height: 0.405751
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.003030531, y: 0.035680756, z: -0.000000044703484}
 --- !u!1 &6764835941698129013
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +361,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.7
+  m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -522,7 +523,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.7
+  m_Time: 0.6
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
