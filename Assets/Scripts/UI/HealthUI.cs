@@ -82,6 +82,8 @@ public class HealthUI : MonoBehaviour
 
         GameManager.onNewRound += p1RdAction;
         GameManager.onNewRound += p2RdAction;
+        GameManager.onPreRound += p1RdAction;
+        GameManager.onPreRound += p2RdAction;
         _rdActions = (p1RdAction, p2RdAction);
 
         SetTextsActive(true);
@@ -99,6 +101,8 @@ public class HealthUI : MonoBehaviour
 
         GameManager.onNewRound -= _rdActions.p1;
         GameManager.onNewRound -= _rdActions.p2;
+        GameManager.onPreRound -= _rdActions.p1;
+        GameManager.onPreRound += _rdActions.p2;
     }
 
     public void SetTextsActive(bool active)
