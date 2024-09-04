@@ -95,8 +95,7 @@ public class PlayerShooting : MonoBehaviour
         CanShoot = false;
         shotsRemaining = 0;
         onReloadStart?.Invoke();
-        // TODO: Add audio clips 
-        //_reloadSource.Play();
+        _reloadSource.Play();
 
         yield return new WaitForSeconds(_reloadTimeInSeconds);
         shotsRemaining = magSize;
