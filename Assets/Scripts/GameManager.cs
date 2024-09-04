@@ -31,14 +31,28 @@ public class GameManager : Singleton<GameManager>
     public static bool waitingForDice;
     public static bool inBattle;
 
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _victoryClip;
+    [SerializeField]
+    private AudioClip _defeatClip;
+
     [SerializeField]
     private MenuTransitionData _battleEndTransitionData;
+    [SerializeField]
+    private float _battleEndDelayInSeconds = 3f;
 
     public static event UnityAction onNewBattle;
     public static event UnityAction onNewRound;
     public static event UnityAction onPreRound;
     public static event UnityAction onRoundComplete;
     public static event UnityAction onBattleComplete;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     public void NewBattle()
     {
@@ -132,6 +146,16 @@ public class GameManager : Singleton<GameManager>
         currentRound = 0;
         onBattleComplete?.Invoke();
         ToggleBackgroundObjs(false);
+
+        // TODO: Because the victory clip is way longer than the defeat clip, make the duration dynamic
+        var clip = player1Wins ? _victoryClip : _defeatClip;
+        _audioSource.PlayOneShot(clip);
+        StartCoroutine(BattleEndTransitionAfterDelay());
+    }
+
+    private IEnumerator BattleEndTransitionAfterDelay()
+    {
+        yield return new WaitForSeconds(_battleEndDelayInSeconds);
         _menuTransitionManager.Transition(_battleEndTransitionData);
     }
 

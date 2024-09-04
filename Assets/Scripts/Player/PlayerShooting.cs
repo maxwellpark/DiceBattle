@@ -110,14 +110,14 @@ public class PlayerShooting : MonoBehaviour
             if (other.TryGetComponent<Bullet>(out var bullet))
             {
                 bullet.SpawnExplosion();
-               //Debug.Log("HITbyBULLET");
+                //Debug.Log("HITbyBULLET");
                 beenHit = true;
 
                 // courotine to reset beenhit
                 StartCoroutine(ResetBeenHit());
 
             }
-          
+
             Destroy(other.gameObject);
 
             health--;
@@ -133,7 +133,7 @@ public class PlayerShooting : MonoBehaviour
 
 
         }
-       
+
 
     }
 
@@ -161,5 +161,20 @@ public class PlayerShooting : MonoBehaviour
         {
             Destroy(bullet.gameObject);
         }
+    }
+
+    private void OnBattleComplete()
+    {
+        CanShoot = false;
+    }
+
+    protected virtual void OnEnable()
+    {
+        GameManager.onBattleComplete += OnBattleComplete;
+    }
+
+    protected virtual void OnDisable()
+    {
+        GameManager.onBattleComplete -= OnBattleComplete;
     }
 }

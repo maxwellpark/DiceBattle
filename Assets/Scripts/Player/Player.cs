@@ -129,4 +129,19 @@ public class Player : MonoBehaviour
     {
         _moveBuffer = Mathf.Min(_moveDuration, _moveBuffer);
     }
+
+    private void OnBattleComplete()
+    {
+        directionLocked = true;
+    }
+
+    protected virtual void OnEnable()
+    {
+        GameManager.onBattleComplete += OnBattleComplete;
+    }
+
+    protected virtual void OnDisable()
+    {
+        GameManager.onBattleComplete -= OnBattleComplete;
+    }
 }
