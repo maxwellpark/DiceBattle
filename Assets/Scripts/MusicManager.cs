@@ -101,4 +101,19 @@ public class MusicManager : Singleton<MusicManager>
         var state = GetStateBySrc(_currentSrc);
         return state;
     }
+
+    private void OnBattleComplete()
+    {
+        ResetSrcs();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.onBattleComplete += OnBattleComplete;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onBattleComplete -= OnBattleComplete;
+    }
 }
