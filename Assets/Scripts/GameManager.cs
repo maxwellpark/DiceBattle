@@ -156,6 +156,7 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator BattleEndTransitionAfterDelay()
     {
         yield return new WaitForSeconds(_battleEndDelayInSeconds);
+        _audioSource.Stop();
         _menuTransitionManager.Transition(_battleEndTransitionData);
     }
 
