@@ -17,12 +17,16 @@ public class MouseHoverMaterialChange : MonoBehaviour
         // Set the initial material to the grayed material
         modelRenderer.material = grayedMaterial;
         animator = GetComponentInParent<Animator>();
+        CharacterManager.selectionLocked = false;
 
 
     }
 
     void Update()
     {
+        if (CharacterManager.selectionLocked)
+            return;
+
         // Create a ray from the mouse position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -40,7 +44,7 @@ public class MouseHoverMaterialChange : MonoBehaviour
                 {
                     StartCoroutine(SelectCharacterAfterDelay());
 
-                    
+
                 }
             }
             else
@@ -65,6 +69,8 @@ public class MouseHoverMaterialChange : MonoBehaviour
     {
         // Set the click bool to true to play the click animation
         animator.SetBool("IsClicked", true);
+
+        CharacterManager.selectionLocked = true;
         yield return new WaitForSeconds(selectDelayInSeconds);
         CharacterManager.instance.SelectPlayerChar(characterData);
     }

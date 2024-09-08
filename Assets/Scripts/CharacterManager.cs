@@ -14,6 +14,8 @@ public class CharacterManager : Singleton<CharacterManager>
     [SerializeField]
     private MenuTransitionData _transData;
 
+    public static bool selectionLocked;
+
     public void CreateChars()
     {
         CreateP1Char();
