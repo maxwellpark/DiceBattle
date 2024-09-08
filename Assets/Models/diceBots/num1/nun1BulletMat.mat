@@ -147,7 +147,7 @@ Material:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.7597718, g: 1, b: 0, a: 0.7372549}
     - _Edgecolor: {r: 0.7941176, g: 0.1284602, b: 0.1284602, a: 0.666}
-    - _EmissionColor: {r: 1.4374412, g: 3.9999998, b: 0, a: 1}
+    - _EmissionColor: {r: 2.6701567, g: 0.09572313, b: 0, a: 1}
     - _GlitchDirection: {r: 0, g: 1, b: 0, a: 0}
     - _HoloColor: {r: 1, g: 1, b: 1, a: 1}
     - _HoloDirection: {r: 0, g: 1, b: 0, a: 0}
