@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 5070376599460310429, guid: 60aba465a19ea63418cc3fbb5bc90476, type: 3}
+  m_Motion: {fileID: -4881055160987171677, guid: 0a5ccc989e6dc5346b7ea0bbd22fb953, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -73,7 +73,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5cb744deaee06e14b948886baf44fcfb, type: 2}
+  m_Motion: {fileID: 5161637856132275520, guid: 0a5ccc989e6dc5346b7ea0bbd22fb953, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -85,7 +85,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: D1AnimCTRLCS
+  m_Name: D5AnimCTRLCS
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsHovered
@@ -160,7 +160,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1293946235750487998, guid: 60aba465a19ea63418cc3fbb5bc90476, type: 3}
+  m_Motion: {fileID: 9163257287205964719, guid: 0a5ccc989e6dc5346b7ea0bbd22fb953, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -236,14 +236,14 @@ AnimatorStateMachine:
     m_Position: {x: 110, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9173362255000338838}
-    m_Position: {x: 646.125, y: 299.69754, z: 0}
+    m_Position: {x: 650, y: 300, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 280, y: -130, z: 0}
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: -80, y: 130, z: 0}
-  m_ExitPosition: {x: 780, y: -60, z: 0}
+  m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -3196362035498085753}
