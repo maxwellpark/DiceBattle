@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MouseHoverMaterialChange : MonoBehaviour
@@ -6,6 +7,9 @@ public class MouseHoverMaterialChange : MonoBehaviour
     public Material grayedMaterial;  // The material for the original "grayed" look
     public Material coloredMaterial; // The material to switch to on hover
     private Animator animator;
+    [SerializeField] private CharacterData characterData;
+    [SerializeField] private float selectDelayInSeconds = 2.5f;
+
     void Start()
     {
         // Get the Renderer component of the model
@@ -34,8 +38,9 @@ public class MouseHoverMaterialChange : MonoBehaviour
                 animator.SetBool("IsHovered", true);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    // Set the click bool to true to play the click animation
-                    animator.SetBool("IsClicked", true);
+                    StartCoroutine(SelectCharacterAfterDelay());
+
+                    
                 }
             }
             else
@@ -54,5 +59,13 @@ public class MouseHoverMaterialChange : MonoBehaviour
             animator.SetBool("IsHovered", false);
             animator.SetBool("IsClicked", false);
         }
+    }
+
+    private IEnumerator SelectCharacterAfterDelay()
+    {
+        // Set the click bool to true to play the click animation
+        animator.SetBool("IsClicked", true);
+        yield return new WaitForSeconds(selectDelayInSeconds);
+        CharacterManager.instance.SelectPlayerChar(characterData);
     }
 }

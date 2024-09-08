@@ -371,6 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grayedMaterial: {fileID: 2100000, guid: 16051d536ebe40e4ca0fc1e0e7b85a40, type: 2}
   coloredMaterial: {fileID: 2100000, guid: 809162f473bb3ec49b9b0045b4c9a26d, type: 2}
+  characterData: {fileID: 11400000, guid: 642f3c9563f742846ba1f27f640d87a7, type: 2}
 --- !u!65 &156612816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -698,6 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grayedMaterial: {fileID: 2100000, guid: 70dd80e50dd092f469bc00669d803101, type: 2}
   coloredMaterial: {fileID: 2100000, guid: c103b38a6c843a44c91589bd4d0e6d1d, type: 2}
+  characterData: {fileID: 11400000, guid: f565719c6d1311b4899d3785460d8d89, type: 2}
 --- !u!65 &478970352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1222,6 +1224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grayedMaterial: {fileID: 2100000, guid: 66981be75dee1f84c9e9cbd5a5f26ca7, type: 2}
   coloredMaterial: {fileID: 2100000, guid: 2e52d58ccc82ca644a07285b0a89307a, type: 2}
+  characterData: {fileID: 11400000, guid: f3911ab4e5deb1f47b38fcb3896f8c09, type: 2}
 --- !u!4 &900486416 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0a5ccc989e6dc5346b7ea0bbd22fb953, type: 3}
@@ -1573,6 +1576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grayedMaterial: {fileID: 2100000, guid: bf2ff7bc56035f647a5261a1c795dff0, type: 2}
   coloredMaterial: {fileID: 2100000, guid: 26d30976617be19469c6a6567e88878d, type: 2}
+  characterData: {fileID: 11400000, guid: 6c579d7ead4a7d14484e6a864803ac1b, type: 2}
 --- !u!65 &1174016133
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2490,6 +2494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grayedMaterial: {fileID: 2100000, guid: 3ab48876b30efe442afbc28ef49500d1, type: 2}
   coloredMaterial: {fileID: 2100000, guid: 8a30cc53e68fda44a828ca0858f72039, type: 2}
+  characterData: {fileID: 11400000, guid: 6e1d47860990c0847b15bc6669e8bbc3, type: 2}
 --- !u!65 &1296246818
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3308,6 +3313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grayedMaterial: {fileID: 2100000, guid: a7f114dc3affcbb4ea9e00b10ff011f1, type: 2}
   coloredMaterial: {fileID: 2100000, guid: 9f53a0dc965415a4ebe7b43ad4c2b4f4, type: 2}
+  characterData: {fileID: 11400000, guid: a86269bc07384074aba1dc6250c7e23b, type: 2}
 --- !u!1 &1434204060
 GameObject:
   m_ObjectHideFlags: 0
@@ -4431,10 +4437,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8916345189364402451, guid: 9520ced034e6f6548ab80852bb4b4acc, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 8916345189364402451, guid: 9520ced034e6f6548ab80852bb4b4acc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 190.58
