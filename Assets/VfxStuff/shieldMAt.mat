@@ -8,7 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: shieldMAt
-  m_Shader: {fileID: 4800000, guid: b27b75e95e8affd47bdbf38dc93363ae, type: 3}
+  m_Shader: {fileID: 4800000, guid: 72d02a391ea40104e8bfd8b63b73e8e2, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ENABLEDISTORTION_ON
@@ -20,6 +22,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -44,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e7625880993aecd4b9d451d6e83bb827, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Maintexture:
@@ -80,14 +83,21 @@ Material:
     - _Distortionscale: 10
     - _Distortionspeed: 1
     - _DstBlend: 0
+    - _EmissionMultiplier: 1.5
     - _Enabledistortion: 0.4
     - _Enablenoise: 1
     - _Enablepulsation: 1
     - _Extraroughness: 0
+    - _GlitchDensity: 0
+    - _GlitchPeriod: 0
+    - _GlitchStrength: 0
     - _Globalopacity: 0.6
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _HoloDistance: 0.5
+    - _HoloSpeed: 1
+    - _HoloValue: 1
     - _Innerfresnelintensity: 0.117
     - _Invertmaintexture: 0
     - _Invertsecondarytexture: 0
@@ -117,9 +127,12 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.6277771, b: 1, a: 0.88235295}
     - _Edgecolor: {r: 1, g: 0, b: 0.32299614, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GlitchDirection: {r: 0, g: 1, b: 0, a: 0}
+    - _HoloColor: {r: 0.15801886, g: 0.25041932, b: 0.5, a: 0.88235295}
+    - _HoloDirection: {r: 0, g: 1, b: 0, a: 0}
     - _Maincolor: {r: 1, g: 0, b: 0, a: 1}
     - _Mainpanningspeed: {r: 0, g: 0, b: 0, a: 0}
     - _Noisespeed: {r: 0, g: 0, b: 0, a: 0}
