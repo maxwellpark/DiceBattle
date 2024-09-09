@@ -4925,10 +4925,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.066478096
-  m_Height: 0.31073424
+  m_Radius: 0.11358606
+  m_Height: 0.30342516
   m_Direction: 1
-  m_Center: {x: 0, y: -0.07505073, z: -0.019868217}
+  m_Center: {x: 0, y: -0.078705266, z: 0.04956352}
 --- !u!1 &4935985320416034666
 GameObject:
   m_ObjectHideFlags: 0

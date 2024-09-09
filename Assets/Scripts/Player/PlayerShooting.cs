@@ -7,6 +7,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private float _zOffset = 0.4f;
     [SerializeField]
+    private float _yOffset;
+    [SerializeField]
     private int _maxHealth = 3;
     [HideInInspector]
     public int health;
@@ -79,7 +81,7 @@ public class PlayerShooting : MonoBehaviour
     protected virtual void Shoot()
     {
         var bullet = Instantiate(_bulletPrefab);
-        bullet.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + _zOffset);
+        bullet.transform.position = new Vector3(transform.position.x, transform.position.y + _yOffset, transform.position.z + _zOffset);
         shotsRemaining = Mathf.Max(0, shotsRemaining - 1);
         onShoot?.Invoke();
         // TODO: Add audio clips based on character selected 
