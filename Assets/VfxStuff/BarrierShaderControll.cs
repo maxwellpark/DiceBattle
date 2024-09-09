@@ -20,7 +20,7 @@ public class BarrierShaderControll : MonoBehaviour
 
         _shaderSettings = new Dictionary<int, BarrierShaderSettings>
         {
-            { 0, new BarrierShaderSettings(0f, -1f, 0.8f, Color.cyan) },
+            { 0, new BarrierShaderSettings(0f, -1f, 0.8f, Color.blue) },
             { 1, new BarrierShaderSettings(0.2f ,0.5f,  0.7f, Color.cyan) },
             { 2, new BarrierShaderSettings(0.4f, 1f, 0.6f, Color.red) },
             { 3, new BarrierShaderSettings(0.8f, 2f, 0.5f, Color.red) }
@@ -34,14 +34,17 @@ public class BarrierShaderControll : MonoBehaviour
             throw new System.Exception("Key does not exist in shader settings dictionary: " + barrierState);
 
         var settings = _shaderSettings[barrierState];
-        var currentEnabledDistortion = mat.GetFloat("_Enabledistortion");
+        // Adult Link settings: 
+        //var currentEnabledDistortion = mat.GetFloat("_Enabledistortion");
 
-        _myRenderer.material.SetFloat("_Enabledistortion", settings.EnabledDistortion - currentEnabledDistortion);
-        _myRenderer.material.SetFloat("_Globalopacity", settings.GlobalOpacity);
-        _myRenderer.material.SetColor("_Maincolor", settings.MainColor);
+        //_myRenderer.material.SetFloat("_Enabledistortion", settings.EnabledDistortion - currentEnabledDistortion);
+        //_myRenderer.material.SetFloat("_Globalopacity", settings.GlobalOpacity);
+        //_myRenderer.material.SetColor("_Maincolor", settings.MainColor);
 
-        if (settings.DistortionSpeed >= 0)
-            _myRenderer.material.SetFloat("_Distortionspeed", settings.DistortionSpeed);
+        //if (settings.DistortionSpeed >= 0)
+        //    _myRenderer.material.SetFloat("_Distortionspeed", settings.DistortionSpeed);
+
+        _myRenderer.material.SetColor("_Color", settings.BaseColor);
     }
 
     private void OnDamageTakenHandler()

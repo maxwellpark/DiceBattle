@@ -6,6 +6,7 @@ public class BarrierShaderSettings
     public float DistortionSpeed { get; }
     public float GlobalOpacity { get; set; }
     public Color MainColor { get; set; }
+    public Color BaseColor { get; set; }
 
     public BarrierShaderSettings(float enabledDistortion, float distortionSpeed, float globalOpacity, Color mainColor)
     {
@@ -13,5 +14,6 @@ public class BarrierShaderSettings
         DistortionSpeed = distortionSpeed;
         GlobalOpacity = globalOpacity;
         MainColor = mainColor;
+        BaseColor = mainColor;
     }
 }
