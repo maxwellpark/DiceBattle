@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: EnemyNum0
   prefab: {fileID: 8043436354013032987, guid: 33ef00be0ead30443bd61039dbf3e766, type: 3}
-  bulletPrefab: {fileID: 8539698259316770877, guid: fe6b9ef542656f344b05e15dcdbfd5c5, type: 3}
+  bulletPrefab: {fileID: 2747981943903614989, guid: 95acea2a5690f9d4f9367a68fbbfc9df, type: 3}

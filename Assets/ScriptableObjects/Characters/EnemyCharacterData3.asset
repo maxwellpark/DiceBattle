@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 606167f86a771be41bbf5a2a1274baa6, type: 3}
-  m_Name: EnemyCharacterData2
+  m_Name: EnemyCharacterData3
   m_EditorClassIdentifier: 
-  charName: EnemyNum1
-  prefab: {fileID: 1276343921338691983, guid: 970164a618f2ac8458514eb55c5deff5, type: 3}
-  bulletPrefab: {fileID: 5420866183937483283, guid: 7b520f0ddd13f504187b52127520ab19, type: 3}
+  charName: Char3
+  prefab: {fileID: 4253016054781735490, guid: 744d91da596ee8047903334ccc033ac6, type: 3}
+  bulletPrefab: {fileID: 8972926342921619534, guid: dafacd2123658444dbc1126e5779f259, type: 3}
