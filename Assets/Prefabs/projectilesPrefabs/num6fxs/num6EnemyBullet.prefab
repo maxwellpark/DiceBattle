@@ -4777,7 +4777,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 02a9da3ae8635254f9adc667a891fc60, type: 2}
+  - {fileID: 2100000, guid: 27283e986b7c7c448b2c5da5fed28a7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4977,7 +4977,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.34
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -4995,7 +4995,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.7810974
+        time: 0.59381104
         value: 0
         inSlope: 0
         outSlope: 0
