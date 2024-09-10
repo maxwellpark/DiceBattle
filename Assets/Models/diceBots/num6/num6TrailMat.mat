@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: num4TrailMat
+  m_Name: num6TrailMat
   m_Shader: {fileID: 210, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -98,7 +98,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.40815237, g: 0.3476326, b: 0.7924528, a: 1}
-    - _EmissionColor: {r: 7.1957335, g: 1.7574016, b: 0.23759511, a: 1}
+    - _Color: {r: 0.9811321, g: 0.4026344, b: 0.44786018, a: 1}
+    - _EmissionColor: {r: 5.2830195, g: 0, b: 0.21117952, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
