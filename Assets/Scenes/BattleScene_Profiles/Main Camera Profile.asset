@@ -1,5 +1,45 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2825294779369480195
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5989756ea37ac46b1c199fb99ffc33, type: 3}
+  m_Name: EdgeDetect_BeforeStack
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  mode:
+    overrideState: 1
+    value: 1
+  sensitivityDepth:
+    overrideState: 1
+    value: 1
+  sensitivityNormals:
+    overrideState: 1
+    value: 1
+  lumThreshold:
+    overrideState: 0
+    value: 0.2
+  edgeExp:
+    overrideState: 1
+    value: 1
+  sampleDist:
+    overrideState: 1
+    value: 1
+  edgesOnly:
+    overrideState: 0
+    value: 0
+  edgesOnlyBgColor:
+    overrideState: 0
+    value: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,6 +55,7 @@ MonoBehaviour:
   settings:
   - {fileID: 8284830565150314448}
   - {fileID: 6497327029156739438}
+  - {fileID: -2825294779369480195}
 --- !u!114 &6497327029156739438
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -27,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb84e30e02715445aeb9959894e3b4d, type: 3}
   m_Name: ColorGrading
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -80,7 +121,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 0
-    value: 100
+    value: 41
   brightness:
     overrideState: 0
     value: 0
@@ -89,7 +130,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 0
-    value: 100
+    value: 15
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -119,10 +160,10 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 1, y: 1, z: 1, w: -0.39647576}
   gamma:
     overrideState: 0
-    value: {x: 1, y: 1, z: 1, w: 0}
+    value: {x: 1, y: 1, z: 1, w: -0.22026436}
   gain:
     overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
